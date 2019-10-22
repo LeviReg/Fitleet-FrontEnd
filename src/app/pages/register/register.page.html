@@ -9,17 +9,18 @@
         <ion-img src="assets/fitleet-logo.png" class="logo"></ion-img>
       </ion-item>
 <form [formGroup]="newcredentialsForm" (ngSubmit)="onSubmit()" color="primary">
-    <ion-item>
+    
+  <ion-item class="roundedInput">
         <ion-label position="floating">Username</ion-label>
         <ion-input type="username" formControlName="username"></ion-input>
       </ion-item>
 
-<ion-item>
+<ion-item class="roundedInput">
   <ion-label position="floating">Email</ion-label>
   <ion-input type="email" formControlName="email"></ion-input>
 </ion-item>
 
-<ion-item>
+<ion-item class="roundedInput">
   <ion-label position="floating">Password</ion-label>
   <ion-input type="password" formControlName="password"></ion-input>
 </ion-item>
