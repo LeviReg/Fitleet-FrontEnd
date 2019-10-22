@@ -1,9 +1,20 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
+  { 
+    path: 'home', 
+    loadChildren: './pages/home/home.module#HomePageModule' ,
+    canActivate: [AuthGuardService]
+  },
+  { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
+  { path: 'pedometer', loadChildren: './pages/pedometer/pedometer.module#PedometerPageModule' },
+  { path: 'food-diary', loadChildren: './pages/food-diary/food-diary.module#FoodDiaryPageModule' },
+  { path: 'workout-tracker', loadChildren: './pages/workout-tracker/workout-tracker.module#WorkoutTrackerPageModule' },
 ];
 
 @NgModule({
