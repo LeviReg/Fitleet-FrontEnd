@@ -1,9 +1,42 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>home</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Testing
+    </ion-title>
   </ion-toolbar>
 </ion-header>
+<app-navbar></app-navbar>
 
-<ion-content class="ion-padding">
-  <ion-button expand="full" (click)="logout()">Logout</ion-button>
+<ion-content color="primary">
+  <ion-grid>
+    <div class="container">
+      <ion-row>
+        <ion-col>
+          <div class="grid-item">
+            <ion-button>Food</ion-button>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="grid-item">
+            <ion-button>Workout</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="grid-item">
+            <ion-button>Pedometer</ion-button>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="grid-item">
+            <ion-button>Profile</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
 </ion-content>
