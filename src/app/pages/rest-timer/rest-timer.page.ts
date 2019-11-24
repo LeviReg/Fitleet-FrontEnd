@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 //import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
+//always on
+import { Insomnia } from '@ionic-native/insomnia/ngx';
 
 @Component({
   selector: 'app-rest-timer',
@@ -26,7 +28,10 @@ export class RestTimerPage implements OnInit {
     s: '00'
   }
 
-  totalTimer: any = false;
+  //overalltimer
+  countDownTimer: any = false;
+
+
 
   startTimer() {
 
@@ -35,8 +40,10 @@ export class RestTimerPage implements OnInit {
       clearInterval(this.timer);
     }
     //if totalTimer is false then run progresTimer() as to not reset totalTimer
-    if (!this.totalTimer) {
+    if (!this.countDownTimer) {
       this.progressTimer();
+      //Keeps phone from going into sleep mode. run keep awake at start of timer.
+      this.insomnia.keepAwake();
     }
 
     this.timer = false;
@@ -64,7 +71,7 @@ export class RestTimerPage implements OnInit {
   progressTimer() {
     let countDownDate = new Date();
 
-    this.totalTimer = setInterval(() => {
+    this.countDownTimer = setInterval(() => {
       let now = new Date().getTime();
 
       let distance = now - countDownDate.getTime();
@@ -90,8 +97,31 @@ export class RestTimerPage implements OnInit {
     return s;
   }
 
+  stopTimer() {
+    clearInterval(this.countDownTimer);
+    clearInterval(this.timer);
+    clearInterval(this.countDownTimer);
+    this.countDownTimer = false;
+    this.countDownTimer = false;
+    this.timer = false;
+    this.percent = 0;
+    this.progress = 0;
+    this.elapsed = {
+      h: '00',
+      m: '00',
+      s: '00'
+    }
+    //Allows the phone to sleep again after time is stopped
+    this.insomnia.allowSleepAgain()
+  }
 
-  constructor() { }
+
+  //Inject insomnia 
+  constructor(private insomnia: Insomnia) {
+
+    //this.insomnia.keepAwake.
+
+  }
 
   ngOnInit() {
   }
