@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      GPS Tracking
+      Track Your Run
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -21,15 +21,15 @@
   <div #map id="map"></div>
 
   <ion-list>
-    <ion-list-header>Previous Tracks</ion-list-header>
+    <ion-list-header>Previous Runs</ion-list-header>
     <ion-item *ngFor="let route of previousTracks">
       {{ route.finished | date }}, {{ route.path.length }} Waypoints
-      <ion-button fill="clear" item-end (click)="showHistoryRoute(route.path)">View Route</ion-button>
+      <ion-button fill="clear" item-end (click)="showHistoryRoute(route.path)">View Run</ion-button>
     </ion-item>
   </ion-list>
 
   <ion-item>
-    <ion-button fill="clear" item-end (click)="clearTracks()">Clear Routes</ion-button>
+    <ion-button fill="clear" item-end (click)="clearTracks()">Clear Old Runs</ion-button>
   </ion-item>
 
 </ion-content>
