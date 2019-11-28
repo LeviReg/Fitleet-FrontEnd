@@ -4,14 +4,12 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
-import { MaterialModule } from 'src/app/material.module';
 import { NavbarComponentModule } from 'src/app/comp/navbar/navbar.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    MaterialModule,
     IonicModule,
     NavbarComponentModule,
     RouterModule.forChild([
