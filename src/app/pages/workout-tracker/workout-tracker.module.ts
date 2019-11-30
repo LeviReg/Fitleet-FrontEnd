@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { WorkoutTrackerPage } from './workout-tracker.page';
+import { NavbarComponentModule } from 'src/app/comp/navbar/navbar.module';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    NavbarComponentModule,
     RouterModule.forChild(routes)
   ],
   declarations: [WorkoutTrackerPage]
