@@ -18,6 +18,7 @@ export class RegisterPage implements OnInit {
       username: [''],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
+      
     });
   }
 
