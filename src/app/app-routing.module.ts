@@ -8,8 +8,6 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   {
     path: 'home',
-    loadChildren: './pages/home/home.module#HomePageModule',
-    canActivate: [AuthGuardService]
   },
   {
     path: 'register',
@@ -27,10 +25,6 @@ const routes: Routes = [
     path: 'workout-tracker',
     loadChildren:
       './pages/workout-tracker/workout-tracker.module#WorkoutTrackerPageModule'
-  },
-  {
-    path: 'profile',
-    loadChildren: './pages/profile/profile.module#ProfilePageModule'
   }
 ];
 
