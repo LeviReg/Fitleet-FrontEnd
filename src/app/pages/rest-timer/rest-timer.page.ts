@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 //import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
-//always on
+//always on screen
 import { Insomnia } from '@ionic-native/insomnia/ngx';
 
 @Component({
@@ -50,6 +50,7 @@ export class RestTimerPage implements OnInit {
     this.percent = 0;
     this.progress = 0;
 
+    //Splits up full time into an array so 1 is in [1] and 30 is in [2]
     let timeSplit = this.fullTime.split(':');
     this.minutes = timeSplit[1];
     this.seconds = timeSplit[2];

@@ -15,7 +15,8 @@ const routes: Routes = [
   { path: 'pedometer', loadChildren: './pages/pedometer/pedometer.module#PedometerPageModule' },
   { path: 'food-diary', loadChildren: './pages/food-diary/food-diary.module#FoodDiaryPageModule' },
   { path: 'workout-tracker', loadChildren: './pages/workout-tracker/workout-tracker.module#WorkoutTrackerPageModule' },
-  { path: 'rest-timer', loadChildren: './pages/rest-timer/rest-timer.module#RestTimerPageModule' },
+  { path: 'rest-timer', loadChildren: './pages/rest-timer/rest-timer.module#RestTimerPageModule' },  { path: 'food-diary', loadChildren: './food-diary/food-diary.module#FoodDiaryPageModule' },
+
 
 ];
 
