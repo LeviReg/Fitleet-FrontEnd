@@ -1,4 +1,5 @@
-<ion-header>
+
+   <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -9,5 +10,126 @@
   </ion-toolbar>
 </ion-header>
 <app-navbar></app-navbar>
+<ion-content>
+  <ion-card>
 
-<ion-content> </ion-content>
+    <ion-row style="color: white; font-size: 35px;">
+
+
+      <ion-col class="ion-text-center">
+        Your daily calorie breakdown Conor
+      </ion-col>
+
+
+    </ion-row>
+
+    <ion-row style="color:white; font-size: 25px;">
+
+      <ion-col class="ion-text-center">
+        Goal
+      </ion-col>
+      <ion-col class="ion-text-center">
+        Eat
+      </ion-col>
+      <ion-col class="ion-text-center">
+        Left
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row style="color:white; font-size: 25px;">
+
+      <ion-col class="ion-text-center">
+        {{calorieGoal}}
+      </ion-col>
+      <ion-col class="ion-text-center">
+        {{caloriesConsumed}}
+      </ion-col>
+      <ion-col class="ion-text-center">
+        {{caloriesLeft}}
+      </ion-col>
+
+
+    </ion-row>
+
+  </ion-card>
+
+
+
+  <ion-card>
+    <ion-row style="color:white; font-size: large;">
+
+      <ion-col class="ion-text-center">
+
+      </ion-col>
+      <ion-col class="ion-text-center">
+        Chicken Burger Meal
+      </ion-col>
+      <ion-col class="ion-text-center">
+
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row style="color:white; font-size: large;">
+
+      <ion-col class="ion-text-center">
+
+      </ion-col>
+      <ion-col class="ion-text-center">
+        500 Calories
+      </ion-col>
+      <ion-col class="ion-text-center">
+
+      </ion-col>
+
+    </ion-row>
+    <ion-row style="color:white; font-size: 20px;">
+
+      <ion-col class="ion-text-center">
+        C:350
+      </ion-col>
+      <ion-col class="ion-text-center">
+        P:180
+      </ion-col>
+      <ion-col class="ion-text-center">
+        F:90
+      </ion-col>
+
+
+    </ion-row>
+  </ion-card>
+
+
+  <ion-card *ngFor="let example of examples">
+
+
+
+    <ion-label>{{example}}</ion-label>
+
+
+
+  </ion-card>
+
+
+  <!--Button-->
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="light">
+      <ion-icon name="arrow-dropleft"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+      <ion-fab-button color="light">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon name="logo-vimeo"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+
+</ion-content>
+
