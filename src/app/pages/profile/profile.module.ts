@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { NavbarComponentModule } from 'src/app/comp/navbar/navbar.module';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -19,6 +20,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    NavbarComponentModule,
     RouterModule.forChild(routes)
   ],
   declarations: [ProfilePage]

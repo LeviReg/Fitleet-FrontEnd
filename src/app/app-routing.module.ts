@@ -3,13 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 
-@NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
@@ -33,6 +26,11 @@ const routes: Routes = [
     path: 'workout-tracker',
     loadChildren:
       './pages/workout-tracker/workout-tracker.module#WorkoutTrackerPageModule'
+  },
+  {
+    path: 'profile',
+    loadChildren:
+      './pages/profile/profile.module#ProfilePageModule'
   }
 ];
 
@@ -42,4 +40,6 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+
+export class AppRoutingModule { }
+

@@ -43,7 +43,7 @@ export function jwtOptionsFactory(storage) {
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Insomnia
+    Insomnia,
     Geolocation
   ],
   bootstrap: [AppComponent]
