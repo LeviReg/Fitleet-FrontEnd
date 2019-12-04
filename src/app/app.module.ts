@@ -11,6 +11,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { Storage, IonicStorageModule } from '@ionic/storage';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { Insomnia } from '@ionic-native/insomnia/ngx';
 
 export function jwtOptionsFactory(storage) {
   return {
@@ -42,8 +43,9 @@ export function jwtOptionsFactory(storage) {
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Insomnia,
     Geolocation
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

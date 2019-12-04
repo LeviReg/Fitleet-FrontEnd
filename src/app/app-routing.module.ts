@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   {
     path: 'home',
+    loadChildren: './pages/home/home.module#HomePageModule'
   },
   {
     path: 'register',
@@ -25,6 +26,11 @@ const routes: Routes = [
     path: 'workout-tracker',
     loadChildren:
       './pages/workout-tracker/workout-tracker.module#WorkoutTrackerPageModule'
+  },
+  {
+    path: 'profile',
+    loadChildren:
+      './pages/profile/profile.module#ProfilePageModule'
   }
 ];
 
@@ -34,4 +40,6 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+
+export class AppRoutingModule { }
+
