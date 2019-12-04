@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Storage, IonicStorageModule } from '@ionic/storage';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { Insomnia } from '@ionic-native/insomnia/ngx';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 export function jwtOptionsFactory(storage) {
   return {
@@ -42,10 +43,11 @@ export function jwtOptionsFactory(storage) {
   providers: [
     StatusBar,
     SplashScreen,
+    BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Insomnia,
     Geolocation
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

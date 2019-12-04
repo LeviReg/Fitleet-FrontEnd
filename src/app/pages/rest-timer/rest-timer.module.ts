@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
+import { NavbarComponentModule } from 'src/app/comp/navbar/navbar.module';
 import { IonicModule } from '@ionic/angular';
 
 import { RestTimerPage } from './rest-timer.page';
@@ -22,6 +22,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    NavbarComponentModule,
     RouterModule.forChild(routes),
 
     NgCircleProgressModule.forRoot({
@@ -29,17 +30,15 @@ const routes: Routes = [
       radius: 100,
       outerStrokeWidth: 16,
       innerStrokeWidth: 8,
-      outerStrokeColor: "#78C000",
-      innerStrokeColor: "#C7E596",
+      outerStrokeColor: '#78C000',
+      innerStrokeColor: '#C7E596',
       //animationDuration: 300,
       animation: false,
       responsive: true,
       renderOnClick: false
-
     })
-
   ],
 
   declarations: [RestTimerPage]
 })
-export class RestTimerPageModule { }
+export class RestTimerPageModule {}

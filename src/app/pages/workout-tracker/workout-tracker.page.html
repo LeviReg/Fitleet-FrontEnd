@@ -8,8 +8,64 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<app-navbar></app-navbar>
 
-<ion-content> 
-  <ion-button [routerLink] = "['/rest']" [routerDirection]="forward">Rest timer</ion-button>
+<ion-content>
+
+  <ion-card>
+
+    <ion-card class="pic-and-route">
+
+      <div class="container-fluid" style="display: inline-block;">
+
+        <div class="Workout-image">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4uBsqiHlXdO0xOGlr-1FI-K0SSoRYOReJuy52kDBUzODcDpe6Xg&s"
+            alt="armWorkout" class="img-responsive" id="Workout-image" style="height: 100%; width: 500%; ">
+        </div>
+
+      </div>
+    </ion-card>
+
+    <!--Title of the Workout-->
+    <h2 class="workout-tracker" style="  font-family: 'Hind', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: black;
+      text-align: center;
+      font-size: 1.5em;
+      letter-spacing: 4px;
+      margin: 0;
+      padding: 0;">Biceip Curl</h2>
+
+
+    <!--Desciption on how to do it-->
+    <ion-card style="margin-left: 5%; margin-right: 5%;">
+      <div class="workout-decription" style="margin-left: 5px; margin-right: 5px;">
+        To do a bicep curl you need to have the weight in your hand.
+        Lift the Dumbbell while keeping your arm at you side of your body
+      </div>
+
+      <p></p>
+
+      <!-- Start workout with button linking to  -->
+      <div class="workout-sets-reps">
+        <ul>
+          <li>
+            1 <span>set</span> &#8594; 15<span>KG</span> &#215; 15<span>reps</span>
+          </li>
+          <li>
+            2 <span>set</span> &#8594; 10<span>KG</span>&#215; 15<span>reps</span>
+          </li>
+          <li>
+            3 <span>set</span> &#8594; 5<span>KG</span> &#215; 15<span>reps</span>
+          </li>
+        </ul>
+
+      </div>
+    </ion-card>
+
+    <button class="btn btn-success" style="text-align: center;">Start Timer</button>
+
+  </ion-card>
+
 </ion-content>
