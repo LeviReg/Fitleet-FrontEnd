@@ -12,7 +12,7 @@
 <ion-content>
   <ion-card>
 
-    <ion-row style="color: white; font-size: 35px;">
+    <ion-row class="rowStyle">
 
 
       <ion-col class="ion-text-center">
@@ -22,7 +22,7 @@
 
     </ion-row>
 
-    <ion-row style="color:white; font-size: 25px;">
+    <ion-row class="rowStyle">
 
       <ion-col class="ion-text-center">
         Goal
@@ -36,7 +36,7 @@
 
     </ion-row>
 
-    <ion-row style="color:white; font-size: 25px;">
+    <ion-row class="rowStyle">
 
       <ion-col class="ion-text-center">
         {{calorieGoal}}
@@ -128,17 +128,4 @@
       </ion-fab-button>
     </ion-fab-list>
   </ion-fab>
-
-  <ion-content class="padding">
-    <ion-list>
-      <ion-item>
-        <ion-label fixed>Number</ion-label>
-        <ion-input type="text" value="" [(ngModel)]="num"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-button (click)="scan()" color="primary">Button</ion-button>
-      </ion-item>
-    </ion-list>
-  </ion-content>
 </ion-content>
