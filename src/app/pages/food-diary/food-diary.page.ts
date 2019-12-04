@@ -15,7 +15,9 @@ export class FoodDiaryPage implements OnInit {
 
   caloriesLeft: number = this.calorieGoal - this.caloriesConsumed;
 
-  examples = ['Aidan', 'Conor', 'Mark']
+  examples = ['Aidan', 'Conor', 'Mark'];
+
+
 
 
 
