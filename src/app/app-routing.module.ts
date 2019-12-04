@@ -29,9 +29,21 @@ const routes: Routes = [
   },
   {
     path: 'profile',
+
+    loadChildren: './pages/profile/profile.module#ProfilePageModule'
+  },
+  {
+    path: 'rest',
+    loadChildren: './pages/rest-timer/rest-timer.module#RestTimerPageModule'
+  }
     loadChildren:
       './pages/profile/profile.module#ProfilePageModule'
-  }
+  },
+  {
+    path: 'rest',
+    loadChildren:
+      './pages/rest-timer/rest-timer.module#RestTimerPageModule'
+  },
 ];
 
 @NgModule({
@@ -40,6 +52,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-
-export class AppRoutingModule { }
-
+export class AppRoutingModule {}

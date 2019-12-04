@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { NavController, Platform, AlertController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
@@ -12,7 +12,7 @@ declare var google;
   templateUrl: 'pedometer.page.html',
   styleUrls: ['pedometer.page.scss']
 })
-export class PedometerPage {
+export class PedometerPage implements AfterViewInit {
   @ViewChild('map', { static: false }) mapElement: ElementRef;
   map: any;
   currentMapTrack = null;
@@ -111,11 +111,12 @@ export class PedometerPage {
     this.isTracking = false;
     this.positionSubscription.unsubscribe();
     this.currentMapTrack.setMap(null);
+    //console.log(newRoute);
   }
 
   showHistoryRoute(route) {
     this.redrawPath(route);
-    console.log(route);
+    console.log(this.previousTracks);
   }
 
   clearTracks() {
