@@ -111,11 +111,12 @@ export class PedometerPage {
     this.isTracking = false;
     this.positionSubscription.unsubscribe();
     this.currentMapTrack.setMap(null);
+    //console.log(newRoute);
   }
 
   showHistoryRoute(route) {
     this.redrawPath(route);
-    console.log(route);
+    console.log(this.previousTracks);
   }
 
   clearTracks() {
