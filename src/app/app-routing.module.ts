@@ -35,9 +35,6 @@ const routes: Routes = [
   {
     path: 'rest',
     loadChildren: './pages/rest-timer/rest-timer.module#RestTimerPageModule'
-  }
-    loadChildren:
-      './pages/profile/profile.module#ProfilePageModule'
   },
   {
     path: 'rest',
