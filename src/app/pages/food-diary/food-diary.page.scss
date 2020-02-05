@@ -1,0 +1,27 @@
+.CardText{
+    font-size: large;
+}
+
+.center{
+    text-align: center;
+}
+
+  //border for card
+  ion-card {
+    //border: black solid 2px;
+    border-radius:30px !important;
+ }
+
+//Makes the background fade into another colour
+  ion-content{
+
+
+    --background: linear-gradient(#007bff, #f4f5f8);
+    
+   // --background: linear-gradient(197deg, rgba(100,100,100,1) 0%, rgba(63,63,63,1) 13.5%, rgba(29,29,29,1) 33.33%, rgba(0,0,0,1) 100%) !important;
+    //--ion-background-color:#D0D0D0;
+}
+
+.rowStyle{
+  color:white; font-size: 25px;
+}

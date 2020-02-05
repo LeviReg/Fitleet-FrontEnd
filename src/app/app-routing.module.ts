@@ -26,7 +26,22 @@ const routes: Routes = [
     path: 'workout-tracker',
     loadChildren:
       './pages/workout-tracker/workout-tracker.module#WorkoutTrackerPageModule'
-  }
+  },
+  {
+    path: 'profile',
+
+    loadChildren: './pages/profile/profile.module#ProfilePageModule'
+  },
+  {
+    path: 'rest',
+    loadChildren: './pages/rest-timer/rest-timer.module#RestTimerPageModule'
+  },
+  {
+    path: 'rest',
+    loadChildren:
+      './pages/rest-timer/rest-timer.module#RestTimerPageModule'
+  },  { path: 'barcode-scanner', loadChildren: './pages/barcode-scanner/barcode-scanner.module#BarcodeScannerPageModule' },
+
 ];
 
 @NgModule({
