@@ -41,6 +41,11 @@ const routes: Routes = [
     loadChildren:
       './pages/rest-timer/rest-timer.module#RestTimerPageModule'
   },
+  { path: 'workout-legs', loadChildren: './workout-legs/workout-legs.module#WorkoutLegsPageModule' },  { path: 'workout-arms', loadChildren: './workout-arms/workout-arms.module#WorkoutArmsPageModule' },
+  { path: 'workout-back', loadChildren: './workout-back/workout-back.module#WorkoutBackPageModule' },
+  { path: 'workout-shoulders', loadChildren: './workout-shoulders/workout-shoulders.module#WorkoutShouldersPageModule' }
+
+
 ];
 
 @NgModule({
