@@ -6,44 +6,22 @@ import { AuthGuardService } from './services/auth-guard.service';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
-  {
-    path: 'home',
-    loadChildren: './pages/home/home.module#HomePageModule'
-  },
-  {
-    path: 'register',
-    loadChildren: './pages/register/register.module#RegisterPageModule'
-  },
-  {
-    path: 'pedometer',
-    loadChildren: './pages/pedometer/pedometer.module#PedometerPageModule'
-  },
-  {
-    path: 'food-diary',
-    loadChildren: './pages/food-diary/food-diary.module#FoodDiaryPageModule'
-  },
-  {
-    path: 'workout-tracker',
-    loadChildren:
-      './pages/workout-tracker/workout-tracker.module#WorkoutTrackerPageModule'
-  },
-  {
-    path: 'profile',
+  { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
+  { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
 
-    loadChildren: './pages/profile/profile.module#ProfilePageModule'
-  },
-  {
-    path: 'rest',
-    loadChildren: './pages/rest-timer/rest-timer.module#RestTimerPageModule'
-  },
-  {
-    path: 'rest',
-    loadChildren:
-      './pages/rest-timer/rest-timer.module#RestTimerPageModule'
-  },
-  { path: 'workout-legs', loadChildren: './workout-legs/workout-legs.module#WorkoutLegsPageModule' },  { path: 'workout-arms', loadChildren: './workout-arms/workout-arms.module#WorkoutArmsPageModule' },
-  { path: 'workout-back', loadChildren: './workout-back/workout-back.module#WorkoutBackPageModule' },
-  { path: 'workout-shoulders', loadChildren: './workout-shoulders/workout-shoulders.module#WorkoutShouldersPageModule' }
+  { path: 'pedometer', loadChildren: './pages/pedometer/pedometer.module#PedometerPageModule' },
+  { path: 'food-diary', loadChildren: './pages/food-diary/food-diary.module#FoodDiaryPageModule' },
+
+  { path: 'workout-tracker', loadChildren: './pages/workout-tracker/workout-tracker.module#WorkoutTrackerPageModule' },
+  { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
+  { path: 'rest', loadChildren: './pages/rest-timer/rest-timer.module#RestTimerPageModule' },
+  
+  { path: 'workout-arms', loadChildren: './pages/workout-arms/workout-arms.module#WorkoutArmsPageModule' },
+  { path: 'workout-legs', loadChildren: './pages/workout-legs/workout-legs.module#WorkoutLegsPageModule' },
+  { path: 'workout-shoulders', loadChildren: './pages/workout-shoulders/workout-shoulders.module#WorkoutShouldersPageModule' },
+  { path: 'workout-back', loadChildren: './pages/workout-back/workout-back.module#WorkoutBackPageModule' },
+
+
 
 
 ];
