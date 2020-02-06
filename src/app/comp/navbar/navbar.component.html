@@ -1,47 +1,10 @@
-<ion-menu contentId="content">
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-content>
-    <ion-list>
-      <ion-menu-toggle>
-        <ion-item>
-          <ion-label [routerLink]="['/home']" [routerDirection]="forward"
-            >Home</ion-label
-          >
-        </ion-item>
-        <ion-item>
-          <ion-label [routerLink]="['/profile']" [routerDirection]="forward"
-            >Profile</ion-label
-          >
-        </ion-item>
-        <ion-item>
-          <ion-label [routerLink]="['/food-diary']" [routerDirection]="forward"
-            >Food</ion-label
-          >
-        </ion-item>
-        <ion-item>
-          <ion-label
-            [routerLink]="['/workout-tracker']"
-            [routerDirection]="forward"
-            >Workout</ion-label
-          >
-        </ion-item>
-        <ion-item>
-          <ion-label [routerLink]="['/pedometer']" [routerDirection]="forward"
-            >Pedometer</ion-label
-          >
-        </ion-item>
-        <ion-item>
-          <ion-button (click)="Logout()" [routerDirection]="forward"
-            >Logout</ion-button
-          >
-        </ion-item>
-      </ion-menu-toggle>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-<ion-router-outlet id="content" main></ion-router-outlet>
+<ion-header color="primary">
+  <ion-toolbar>
+    <ion-item lines="none">
+      <ion-menu-button>
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-menu-button>
+    </ion-item>
+    <ion-title class="ion-text-center" color="black">{{headerTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
