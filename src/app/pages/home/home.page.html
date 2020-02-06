@@ -1,31 +1,27 @@
 <app-navbar [headerTitle] = "'Home'"></app-navbar>
-<ion-content color="primary">
-  <ion-grid>
-    <div class="container">
-      <ion-row>
-        <ion-col>
-          <div class="grid-item">
-            <ion-button [routerLink]="['/food-diary']">Food</ion-button>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="grid-item">
-            <ion-button [routerLink]="['/workout-tracker']">Workout</ion-button>
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <div class="grid-item">
-            <ion-button [routerLink]="['/pedometer']">Pedometer</ion-button>
-          </div>
-        </ion-col>
-        <ion-col>
-          <ion-item class="grid-item">
-            <ion-button [routerLink]="['/profile']">Profile</ion-button>
-          </ion-item >
-        </ion-col>
-      </ion-row>
-    </div>
+<ion-content color="primary" >
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col>
+        <ion-card color="light">
+          <ion-row>
+            <ion-col>
+              <ion-button><ion-icon name="home"></ion-icon></ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button><ion-icon name="home"></ion-icon> </ion-button>
+            </ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col>
+              <ion-button><ion-icon name="home"></ion-icon></ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button><ion-icon name="home"></ion-icon></ion-button>
+              </ion-col>
+              </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>  
   </ion-grid>
 </ion-content>
