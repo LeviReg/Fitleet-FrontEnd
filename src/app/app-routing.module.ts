@@ -19,7 +19,9 @@ const routes: Routes = [
   { path: 'workout-arms', loadChildren: './pages/workout-arms/workout-arms.module#WorkoutArmsPageModule' },
   { path: 'workout-legs', loadChildren: './pages/workout-legs/workout-legs.module#WorkoutLegsPageModule' },
   { path: 'workout-shoulders', loadChildren: './pages/workout-shoulders/workout-shoulders.module#WorkoutShouldersPageModule' },
-  { path: 'workout-back', loadChildren: './pages/workout-back/workout-back.module#WorkoutBackPageModule' },
+  { path: 'workout-back', loadChildren: './pages/workout-back/workout-back.module#WorkoutBackPageModule' },  { path: 'workout-progress', loadChildren: './pages/workout-progress/workout-progress.module#WorkoutProgressPageModule' },
+  { path: 'workout-item', loadChildren: './pages/workout-item/workout-item.module#WorkoutItemPageModule' },
+
 
 
 

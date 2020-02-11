@@ -1,0 +1,11 @@
+//make the unodered list clear
+ul.a{
+    list-style-type: none;   
+}
+//make the text in the center
+li{
+    text-align: center;
+    position: relative;
+    left: -10px;
+    padding: 1.5%;
+}
