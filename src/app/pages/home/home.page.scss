@@ -32,4 +32,14 @@
 //   margin: 28px;
 // }
 
+.grid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  place-content: center;
+}
 
+.card {
+  padding: 80px;
+  border-radius: 20px;
+}

@@ -1,27 +1,35 @@
-<app-navbar [headerTitle] = "'Home'"></app-navbar>
-<ion-content color="primary" >
-  <ion-grid class="ion-text-center">
-    <ion-row>
+<app-navbar [headerTitle]="'Home'"></app-navbar>
+<ion-content color="primary">
+  <ion-grid class="ion-text-center grid">
+    <ion-row style="height: 100;">
       <ion-col>
-        <ion-card color="light">
+        <ion-card color="light" class="card">
           <ion-row>
             <ion-col>
-              <ion-button><ion-icon name="home"></ion-icon></ion-button>
+              <ion-button class="btn" size="large"
+                ><ion-icon name="home"></ion-icon
+              ></ion-button>
             </ion-col>
             <ion-col>
-              <ion-button><ion-icon name="home"></ion-icon> </ion-button>
+              <ion-button class="btn" size="large"
+                ><ion-icon name="person"></ion-icon>
+              </ion-button>
             </ion-col>
           </ion-row>
-            <ion-row>
-              <ion-col>
-              <ion-button><ion-icon name="home"></ion-icon></ion-button>
+          <ion-row>
+            <ion-col>
+              <ion-button class="btn" size="large"
+                ><ion-icon name="pizza"></ion-icon
+              ></ion-button>
             </ion-col>
             <ion-col>
-                <ion-button><ion-icon name="home"></ion-icon></ion-button>
-              </ion-col>
-              </ion-row>
+              <ion-button class="btn" size="large"
+                ><ion-icon name="fitness"></ion-icon
+              ></ion-button>
+            </ion-col>
+          </ion-row>
         </ion-card>
       </ion-col>
-    </ion-row>  
+    </ion-row>
   </ion-grid>
 </ion-content>
