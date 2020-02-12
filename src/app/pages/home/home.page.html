@@ -6,26 +6,46 @@
         <ion-card color="light" class="card">
           <ion-row>
             <ion-col>
-              <ion-button class="btn" size="large"
-                ><ion-icon name="home"></ion-icon
-              ></ion-button>
+              <ion-button
+                shape="round"
+                class="btn"
+                size="Large"
+                routerDirection="forward"
+                [routerLink]="['/profile']"
+                ><ion-icon name="person"></ion-icon> Profile</ion-button
+              >
             </ion-col>
             <ion-col>
-              <ion-button class="btn" size="large"
-                ><ion-icon name="person"></ion-icon>
-              </ion-button>
+              <ion-button
+                shape="round"
+                class="btn"
+                size="Large"
+                routerDirection="forward"
+                [routerLink]="['/pedometer']"
+                ><ion-icon name="md-stats"></ion-icon> Running</ion-button
+              >
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-button class="btn" size="large"
-                ><ion-icon name="pizza"></ion-icon
-              ></ion-button>
+              <ion-button
+                shape="round"
+                class="btn"
+                size="Large"
+                routerDirection="forward"
+                [routerLink]="['/food-diary']"
+                ><ion-icon name="pizza"></ion-icon> Food</ion-button
+              >
             </ion-col>
             <ion-col>
-              <ion-button class="btn" size="large"
-                ><ion-icon name="fitness"></ion-icon
-              ></ion-button>
+              <ion-button
+                shape="round"
+                class="btn"
+                size="Large"
+                routerDirection="forward"
+                [routerLink]="['/workout-tracker']"
+                ><ion-icon name="fitness"></ion-icon> Workout</ion-button
+              >
             </ion-col>
           </ion-row>
         </ion-card>

@@ -43,3 +43,12 @@
   padding: 80px;
   border-radius: 20px;
 }
+
+ion-button {
+  display: flex;
+  flex-direction: column;
+}
+
+ion-icon {
+  padding-right: 5px;
+}
