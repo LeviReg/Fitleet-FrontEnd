@@ -1,29 +1,13 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Food Diary
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-<app-navbar></app-navbar>
+<app-navbar [headerTitle]="'Food-Diary'"></app-navbar>
 <ion-content>
   <ion-card>
-
     <ion-row class="rowStyle">
-
-
       <ion-col class="ion-text-center">
         Your daily calorie breakdown Conor
       </ion-col>
-
-
     </ion-row>
 
     <ion-row class="rowStyle">
-
       <ion-col class="ion-text-center">
         Goal
       </ion-col>
@@ -33,11 +17,9 @@
       <ion-col class="ion-text-center">
         Left
       </ion-col>
-
     </ion-row>
 
     <ion-row class="rowStyle">
-
       <ion-col class="ion-text-center">
         {{calorieGoal}}
       </ion-col>
@@ -47,44 +29,26 @@
       <ion-col class="ion-text-center">
         {{caloriesLeft}}
       </ion-col>
-
-
     </ion-row>
-
   </ion-card>
-
-
 
   <ion-card>
     <ion-row style="color:white; font-size: large;">
-
-      <ion-col class="ion-text-center">
-
-      </ion-col>
+      <ion-col class="ion-text-center"> </ion-col>
       <ion-col class="ion-text-center">
         Chicken Burger Meal
       </ion-col>
-      <ion-col class="ion-text-center">
-
-      </ion-col>
-
+      <ion-col class="ion-text-center"> </ion-col>
     </ion-row>
 
     <ion-row style="color:white; font-size: large;">
-
-      <ion-col class="ion-text-center">
-
-      </ion-col>
+      <ion-col class="ion-text-center"> </ion-col>
       <ion-col class="ion-text-center">
         500 Calories
       </ion-col>
-      <ion-col class="ion-text-center">
-
-      </ion-col>
-
+      <ion-col class="ion-text-center"> </ion-col>
     </ion-row>
     <ion-row style="color:white; font-size: 20px;">
-
       <ion-col class="ion-text-center">
         C:350
       </ion-col>
@@ -94,22 +58,12 @@
       <ion-col class="ion-text-center">
         F:90
       </ion-col>
-
-
     </ion-row>
   </ion-card>
 
-
   <ion-card *ngFor="let example of examples">
-
-
-
     <ion-label>{{example}}</ion-label>
-
-
-
   </ion-card>
-
 
   <!--Button-->
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
