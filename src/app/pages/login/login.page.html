@@ -5,11 +5,10 @@
 </ion-header>
 
 <ion-content class="ion-padding" color="primary">
-  <ion-item color="primary">
+  <ion-item lines="none" color="primary">
     <ion-img src="assets/fitleet-logo.png" class="logo"></ion-img>
   </ion-item>
   <form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()">
-
     <ion-item class="roundedInput">
       <ion-label position="floating">Email</ion-label>
       <ion-input type="email" formControlName="email"></ion-input>
@@ -20,12 +19,19 @@
       <ion-input type="password" formControlName="password"></ion-input>
     </ion-item>
 
-    <ion-button expand="full" type="submit" [disabled]="!credentialsForm.valid" color="tertiary" expand="block"
-      class="color" shape="round">Login</ion-button>
+    <ion-button
+      expand="full"
+      type="submit"
+      [disabled]="!credentialsForm.valid"
+      color="tertiary"
+      expand="block"
+      class="color"
+      shape="round"
+      >Login</ion-button
+    >
     <div class="ion-text-center">
-      If you don't have an account, please <a routerLink='/register'>
-        register</a> first!
+      If you don't have an account, please
+      <a routerLink="/register"> register</a> first!
     </div>
-
   </form>
 </ion-content>
