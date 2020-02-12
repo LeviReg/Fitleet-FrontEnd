@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   {
     path: 'home',
+    pathMatch: 'full',
     loadChildren: './pages/home/home.module#HomePageModule'
   },
   {
@@ -37,17 +38,14 @@ const routes: Routes = [
     loadChildren: './pages/rest-timer/rest-timer.module#RestTimerPageModule'
   },
   {
-    path: 'rest',
+    path: 'barcode-scanner',
     loadChildren:
-      './pages/rest-timer/rest-timer.module#RestTimerPageModule'
-  },  { path: 'barcode-scanner', loadChildren: './pages/barcode-scanner/barcode-scanner.module#BarcodeScannerPageModule' },
-
+      './pages/barcode-scanner/barcode-scanner.module#BarcodeScannerPageModule'
+  }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

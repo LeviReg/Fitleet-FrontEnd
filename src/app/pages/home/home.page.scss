@@ -1,33 +1,54 @@
-// .wrapper {
-//   display: flex;
-//   justify-content: center;
-//   flex-direction: column;
-//   align-items: center;
-//   height: 100%;
-//   ion-fab-button {
-//     margin: 50px;
-//   }
+// // .wrapper {
+// //   display: flex;
+// //   justify-content: center;
+// //   flex-direction: column;
+// //   align-items: center;
+// //   height: 100%;
+// //   ion-fab-button {
+// //     margin: 50px;
+// //   }
+// // }
+
+// ion-card {
+//   margin: auto 0;
 // }
 
-ion-card {
-  margin: auto 0;
+// ion-grid {
+//   position: absolute;
+//   top: 50%;
+//   width: 100%;
+//   text-align: center;
+//   transform: translateY(-50%);
+// }
+
+// .container {
+//   padding: 100px;
+//   width: 100%;
+//   border-radius: 25px;
+//   background: white;
+// }
+
+// ion-button {
+//   margin: 28px;
+// }
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  place-content: center;
 }
 
-ion-grid {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  text-align: center;
-  transform: translateY(-50%);
-}
-
-.container {
-  padding: 100px;
-  width: 100%;
-  border-radius: 25px;
-  background: white;
+.card {
+  padding: 80px;
+  border-radius: 20px;
 }
 
 ion-button {
-  margin: 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+ion-icon {
+  padding-right: 5px;
 }
