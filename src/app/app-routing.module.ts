@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   {
     path: 'home',
+    pathMatch: 'full',
     loadChildren: './pages/home/home.module#HomePageModule'
   },
   {
@@ -37,24 +38,44 @@ const routes: Routes = [
     loadChildren: './pages/rest-timer/rest-timer.module#RestTimerPageModule'
   },
   {
-    path: 'rest',
+    path: 'barcode-scanner',
     loadChildren:
-      './pages/rest-timer/rest-timer.module#RestTimerPageModule'
+      './pages/barcode-scanner/barcode-scanner.module#BarcodeScannerPageModule'
   },
-  { path: 'barcode-scanner', loadChildren: './pages/barcode-scanner/barcode-scanner.module#BarcodeScannerPageModule' },
-  { path: 'workout-arms', loadChildren: './pages/workout-arms/workout-arms.module#WorkoutArmsPageModule' },
-  { path: 'workout-legs', loadChildren: './pages/workout-legs/workout-legs.module#WorkoutLegsPageModule' },
-  { path: 'workout-shoulders', loadChildren: './pages/workout-shoulders/workout-shoulders.module#WorkoutShouldersPageModule' },
-  { path: 'workout-back', loadChildren: './pages/workout-back/workout-back.module#WorkoutBackPageModule' },
-  { path: 'workout-progress', loadChildren: './pages/workout-progress/workout-progress.module#WorkoutProgressPageModule' },
-  { path: 'workout-item', loadChildren: './pages/workout-item/workout-item.module#WorkoutItemPageModule' },
-  
+  {
+    path: 'workout-arms',
+    loadChildren:
+      './pages/workout-arms/workout-arms.module#WorkoutArmsPageModule'
+  },
+  {
+    path: 'workout-legs',
+    loadChildren:
+      './pages/workout-legs/workout-legs.module#WorkoutLegsPageModule'
+  },
+  {
+    path: 'workout-shoulders',
+    loadChildren:
+      './pages/workout-shoulders/workout-shoulders.module#WorkoutShouldersPageModule'
+  },
+  {
+    path: 'workout-back',
+    loadChildren:
+      './pages/workout-back/workout-back.module#WorkoutBackPageModule'
+  },
+  {
+    path: 'workout-progress',
+    loadChildren:
+      './pages/workout-progress/workout-progress.module#WorkoutProgressPageModule'
+  },
+  {
+    path: 'workout-item',
+    loadChildren:
+      './pages/workout-item/workout-item.module#WorkoutItemPageModule'
+  }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { RouterModule, Router } from '@angular/router';
 
@@ -8,6 +8,7 @@ import { RouterModule, Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  @Input() headerTitle: string;
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {}
