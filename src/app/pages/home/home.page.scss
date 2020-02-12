@@ -40,7 +40,7 @@
 }
 
 .card {
-  padding: 80px;
+  padding: 60px;
   border-radius: 20px;
 }
 
@@ -51,4 +51,15 @@ ion-button {
 
 ion-icon {
   padding-right: 5px;
+}
+
+.vertical-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 45%;
+  height: 45%;
 }

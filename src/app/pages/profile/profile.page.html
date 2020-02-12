@@ -1,4 +1,4 @@
-<app-navbar [headerTitle] = "'Profile'"></app-navbar>
+<app-navbar [headerTitle]="'Profile'"></app-navbar>
 <ion-content class="padding">
   <ion-card>
     <!--Image Full legth with card cause it looks better-->
@@ -9,20 +9,26 @@
       />
     </div>
     <!--User Name here maybe-->
-    <h2 style="text-align: center; font-weight: bold;">Mark Rafter</h2>
+    <h2 style="text-align: center; font-weight: bold;">
+      Mark Rafter
+    </h2>
 
     <!--Main info is in here-->
     <div class="main-container">
       <!--pedometor info here-->
       <div class="Pedometor-Data">
-        <h2 style="text-align: center;">Pedometor</h2>
+        <h2 style="text-align: center;">
+          Pedometor
+        </h2>
         <canvas id="pedometorCanvas"></canvas>
       </div>
       <hr />
 
       <!--Food Calories here-->
       <div class="Food-Data" style="width: 100%;">
-        <h2 style="text-align: center;">Todays Calories</h2>
+        <h2 style="text-align: center;">
+          Todays Calories
+        </h2>
         <canvas id="doughnut"></canvas>
       </div>
 
