@@ -9,26 +9,10 @@ import { scan } from 'rxjs/operators';
   styleUrls: ['./food-diary.page.scss']
 })
 export class FoodDiaryPage implements OnInit {
-  num: string;
-  subtitle: string = 'Eggs';
-
-  calorieGoal: number = 3000;
-  caloriesConsumed: number = 1000;
-
-  caloriesLeft: number = this.calorieGoal - this.caloriesConsumed;
-
-  examples = ['Aidan', 'Conor', 'Mark'];
-
   constructor(
     public navCtrl: NavController,
     public barcodeScanner: BarcodeScanner
   ) {}
 
   ngOnInit() {}
-
-  scan() {
-    this.barcodeScanner.scan().then(data => {
-      this.num = data.text;
-    });
-  }
 }
