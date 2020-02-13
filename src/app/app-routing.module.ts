@@ -41,6 +41,10 @@ const routes: Routes = [
     path: 'barcode-scanner',
     loadChildren:
       './pages/barcode-scanner/barcode-scanner.module#BarcodeScannerPageModule'
+  },
+  {
+    path: 'add-food',
+    loadChildren: './pages/add-food/add-food.module#AddFoodPageModule'
   }
 ];
 
