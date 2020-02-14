@@ -1,2 +1,46 @@
 <app-navbar [headerTitle]="'Add Food'"></app-navbar>
-<ion-content color="primary"> </ion-content>
+<ion-content color="primary">
+  <div>
+    <ion-card class="card-center" color="light">
+      <ion-item lines="none">
+        <ion-button size="large" class="center"
+          ><ion-icon class="ion-padding-end" name="camera"></ion-icon>Scan
+          Food</ion-button
+        >
+      </ion-item>
+      <form [formGroup]="foodForm" (ngSubmit)="onSubmit()">
+        <ion-item>
+          <ion-label position="fixed">Food Name</ion-label>
+          <ion-input
+            type="text"
+            formControlName="foodName"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">Serving Size</ion-label>
+          <ion-input type="text" formControlName="Serving" required></ion-input>
+          <ion-select
+            multiple="false"
+            formControlName="ServingSize"
+            cancelText="Cancel"
+            okText="Select"
+          >
+            <ion-select-option value="Grams">Grams</ion-select-option>
+            <ion-select-option value="KG">KG</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">Calories</ion-label>
+          <ion-input formControlName="Calories" type="text"> </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-button (click)="onSubmit()" size="large" class="center"
+            >Add</ion-button
+          >
+        </ion-item>
+      </form>
+    </ion-card>
+  </div>
+</ion-content>
