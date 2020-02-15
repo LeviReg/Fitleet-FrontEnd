@@ -71,6 +71,10 @@ const routes: Routes = [
     path: 'workout-item',
     loadChildren:
       './pages/workout-item/workout-item.module#WorkoutItemPageModule'
+  },
+  {
+    path: 'work-select',
+    loadChildren: './pages/work-select/work-select.module#WorkSelectPageModule'
   }
 ];
 
