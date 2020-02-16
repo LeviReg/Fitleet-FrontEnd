@@ -5,7 +5,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { NavbarComponentModule } from 'src/app/comp/navbar/navbar.module';
 
 import { IonicModule } from '@ionic/angular';
-
 import { AddFoodPage } from './add-food.page';
 
 const routes: Routes = [
