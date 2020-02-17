@@ -1,13 +1,9 @@
 <app-navbar [headerTitle]="'Add Food'"></app-navbar>
-<app-scanner></app-scanner>
+
 <ion-content color="primary">
   <ion-card class="card-center" color="light">
     <ion-item lines="none">
-      <ion-button size="large" class="center"
-        ><ion-icon class="ion-padding-end" name="camera"></ion-icon>Scan
-        Food</ion-button
-      >
-    </ion-item>
+      <app-scanner></app-scanner>
     <form [formGroup]="foodForm" (ngSubmit)="onSubmit()">
       <ion-item>
         <ion-label position="floating">Food Name</ion-label>
