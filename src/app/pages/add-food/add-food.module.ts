@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { NavbarComponentModule } from 'src/app/comp/navbar/navbar.module';
-
+import { ScannerComponent } from '../../comp/scanner/scanner.component';
 import { IonicModule } from '@ionic/angular';
 import { AddFoodPage } from './add-food.page';
 
@@ -23,6 +23,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AddFoodPage]
+  declarations: [AddFoodPage, ScannerComponent]
 })
 export class AddFoodPageModule {}
