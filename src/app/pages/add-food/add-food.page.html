@@ -2,10 +2,7 @@
 <ion-content color="primary">
   <ion-card class="card-center" color="light">
     <ion-item lines="none">
-      <ion-button size="large" class="center"
-        ><ion-icon class="ion-padding-end" name="camera"></ion-icon>Scan
-        Food</ion-button
-      >
+      <app-scanner></app-scanner>
     </ion-item>
     <form [formGroup]="foodForm" (ngSubmit)="onSubmit()">
       <ion-item>
