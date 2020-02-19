@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { IUser } from '..//../interfaces/IUser';
 
 @Component({
   selector: 'app-register',
@@ -26,9 +27,22 @@ export class RegisterPage implements OnInit {
   }
 
   register() {
-    this.authService.register(this.newcredentialsForm.value).subscribe(res => {
-      // Call Login to automatically login the new user
-      this.authService.login(this.newcredentialsForm.value).subscribe();
+    const newUser: IUser = {
+      email: this.newcredentialsForm.get('email').value,
+      username: this.newcredentialsForm.get('username').value,
+      firstName: this.newcredentialsForm.get('firstName').value,
+      lastName: this.newcredentialsForm.get('lastName').value,
+      password: this.newcredentialsForm.get('password').value
+    };
+    console.table(newUser);
+    this.authService.register(newUser).subscribe(res => {
+      console.log(res);
+      //this.authService.login(newUser).subscribe();
     });
+    // .register(this.newcredentialsForm.value)
+    // .subscribe(res => {
+    //   // Call Login to automatically login the new user
+    //   this.authService.login(this.newcredentialsForm.value).subscribe();
+    // });
   }
 }

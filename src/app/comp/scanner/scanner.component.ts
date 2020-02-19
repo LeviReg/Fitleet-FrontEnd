@@ -24,6 +24,7 @@ export class ScannerComponent implements OnInit {
     return this.http.get<BarcodeInterface[]>(
       `https://world.openfoodfacts.org/api/v3/product/` + barcode + '.json'
     );
+    //console.log(this.barcode);
   }
 
   ScanBarcode() {
@@ -31,6 +32,7 @@ export class ScannerComponent implements OnInit {
       .scan()
       .then(barcodeData => {
         console.log('Barcode data', barcodeData);
+        this.RetreiveInfo(barcodeData);
       })
       .catch(err => {
         console.log('Error', err);

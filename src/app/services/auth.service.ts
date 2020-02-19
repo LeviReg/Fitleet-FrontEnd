@@ -45,8 +45,9 @@ export class AuthService {
     });
   }
 
-  register(credentials) {
-    return this.http.post(`${this.url}/api/register`, credentials).pipe(
+  register(user) {
+    console.log('Credentials', user);
+    return this.http.post(`${this.url}/api/register`, user).pipe(
       catchError(e => {
         this.showAlert(e.error.msg);
         console.log(e);
