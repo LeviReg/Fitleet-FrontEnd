@@ -1,11 +1,16 @@
 //make the unodered list clear
-ul.a{
-    list-style-type: none;   
+.grid {
+  flex-direction: column;
+  height: 100%;
+  place-content: center;
 }
-//make the text in the center
-li{
-    text-align: center;
-    position: relative;
-    left: -10px;
-    padding: 1.5%;
+
+ion-item {
+  padding: 5%;
 }
+// ion-item.ion-title {
+//   white-space: nowrap;
+//   text-overflow: ellipsis;
+//   overflow: hidden;
+  
+// }

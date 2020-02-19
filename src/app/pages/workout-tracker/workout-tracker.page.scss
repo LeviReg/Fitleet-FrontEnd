@@ -1,21 +1,20 @@
-.container {
-    position: relative;
-    margin: auto;
-    color: white;
+.grid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  place-content: center;
 }
 
-.centered {
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    transform: translate(-50%, -50%);
+.card {
+  padding: 60px;
+  border-radius: 20px;
 }
 
+ion-button {
+  display: flex;
+  flex-direction: column;
+}
 
-.ArmFix{
-    position: absolute;
-    top: 40%;
-    right: 5%;
-    transform: translate(-50%, -50%);
-    font-weight: bold;
+ion-icon {
+  padding-right: 5px;
 }
