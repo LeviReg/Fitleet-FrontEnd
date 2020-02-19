@@ -13,13 +13,17 @@ const TOKEN_KEY = 'access_token';
   providedIn: 'root'
 })
 export class AuthService {
-
   url = environment.url;
   user = null;
   authenticationState = new BehaviorSubject(false);
 
-  constructor(private http: HttpClient, private helper: JwtHelperService, private storage: Storage,
-    private plt: Platform, private alertController: AlertController) {
+  constructor(
+    private http: HttpClient,
+    private helper: JwtHelperService,
+    private storage: Storage,
+    private plt: Platform,
+    private alertController: AlertController
+  ) {
     this.plt.ready().then(() => {
       this.checkToken();
     });
@@ -41,30 +45,29 @@ export class AuthService {
     });
   }
 
-  register(credentials) {
-    return this.http.post(`${this.url}/api/register`, credentials).pipe(
+  register(user) {
+    console.log('Credentials', user);
+    return this.http.post(`${this.url}/api/register`, user).pipe(
       catchError(e => {
         this.showAlert(e.error.msg);
         console.log(e);
         throw new Error(e);
-
       })
     );
   }
 
   login(credentials) {
-    return this.http.post(`${this.url}/api/login`, credentials)
-      .pipe(
-        tap(res => {
-          this.storage.set(TOKEN_KEY, res['token']);
-          this.user = this.helper.decodeToken(res['token']);
-          this.authenticationState.next(true);
-        }),
-        catchError(e => {
-          this.showAlert(e.error.msg);
-          throw new Error(e);
-        })
-      );
+    return this.http.post(`${this.url}/api/login`, credentials).pipe(
+      tap(res => {
+        this.storage.set(TOKEN_KEY, res['token']);
+        this.user = this.helper.decodeToken(res['token']);
+        this.authenticationState.next(true);
+      }),
+      catchError(e => {
+        this.showAlert(e.error.msg);
+        throw new Error(e);
+      })
+    );
   }
 
   logout() {
@@ -83,7 +86,7 @@ export class AuthService {
         }
         throw new Error(e);
       })
-    )
+    );
   }
 
   isAuthenticated() {

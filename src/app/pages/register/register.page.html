@@ -5,32 +5,53 @@
 </ion-header>
 
 <ion-content class="ion-padding" color="primary">
-  <ion-item color="primary">
+  <ion-item lines="none" color="primary">
     <ion-img src="assets/fitleet-logo.png" class="logo"></ion-img>
   </ion-item>
-  <form [formGroup]="newcredentialsForm" (ngSubmit)="onSubmit()" color="primary">
+  <ion-card class="card-center" color="secondary">
+    <form
+      [formGroup]="newcredentialsForm"
+      (ngSubmit)="onSubmit()"
+      color="primary"
+    >
+      <ion-item lines="none">
+        <ion-label position="floating">Username</ion-label>
+        <ion-input type="username" formControlName="username"></ion-input>
+      </ion-item>
 
-    <ion-item class="roundedInput">
-      <ion-label position="floating">Username</ion-label>
-      <ion-input type="username" formControlName="username"></ion-input>
-    </ion-item>
+      <ion-item lines="none">
+        <ion-label position="floating">First Name</ion-label>
+        <ion-input type="username" formControlName="firstName"></ion-input>
+      </ion-item>
 
-    <ion-item class="roundedInput">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" formControlName="email"></ion-input>
-    </ion-item>
+      <ion-item lines="none">
+        <ion-label position="floating">Last Name</ion-label>
+        <ion-input type="username" formControlName="lastName"></ion-input>
+      </ion-item>
 
-    <ion-item class="roundedInput">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
-    </ion-item>
+      <ion-item lines="none">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
 
-    <ion-button expand="full" (click)="register()" [disabled]="!newcredentialsForm.valid" color="tertiary" shape="round"
-      expand="block">Register</ion-button>
-    <div class="ion-text-center">
-      If you already have an account, please <a routerLink='/login'>
-        login</a> first!
-    </div>
+      <ion-item lines="none">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
 
-  </form>
+      <ion-button
+        expand="full"
+        (click)="register()"
+        [disabled]="!newcredentialsForm.valid"
+        color="tertiary"
+        shape="round"
+        expand="block"
+        >Register</ion-button
+      >
+    </form>
+  </ion-card>
+  <div class="ion-text-center">
+    If you already have an account, please <a routerLink="/login">login</a>
+    here!
+  </div>
 </ion-content>

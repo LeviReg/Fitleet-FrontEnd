@@ -1,85 +1,137 @@
 <app-navbar [headerTitle]="'Food-Diary'"></app-navbar>
-<ion-content>
-  <ion-card>
-    <ion-row class="rowStyle">
-      <ion-col class="ion-text-center">
-        Your daily calorie breakdown Conor
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="rowStyle">
-      <ion-col class="ion-text-center">
-        Goal
-      </ion-col>
-      <ion-col class="ion-text-center">
-        Eat
-      </ion-col>
-      <ion-col class="ion-text-center">
-        Left
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="rowStyle">
-      <ion-col class="ion-text-center">
-        {{calorieGoal}}
-      </ion-col>
-      <ion-col class="ion-text-center">
-        {{caloriesConsumed}}
-      </ion-col>
-      <ion-col class="ion-text-center">
-        {{caloriesLeft}}
-      </ion-col>
-    </ion-row>
-  </ion-card>
-
-  <ion-card>
-    <ion-row style="color:white; font-size: large;">
-      <ion-col class="ion-text-center"> </ion-col>
-      <ion-col class="ion-text-center">
-        Chicken Burger Meal
-      </ion-col>
-      <ion-col class="ion-text-center"> </ion-col>
-    </ion-row>
-
-    <ion-row style="color:white; font-size: large;">
-      <ion-col class="ion-text-center"> </ion-col>
-      <ion-col class="ion-text-center">
-        500 Calories
-      </ion-col>
-      <ion-col class="ion-text-center"> </ion-col>
-    </ion-row>
-    <ion-row style="color:white; font-size: 20px;">
-      <ion-col class="ion-text-center">
-        C:350
-      </ion-col>
-      <ion-col class="ion-text-center">
-        P:180
-      </ion-col>
-      <ion-col class="ion-text-center">
-        F:90
-      </ion-col>
-    </ion-row>
-  </ion-card>
-
-  <ion-card *ngFor="let example of examples">
-    <ion-label>{{example}}</ion-label>
-  </ion-card>
-
-  <!--Button-->
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button color="light">
-      <ion-icon name="arrow-dropleft"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-list side="start">
-      <ion-fab-button color="light">
-        <ion-icon name="logo-facebook"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button color="light">
-        <ion-icon name="logo-twitter"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button color="light">
-        <ion-icon name="logo-vimeo"></ion-icon>
-      </ion-fab-button>
-    </ion-fab-list>
-  </ion-fab>
+<ion-content color="primary">
+  <ion-grid class="grid">
+    <ion-card color="light" class="cards">
+      <ion-item class="header">
+        <ion-title class="mainTitle">Breakfast</ion-title>
+        <ion-fab horizontal="end">
+          <ion-fab-button
+            routerDirection="forward"
+            [routerLink]="['/add-food']"
+            size="small"
+            ><ion-icon name="add"></ion-icon
+          ></ion-fab-button>
+        </ion-fab>
+      </ion-item>
+      <ion-list>
+        <ion-item>
+          <ion-label>Cereal</ion-label>
+          <ion-label class="ion-text-end">20 cals</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Banana</ion-label>
+          <ion-label class="ion-text-end">80 cals</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Porridge</ion-label>
+          <ion-label class="ion-text-end">226 cals</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Biscuits</ion-label>
+          <ion-label class="ion-text-end">46 cals</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Cock</ion-label>
+          <ion-label class="ion-text-end">69 cals</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+    <ion-card color="light" class="cards">
+      <ion-item class="header">
+        <ion-title class="mainTitle">Lunch</ion-title>
+        <ion-fab horizontal="end">
+          <ion-fab-button
+            routerDirection="forward"
+            [routerLink]="['/add-food']"
+            size="small"
+            ><ion-icon name="add"></ion-icon
+          ></ion-fab-button>
+        </ion-fab>
+      </ion-item>
+      <ion-list>
+        <ion-item>
+          <ion-label>Cereal</ion-label>
+          <ion-label class="ion-text-end">20 cals</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Banana</ion-label>
+          <ion-label class="ion-text-end">80 cals</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Porridge</ion-label>
+          <ion-label class="ion-text-end">226 cals</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+    <ion-card color="light" class="cards">
+      <ion-item class="header">
+        <ion-title class="mainTitle">Dinner</ion-title>
+        <ion-fab horizontal="end">
+          <ion-fab-button
+            routerDirection="forward"
+            [routerLink]="['/add-food']"
+            size="small"
+            ><ion-icon name="add"></ion-icon
+          ></ion-fab-button>
+        </ion-fab>
+      </ion-item>
+      <ion-list>
+        <ion-item>
+          <ion-label>Cereal</ion-label>
+          <ion-label class="ion-text-end">20 cals</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Banana</ion-label>
+          <ion-label class="ion-text-end">80 cals</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Porridge</ion-label>
+          <ion-label class="ion-text-end">226 cals</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Biscuits</ion-label>
+          <ion-label class="ion-text-end">46 cals</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Cock</ion-label>
+          <ion-label class="ion-text-end">69 cals</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+    <ion-card color="light" class="cards">
+      <ion-item class="header">
+        <ion-title class="mainTitle">Snacks</ion-title>
+        <ion-fab horizontal="end">
+          <ion-fab-button
+            routerDirection="forward"
+            [routerLink]="['/add-food']"
+            size="small"
+            ><ion-icon name="add"></ion-icon
+          ></ion-fab-button>
+        </ion-fab>
+      </ion-item>
+      <ion-list>
+        <ion-item>
+          <ion-label>Cereal</ion-label>
+          <ion-label class="ion-text-end">20 cals</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Banana</ion-label>
+          <ion-label class="ion-text-end">80 cals</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Porridge</ion-label>
+          <ion-label class="ion-text-end">226 cals</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Biscuits</ion-label>
+          <ion-label class="ion-text-end">46 cals</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Cock</ion-label>
+          <ion-label class="ion-text-end">69 cals</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </ion-grid>
 </ion-content>
