@@ -36,9 +36,10 @@ export class RegisterPage implements OnInit {
       lastName: this.newcredentialsForm.get('lastName').value,
       password: this.newcredentialsForm.get('password').value
     };
-    console.table(newUser);
+    //logged for testing the data being transfered
+    //console.table(newUser);
     this.authService.register(newUser).subscribe(res => {
-      console.log(res);
+      //console.log(res);
       this.router.navigateByUrl('/login');
       //this.authService.login(newUser).subscribe();
     });

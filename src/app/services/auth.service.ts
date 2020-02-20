@@ -46,7 +46,8 @@ export class AuthService {
   }
 
   register(user) {
-    console.log('Credentials', user);
+    //testing data again, user schema is now correct
+    //console.log('Credentials', user);
     return this.http.post(`${this.url}/api/register`, user).pipe(
       catchError(e => {
         this.showAlert(e.error.msg);
