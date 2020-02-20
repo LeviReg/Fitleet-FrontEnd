@@ -75,6 +75,10 @@ const routes: Routes = [
   {
     path: 'work-select',
     loadChildren: './pages/work-select/work-select.module#WorkSelectPageModule'
+  },
+  {
+    path: 'add-food',
+    loadChildren: './pages/add-food/add-food.module#AddFoodPageModule'
   }
 ];
 
