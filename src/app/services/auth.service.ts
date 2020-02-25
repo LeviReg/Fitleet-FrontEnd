@@ -60,6 +60,7 @@ export class AuthService {
   login(credentials) {
     return this.http.post(`${this.url}/api/login`, credentials).pipe(
       tap(res => {
+        console.log(TOKEN_KEY, res['token']);
         this.storage.set(TOKEN_KEY, res['token']);
         this.user = this.helper.decodeToken(res['token']);
         this.authenticationState.next(true);
@@ -103,5 +104,3 @@ export class AuthService {
     alert.then(alert => alert.present());
   }
 }
-
-//connect open food facts to API
