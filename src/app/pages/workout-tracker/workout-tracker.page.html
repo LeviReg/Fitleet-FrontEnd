@@ -1,4 +1,4 @@
-<app-navbar [headerTitle] = "'Workouts'"></app-navbar>
+<app-navbar [headerTitle]="'Workouts'"></app-navbar>
 <ion-content>
   <ion-card>
     <ion-card class="pic-and-route">
@@ -68,5 +68,27 @@
     <button class="btn btn-success" style="text-align: center;">
       Start Timer
     </button>
+  </ion-card>
+  <ion-card>
+    <ion-input
+      placeholder="Search Exercises"
+      type="text"
+      [(ngModel)]="SearchTerm"
+    >
+    </ion-input>
+    <ion-button expand="full" (click)="getSearchInfo()">search</ion-button>
+  </ion-card>
+  <ion-card *ngFor="let data of Search">
+    <ion-item
+      ><ion-text>
+        {{data.data.name}}
+      </ion-text></ion-item
+    >
+    <ion-item
+      ><ion-text>
+        {{data.data.category}}
+      </ion-text></ion-item
+    >
+    <ion-img src="{{data.data.image}}"></ion-img>
   </ion-card>
 </ion-content>
