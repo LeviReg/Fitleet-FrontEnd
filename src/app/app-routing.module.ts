@@ -57,11 +57,11 @@ const routes: Routes = [
     loadChildren:
       './pages/workout-shoulders/workout-shoulders.module#WorkoutShouldersPageModule'
   },
-  {
-    path: 'workout-back',
-    loadChildren:
-      './pages/workout-back/workout-back.module#WorkoutBackPageModule'
-  },
+  // {
+  //   path: 'workout-back',
+  //   loadChildren:
+  //     './pages/workout-back/workout-back.module#WorkoutBackPageModule'
+  // },
   {
     path: 'workout-progress',
     loadChildren:

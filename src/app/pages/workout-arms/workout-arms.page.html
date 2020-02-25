@@ -9,22 +9,8 @@
     <ion-card color="light" class="card">
       <!--List of the called API-->
       <ion-list>
-        <ion-item>
-          <ion-label>Bicep Curl</ion-label>
-          <ion-fab-button size="small">
-            <ion-icon name="add-circle"></ion-icon>
-          </ion-fab-button>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Isolated Curl</ion-label>
-          <ion-fab-button size="small">
-            <ion-icon name="add-circle"></ion-icon>
-          </ion-fab-button>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Barbell Curl </ion-label>
+        <ion-item *ngFor="let data of Search">
+          <ion-label>{{data.data.name}}</ion-label>
           <ion-fab-button size="small">
             <ion-icon name="add-circle"></ion-icon>
           </ion-fab-button>

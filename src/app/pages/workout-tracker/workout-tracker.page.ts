@@ -8,17 +8,17 @@ import { SearchResult, Data } from './WorkOutInterface';
   styleUrls: ['./workout-tracker.page.scss']
 })
 export class WorkoutTrackerPage implements OnInit {
-  SearchTerm: string;
+  // SearchTerm: string;
   //Clear: string;
-  Search: any;
+  // Search: any;
 
-  getSearchInfo(): boolean {
-    this.Search = [];
-    this._service
-      .getSearchResult(this.SearchTerm)
-      .subscribe(data => (this.Search = data['suggestions']));
-    return false;
-  }
+  // getSearchInfo(): boolean {
+  //   this.Search = [];
+  //   this._service
+  //     .getSearchResult(this.SearchTerm)
+  //     .subscribe(data => (this.Search = data['suggestions']));
+  //   return false;
+  // }
 
   constructor(private _service: WorkoutServiceService) {}
 
