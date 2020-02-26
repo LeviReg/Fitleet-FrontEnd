@@ -22,9 +22,7 @@ export class ScannerComponent implements OnInit {
 
   RetreiveInfo(barcode) {
     return this.http.get<BarcodeInterface[]>(
-      `https://api.edamam.com/api/food-database/parser?upc=` +
-        barcode`&app_id=1b1c4a23&app_key=b9c11d00957f6453a66c8f6f6f276364` +
-        '.json'
+      `https://world.openfoodfacts.org/api/v3/product/` + barcode + '.json'
     );
     console.log(this.barcode);
   }
