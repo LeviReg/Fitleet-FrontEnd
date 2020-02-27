@@ -41,6 +41,7 @@ export class AuthService {
         } else {
           this.storage.remove(TOKEN_KEY);
         }
+        console.log(TOKEN_KEY);
       }
     });
   }
@@ -102,5 +103,3 @@ export class AuthService {
     alert.then(alert => alert.present());
   }
 }
-
-//connect open food facts to API
