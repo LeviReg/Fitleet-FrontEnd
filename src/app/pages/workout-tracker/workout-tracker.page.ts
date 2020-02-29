@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { WorkoutServiceService } from 'src/app/services/workout-service.service';
 import { SearchResult, Data } from './WorkOutInterface';
 
@@ -8,19 +8,15 @@ import { SearchResult, Data } from './WorkOutInterface';
   styleUrls: ['./workout-tracker.page.scss']
 })
 export class WorkoutTrackerPage implements OnInit {
-  // SearchTerm: string;
-  //Clear: string;
-  // Search: any;
-
-  // getSearchInfo(): boolean {
-  //   this.Search = [];
-  //   this._service
-  //     .getSearchResult(this.SearchTerm)
-  //     .subscribe(data => (this.Search = data['suggestions']));
-  //   return false;
-  // }
+  // @Input() Workout: string[];
 
   constructor(private _service: WorkoutServiceService) {}
+
+  // recievedExercies($event) {
+  //   this.Workout = $event;
+  //   console.log(event);
+  //   console.log(this.Workout);
+  // }
 
   ngOnInit() {}
 }

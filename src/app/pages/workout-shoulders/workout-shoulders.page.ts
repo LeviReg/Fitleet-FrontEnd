@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { WorkoutServiceService } from 'src/app/services/workout-service.service';
 
 @Component({
@@ -8,6 +8,16 @@ import { WorkoutServiceService } from 'src/app/services/workout-service.service'
 })
 export class WorkoutShouldersPage implements OnInit {
   constructor(private _service: WorkoutServiceService) {}
+
+  exercise: any;
+  @Output() exerciseEvent = new EventEmitter<any[]>();
+
+  getExercise(name: any) {
+    this.exerciseEvent.emit(name);
+    console.log(this.exerciseEvent);
+    console.log(name);
+  }
+
   Search: any;
 
   getSearchInfo(): boolean {

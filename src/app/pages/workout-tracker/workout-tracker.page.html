@@ -12,6 +12,7 @@
             routerDirection="forward"
             [routerLink]="['/workout-arms']"
           >
+            <!--(exerciseEvent)="recievedExercies($event)" -->
             <ion-icon src="../../../assets/strong.svg"></ion-icon>
             <ion-text>Arms</ion-text>
           </ion-button>
@@ -43,6 +44,19 @@
             <ion-icon src="../../../assets/shoulder.svg"></ion-icon>
             <ion-text>Shoulder</ion-text>
           </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-button
+              shape="round"
+              class="btn"
+              size="Large"
+              click="recievedExercies()"
+              >Add Workout</ion-button
+            >
+          </ion-item>
         </ion-col>
       </ion-row>
     </ion-card>

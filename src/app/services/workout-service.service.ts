@@ -9,32 +9,30 @@ import { tap } from 'rxjs/operators';
 })
 export class WorkoutServiceService {
   //Url For Api call.
-  private _shouldersURL =
-    'https://wger.de/api/v2/exercise/search/?term=shoulder';
-  private _armsURL = 'https://wger.de/api/v2/exercise/search/?term=biceps';
-  private _legsURL = 'https://wger.de/api/v2/exercise/search/?term=squat';
+  private _privateURL = 'https://wger.de/api/v2/exercise/search/?term=';
+  private _privateWorkouts = 'localhost:5000/api/workouts';
 
   //gets search results back as searchresult objects
   getArms(): Observable<SearchResult> {
     //console.log(bookName);
     return this._http
-      .get<SearchResult>(this._armsURL)
+      .get<SearchResult>(this._privateURL + 'biceps')
       .pipe(tap(data => console.log('All: ' + JSON.stringify(data))));
   }
-
   getLegs(): Observable<SearchResult> {
     //console.log(bookName);
     return this._http
-      .get<SearchResult>(this._legsURL)
+      .get<SearchResult>(this._privateURL + 'squat')
       .pipe(tap(data => console.log('All: ' + JSON.stringify(data))));
   }
-
   getShoulder(): Observable<SearchResult> {
     //console.log(bookName);
     return this._http
-      .get<SearchResult>(this._shouldersURL)
+      .get<SearchResult>(this._privateURL + 'shoulder')
       .pipe(tap(data => console.log('All: ' + JSON.stringify(data))));
   }
+
+  getWorkouts() {}
 
   constructor(private _http: HttpClient) {}
 }
