@@ -11,7 +11,7 @@
       <ion-list>
         <ion-item *ngFor="let data of Search">
           <ion-label>{{data.data.name}}</ion-label>
-          <ion-fab-button size="small" (click)="getExercise(data)">
+          <ion-fab-button size="small" (click)="getExercise(data.data.name)">
             <ion-icon name="add-circle"></ion-icon>
           </ion-fab-button>
         </ion-item>

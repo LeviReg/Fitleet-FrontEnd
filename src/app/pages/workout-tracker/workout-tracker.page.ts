@@ -8,15 +8,7 @@ import { SearchResult, Data } from './WorkOutInterface';
   styleUrls: ['./workout-tracker.page.scss']
 })
 export class WorkoutTrackerPage implements OnInit {
-  // @Input() Workout: string[];
-
   constructor(private _service: WorkoutServiceService) {}
-
-  // recievedExercies($event) {
-  //   this.Workout = $event;
-  //   console.log(event);
-  //   console.log(this.Workout);
-  // }
 
   ngOnInit() {}
 }

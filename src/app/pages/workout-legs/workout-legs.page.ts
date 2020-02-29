@@ -1,5 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { WorkoutServiceService } from 'src/app/services/workout-service.service';
+import { IExercise } from 'src/app/interfaces/IExercise';
+import { WorkoutService } from 'src/app/services/workouts.service';
 
 @Component({
   selector: 'app-workout-legs',
@@ -7,15 +9,14 @@ import { WorkoutServiceService } from 'src/app/services/workout-service.service'
   styleUrls: ['./workout-legs.page.scss']
 })
 export class WorkoutLegsPage implements OnInit {
-  constructor(private _service: WorkoutServiceService) {}
+  constructor(
+    private _service: WorkoutServiceService,
+    private _dataStorage: WorkoutService
+  ) {}
 
-  exercise: any;
-  @Output() exerciseEvent = new EventEmitter<any[]>();
-
-  getExercise(name: any) {
-    this.exerciseEvent.emit(name);
-    console.log(this.exerciseEvent);
-    console.log(name);
+  getExercise(exercise: IExercise) {
+    this._dataStorage.addExercise(exercise);
+    console.log(exercise);
   }
 
   Search: any;
