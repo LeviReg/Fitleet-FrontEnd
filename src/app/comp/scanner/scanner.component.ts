@@ -16,6 +16,7 @@ import { map, tap } from 'rxjs/operators';
 export class ScannerComponent implements OnInit {
   barcode: BarcodeInterface;
   options: any;
+  
   constructor(
     private http: HttpClient,
     private barcodeScanner: BarcodeScanner
