@@ -7,11 +7,12 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Storage, IonicStorageModule } from '@ionic/storage';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { Insomnia } from '@ionic-native/insomnia/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { AuthInterceptor } from './services/auth.interceptor';
 
 export function jwtOptionsFactory(storage) {
   return {
@@ -40,6 +41,11 @@ export function jwtOptionsFactory(storage) {
     })
   ],
   providers: [
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi   : true
+    },
     StatusBar,
     SplashScreen,
     BarcodeScanner,

@@ -7,5 +7,9 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['home.page.scss']
 })
 export class HomePage {
-  constructor() {}
+  constructor(private auth: AuthService) {}
+
+  getInfo() {
+    this.auth.checkToken();
+  }
 }
