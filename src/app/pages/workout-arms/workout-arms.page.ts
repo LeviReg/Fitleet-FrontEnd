@@ -18,7 +18,6 @@ export class WorkoutArmsPage implements OnInit {
   workout: IExercise;
   getExercise(exercise: IExercise) {
     this._dataStorage.addExercise(exercise);
-    console.log(exercise);
   }
 
   Search: any;

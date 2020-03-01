@@ -4,8 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Storage } from '@ionic/storage';
 import { environment } from '../../environments/environment';
-import { tap, catchError } from 'rxjs/operators';
+import { tap, catchError, map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+import { WorkoutService } from './workouts.service';
 
 const TOKEN_KEY = 'access_token';
 
@@ -22,7 +23,8 @@ export class AuthService {
     private helper: JwtHelperService,
     private storage: Storage,
     private plt: Platform,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private _exercise: WorkoutService
   ) {
     this.plt.ready().then(() => {
       this.checkToken();
@@ -44,7 +46,6 @@ export class AuthService {
       }
     });
   }
-
   register(user) {
     console.log('Credentials', user);
     return this.http.post(`${this.url}/api/register`, user).pipe(
@@ -55,7 +56,6 @@ export class AuthService {
       })
     );
   }
-
   login(credentials) {
     return this.http.post(`${this.url}/api/login`, credentials).pipe(
       tap(res => {
@@ -69,13 +69,11 @@ export class AuthService {
       })
     );
   }
-
   logout() {
     this.storage.remove(TOKEN_KEY).then(() => {
       this.authenticationState.next(false);
     });
   }
-
   getSpecialData() {
     return this.http.get(`${this.url}/api/home`).pipe(
       catchError(e => {
@@ -88,11 +86,9 @@ export class AuthService {
       })
     );
   }
-
   isAuthenticated() {
     return this.authenticationState.value;
   }
-
   showAlert(msg) {
     let alert = this.alertController.create({
       message: msg,
@@ -101,6 +97,14 @@ export class AuthService {
     });
     alert.then(alert => alert.present());
   }
-}
+  //connect open food facts to API
 
-//connect open food facts to API
+  //Workouts
+  getWorkout() {
+    return this.http.get(`${this.url}/api/workouts/`).pipe(
+      map(exercises => {
+        return exercises;
+      })
+    );
+  }
+}
