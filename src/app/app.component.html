@@ -1,6 +1,6 @@
 <ion-app>
   <ion-split-pane contentId="menu-content">
-    <ion-menu contentId="menu-content">
+    <ion-menu swipe-gesture="false" contentId="menu-content">
       <ion-content>
         <ion-menu-toggle class="border-none">
           <ion-item lines="none" color="secondary">
@@ -63,7 +63,7 @@
             class="ion-padding-end"
             name="log-out"
           ></ion-icon
-          ><ion-label (click)="Logout()">Logout</ion-label>
+          ><ion-label (click)="CloseMenu()" (click)="Logout()">Logout</ion-label>
         </ion-item>
       </ion-footer>
     </ion-menu>
