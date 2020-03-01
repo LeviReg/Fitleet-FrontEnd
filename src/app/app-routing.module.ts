@@ -43,7 +43,7 @@ const routes: Routes = [
       './pages/barcode-scanner/barcode-scanner.module#BarcodeScannerPageModule'
   },
   {
-    path: 'add-food',
+    path: 'add-food/:mealType',
     loadChildren: './pages/add-food/add-food.module#AddFoodPageModule'
   }
 ];

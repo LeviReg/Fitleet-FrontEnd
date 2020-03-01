@@ -7,7 +7,7 @@
         <ion-fab horizontal="end">
           <ion-fab-button
             routerDirection="forward"
-            [routerLink]="['/add-food']"
+            [routerLink]="['/add-food', 'breakfast']"
             size="small"
             class="buttonSize"
             ><ion-icon name="add"></ion-icon
@@ -17,7 +17,7 @@
       <ion-list *ngFor = "let f of diaries.foods;" >
         <ion-item *ngIf = "f.mealType == 'breakfast'">
           <ion-label>{{f.foodName}}</ion-label>
-          <ion-label class="ion-text-end">{{f.calories}}</ion-label>
+          <ion-label class="ion-text-end">{{f.calories}} cals</ion-label>
         </ion-item>
       </ion-list>
     </ion-card>
@@ -27,7 +27,7 @@
         <ion-fab horizontal="end">
           <ion-fab-button
             routerDirection="forward"
-            [routerLink]="['/add-food']"
+            [routerLink]="['/add-food', 'lunch']"
             size="small"
             class="buttonSize"
             ><ion-icon name="add"></ion-icon
@@ -37,7 +37,7 @@
       <ion-list *ngFor = "let f of diaries.foods;" >
         <ion-item *ngIf = "f.mealType == 'lunch'">
           <ion-label>{{f.foodName}}</ion-label>
-          <ion-label class="ion-text-end">{{f.calories}}</ion-label>
+          <ion-label class="ion-text-end">{{f.calories}} cals</ion-label>
         </ion-item>
       </ion-list>
     </ion-card>
@@ -47,7 +47,7 @@
         <ion-fab horizontal="end">
           <ion-fab-button
             routerDirection="forward"
-            [routerLink]="['/add-food']"
+            [routerLink]="['/add-food', 'dinner']"
             size="small"
             class="buttonSize"
             ><ion-icon name="add"></ion-icon
@@ -57,7 +57,7 @@
       <ion-list *ngFor = "let f of diaries.foods;">
         <ion-item *ngIf = "f.mealType == 'dinner'">
           <ion-label>{{f.foodName}}</ion-label>
-          <ion-label class="ion-text-end">{{f.calories}}</ion-label>
+          <ion-label class="ion-text-end">{{f.calories}} cals</ion-label>
         </ion-item>
       </ion-list>
     </ion-card>
@@ -67,7 +67,7 @@
         <ion-fab horizontal="end">
           <ion-fab-button
             routerDirection="forward"
-            [routerLink]="['/add-food']"
+            [routerLink]="['/add-food', 'snack']"
             size="small"
             class="buttonSize"
             ><ion-icon name="add"></ion-icon
@@ -77,7 +77,7 @@
       <ion-list *ngFor = "let f of diaries.foods;">
         <ion-item *ngIf = "f.mealType == 'snack'">
           <ion-label>{{f.foodName}}</ion-label>
-          <ion-label class="ion-text-end">{{f.calories}}</ion-label>
+          <ion-label class="ion-text-end">{{f.calories}} cals</ion-label>
         </ion-item>
       </ion-list>
     </ion-card>

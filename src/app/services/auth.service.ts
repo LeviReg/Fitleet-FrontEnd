@@ -4,10 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Storage } from '@ionic/storage';
 import { environment } from '../../environments/environment';
-import { tap, catchError, mergeMap } from 'rxjs/operators';
+import { tap, catchError, mergeMap, map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IFoodDiaries } from '../interfaces/IFoodDiaries';
-import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +53,19 @@ export class AuthService {
   register(user) {
     console.log('Credentials', user);
     return this.http.post(`${this.url}/api/register`, user).pipe(
+      catchError(e => {
+        this.showAlert(e.error.msg);
+        console.log(e);
+        throw new Error(e);
+      })
+    );
+  }
+  
+  addFood(foodInfo) {
+    return this.http.post<any>(`${this.url}/api/food-diary/add-food`, foodInfo).pipe(
+      map(res => {
+        return res;
+      }),
       catchError(e => {
         this.showAlert(e.error.msg);
         console.log(e);
