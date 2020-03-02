@@ -10,9 +10,8 @@
             class="btn"
             size="Large"
             routerDirection="forward"
-            [routerLink]="['/workout-arms']"
+            [routerLink]="['/workout-arms','biceps']"
           >
-            <!--(exerciseEvent)="recievedExercies($event)" -->
             <ion-icon src="../../../assets/strong.svg"></ion-icon>
             <ion-text>Arms</ion-text>
           </ion-button>
@@ -25,7 +24,7 @@
             class="btn"
             size="Large"
             routerDirection="forward"
-            [routerLink]="['/workout-legs']"
+            [routerLink]="['/workout-arms','squat']"
           >
             <ion-icon src="../../../assets/men-leg.svg"></ion-icon>
             <ion-text>Legs</ion-text>
@@ -39,7 +38,7 @@
             class="btn"
             size="Large"
             routerDirection="forward"
-            [routerLink]="['/workout-shoulders']"
+            [routerLink]="['/workout-arms','shoulder']"
           >
             <ion-icon src="../../../assets/shoulder.svg"></ion-icon>
             <ion-text>Shoulder</ion-text>
