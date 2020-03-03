@@ -3,18 +3,22 @@
 <ion-content color="primary">
   <ion-grid class="ion-text-center grid">
     <ion-card color="light" class="card">
-      <ion-item style="width: 100%;">
-        <h3>
-          Custom Workouts
-        </h3>
-        <a [routerLink]="['/work-select']">
-          <ion-fab-button>
-            <ion-icon name="add-circle"></ion-icon>
-          </ion-fab-button>
-        </a>
-      </ion-item>
+      <ion-row>
+        <ion-col>
+          Pervious Workouts
+        </ion-col>
+      </ion-row>
       <ion-row style="height: 100;">
-        <ion-col> </ion-col>
+        <ion-col>
+          <h3>
+            Custom Workouts
+          </h3>
+          <a [routerLink]="['/work-select']">
+            <ion-fab-button>
+              <ion-icon name="add-circle"></ion-icon>
+            </ion-fab-button>
+          </a>
+        </ion-col>
       </ion-row>
     </ion-card>
   </ion-grid>

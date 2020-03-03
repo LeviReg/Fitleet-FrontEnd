@@ -12,6 +12,13 @@
     <ion-card color="light" class="card">
       <ion-row>
         <ion-col>
+          <ion-item>
+            <ion-input placeholder="Enter Workout Name" #Name></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
           <ion-button
             shape="round"
             class="btn"
@@ -60,6 +67,7 @@
             size="Large"
             color="success"
             id="addWorkout"
+            (click)="postWorkout(Name.value)"
             >Add Workout</ion-button
           >
         </ion-col>

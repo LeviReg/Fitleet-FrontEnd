@@ -9,16 +9,17 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { IFoodDiaries } from '../interfaces/IFoodDiaries';
 import { from } from 'rxjs';
 import { WorkoutService } from './workouts.service';
+import { IWorkout } from '../interfaces/IExercise';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   url = environment.url;
   user = null;
   authenticationState = new BehaviorSubject(false);
   TOKEN_KEY = 'access_token';
-  
+
   constructor(
     private http: HttpClient,
     private helper: JwtHelperService,
@@ -31,7 +32,7 @@ export class AuthService {
       this.checkToken();
     });
   }
-  
+
   checkToken() {
     this.storage.get(this.TOKEN_KEY).then(token => {
       if (token) {
@@ -48,7 +49,7 @@ export class AuthService {
       }
     });
   }
-  
+
   GetFoodDiaries(): Observable<IFoodDiaries[]> {
     return this.http.get<IFoodDiaries[]>(`${this.url}/api/Food-diary`);
   }
@@ -67,7 +68,7 @@ export class AuthService {
     return this.http.post(`${this.url}/api/login`, credentials).pipe(
       tap(res => {
         this.storage.set(this.TOKEN_KEY, res['token']);
-        localStorage.setItem("access_token", res['token'])
+        localStorage.setItem('access_token', res['token']);
         this.user = this.helper.decodeToken(res['token']);
         this.authenticationState.next(true);
       }),
@@ -101,18 +102,23 @@ export class AuthService {
     let alert = this.alertController.create({
       message: msg,
       header: 'Error',
-      buttons: ['OK']
+      buttons: ['OK'],
     });
     alert.then(alert => alert.present());
   }
   //connect open food facts to API
 
-  //Workouts
-  getWorkout() {
-    return this.http.get(`${this.url}/api/workouts/`).pipe(
-      map(exercises => {
-        return exercises;
-      })
-    );
+  getWorkouts(): Observable<IWorkout[]> {
+    return this.http.get<IWorkout[]>(`${this.url}/api/workouts`);
+  }
+
+  postWorkout(workout, WorkoutName) {
+    return this.http
+      .post<any>(`${this.url}/api/workouts/create`, WorkoutName, workout)
+      .pipe(
+        map(res => {
+          return res;
+        })
+      );
   }
 }

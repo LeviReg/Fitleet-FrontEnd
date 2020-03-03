@@ -4,7 +4,7 @@ import { IExercise } from '../interfaces/IExercise';
 import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WorkoutService {
   private ExercisesChanged = new Subject<IExercise[]>();
@@ -32,8 +32,8 @@ export class WorkoutService {
     this.ExercisesChanged.next(this.exercises.slice());
   }
   //Update an Exercise
-  updateExercise(index: number, newRecipe: IExercise) {
-    this.exercises[index] = newRecipe;
+  updateExercise(index: number, newExercise: IExercise) {
+    this.exercises[index] = newExercise;
     this.ExercisesChanged.next(this.exercises.slice());
   }
   //delete an Exercise
