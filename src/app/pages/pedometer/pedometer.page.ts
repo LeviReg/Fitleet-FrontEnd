@@ -130,5 +130,6 @@ export class PedometerPage {
 
   clearTracks() {
     this.previousTracks.length = 0;
+    this.storage.clear();
   }
 }
