@@ -10,29 +10,5 @@ import { SearchResult, Data } from './WorkOutInterface';
 export class WorkoutTrackerPage implements OnInit {
   constructor(private _service: WorkoutServiceService) {}
 
-  SearchArms: [];
-  SearchLegs: [];
-  SearchShoulder: [];
-  getInfoLegs(): boolean {
-    this.SearchLegs = [];
-    this._service
-      .fetchData('squats')
-      .subscribe(data => (this.SearchLegs = data['suggestions']));
-    //console.log(this.Search);
-    return false;
-  }
-
-
-
-  getInfoShoulders(): boolean {
-    this.SearchShoulder = [];
-    this._service
-      .fetchData('shoulders')
-      .subscribe(data => (this.SearchShoulder = data['suggestions']));
-    //console.log(this.Search);
-    return false;
-  }
-  ngOnInit() {
- 
-  }
+  ngOnInit() {}
 }

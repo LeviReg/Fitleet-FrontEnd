@@ -1,13 +1,15 @@
-export interface BarcodeInterface {
-  object: product[];
+interface BarcodeInterface {
+  product: product;
 }
 
-export interface product {
-  nutriments: nutriments[];
+
+interface product {
+  product_name: string;
+  nutriments: nutriments;
 }
 
-export interface nutriments {
-  protein_100g: number;
-  carbohydrates_100g: number;
-  fat_100g: number;
+interface nutriments {
+  protein_100g: string;
+  carbohydrates_100g: string;
+  fat_100g: string;
 }
