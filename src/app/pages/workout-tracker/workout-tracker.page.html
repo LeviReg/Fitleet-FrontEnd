@@ -3,87 +3,19 @@
 <ion-content color="primary">
   <ion-grid class="ion-text-center grid">
     <ion-card color="light" class="card">
-      <ion-row>
-        <ion-col>
-          <ion-button
-            shape="round"
-            class="btn"
-            size="Large"
-            routerDirection="forward"
-            [routerLink]="['/workout-arms','biceps']"
-          >
-            <ion-icon src="../../../assets/strong.svg"></ion-icon>
-            <ion-text>Arms</ion-text>
-          </ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-button
-            shape="round"
-            class="btn"
-            size="Large"
-            routerDirection="forward"
-            [routerLink]="['/workout-arms','squat']"
-          >
-            <ion-icon src="../../../assets/men-leg.svg"></ion-icon>
-            <ion-text>Legs</ion-text>
-          </ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-button
-            shape="round"
-            class="btn"
-            size="Large"
-            routerDirection="forward"
-            [routerLink]="['/workout-arms','shoulder']"
-          >
-            <ion-icon src="../../../assets/shoulder.svg"></ion-icon>
-            <ion-text>Shoulder</ion-text>
-          </ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-button
-            shape="round"
-            class="btn"
-            size="Large"
-            color="success"
-            id="addWorkout"
-            >Add Workout</ion-button
-          >
-        </ion-col>
+      <ion-item style="width: 100%;">
+        <h3>
+          Custom Workouts
+        </h3>
+        <a [routerLink]="['/work-select']">
+          <ion-fab-button>
+            <ion-icon name="add-circle"></ion-icon>
+          </ion-fab-button>
+        </a>
+      </ion-item>
+      <ion-row style="height: 100;">
+        <ion-col> </ion-col>
       </ion-row>
     </ion-card>
   </ion-grid>
-
-  <!-- <button class="btn btn-success" style="text-align: center;">
-      Start Timer
-    </button>
-  </ion-card>
-  <ion-card>
-    <ion-input
-      placeholder="Search Exercises"
-      type="text"
-      [(ngModel)]="SearchTerm"
-    >
-    </ion-input>
-    <ion-button expand="full" (click)="getSearchInfo()">search</ion-button>
-  </ion-card>
-  <ion-card *ngFor="let data of Search">
-    <ion-item
-      ><ion-text>
-        {{data.data.name}}
-      </ion-text></ion-item
-    >
-    <ion-item
-      ><ion-text>
-        {{data.data.category}}
-      </ion-text></ion-item
-    >
-    <ion-img src="{{data.data.image}}"></ion-img>
-  </ion-card> -->
 </ion-content>

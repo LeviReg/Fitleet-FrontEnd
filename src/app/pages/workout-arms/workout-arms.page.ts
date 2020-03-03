@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-workout-arms',
   templateUrl: './workout-arms.page.html',
-  styleUrls: ['./workout-arms.page.scss']
+  styleUrls: ['./workout-arms.page.scss'],
 })
 export class WorkoutArmsPage implements OnInit {
   constructor(
@@ -32,7 +32,6 @@ export class WorkoutArmsPage implements OnInit {
 
   ngOnInit() {
     this.type = this.active.snapshot.paramMap.get('type');
-    console.log(this.type);
     this.getInfo();
   }
 }
