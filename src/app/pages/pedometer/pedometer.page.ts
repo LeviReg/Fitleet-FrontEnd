@@ -1,4 +1,13 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import {
+  GoogleMaps,
+  GoogleMap,
+  GoogleMapsEvent,
+  GoogleMapOptions,
+  CameraPosition,
+  MarkerOptions,
+  Marker
+} from '@ionic-native/google-maps';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, Platform, AlertController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
@@ -12,7 +21,7 @@ declare var google;
   templateUrl: 'pedometer.page.html',
   styleUrls: ['pedometer.page.scss']
 })
-export class PedometerPage implements AfterViewInit {
+export class PedometerPage {
   @ViewChild('map', { static: false }) mapElement: ElementRef;
   map: any;
   currentMapTrack = null;
