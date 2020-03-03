@@ -133,7 +133,6 @@ export class PedometerPage implements AfterViewInit {
             lat: data.coords.latitude,
             lng: data.coords.longitude,
           });
-          this.redrawPath(this.routes);
         }, 3000);
       });
   }
@@ -166,8 +165,8 @@ export class PedometerPage implements AfterViewInit {
     console.log(this.previousTracks);
   }
 
-  async clearTracks() {
-    return await this.storage.set('routes', null).then(res => {
+  clearTracks() {
+    return this.storage.set('routes', null).then(res => {
       return res;
     });
   }
