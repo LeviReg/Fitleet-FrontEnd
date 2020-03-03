@@ -91,7 +91,11 @@
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-googlemaps": {
+        "PLAY_SERVICES_VERSION": "15.0.1",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      }
     },
     "cordova-plugin-whitelist": {},
     "cordova-plugin-statusbar": {},

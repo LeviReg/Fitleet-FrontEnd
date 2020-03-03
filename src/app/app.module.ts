@@ -13,6 +13,7 @@ import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { Insomnia } from '@ionic-native/insomnia/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 export function jwtOptionsFactory(storage) {
   return {
@@ -48,6 +49,7 @@ export function jwtOptionsFactory(storage) {
     },
     StatusBar,
     SplashScreen,
+    GoogleMaps,
     BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Insomnia,
