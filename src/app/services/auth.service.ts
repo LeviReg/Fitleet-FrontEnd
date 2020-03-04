@@ -114,7 +114,14 @@ export class AuthService {
 
   postWorkout(workout, WorkoutName) {
     return this.http
-      .post<any>(`${this.url}/api/workouts/create`, WorkoutName, workout)
+      .post<any>(`${this.url}/api/workouts/create`, {
+        name: workout,
+        exercise: WorkoutName.map(el => {
+          return {
+            name: el,
+          };
+        }),
+      })
       .pipe(
         map(res => {
           return res;

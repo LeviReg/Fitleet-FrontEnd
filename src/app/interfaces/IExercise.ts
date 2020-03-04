@@ -3,6 +3,6 @@ export interface IExercise {
 }
 
 export interface IWorkout {
-  name: IExercise[];
-  title: string;
+  exercises: IExercise[];
+  name: string;
 }
