@@ -15,10 +15,12 @@ import { IWorkout } from '../interfaces/IExercise';
   providedIn: 'root',
 })
 export class AuthService {
-  url = environment.url;
+  url = environment.devurl;
   user = null;
   authenticationState = new BehaviorSubject(false);
   TOKEN_KEY = 'access_token';
+
+  
 
   constructor(
     private http: HttpClient,
@@ -116,9 +118,9 @@ export class AuthService {
     return this.http
       .post<any>(`${this.url}/api/workouts/create`, {
         name: workout,
-        exercise: WorkoutName.map(el => {
+        exercises: WorkoutName.map(el => {
           return {
-            name: el,
+            name: el, //my a loop through
           };
         }),
       })
@@ -128,4 +130,5 @@ export class AuthService {
         })
       );
   }
+
 }
