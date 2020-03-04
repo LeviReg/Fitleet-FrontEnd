@@ -44,22 +44,20 @@ const routes: Routes = [
   },
   {
     path: 'workout-arms/:type',
-    loadChildren:
-      './pages/workout-arms/workout-arms.module#WorkoutArmsPageModule'
+    loadChildren:'./pages/workout-arms/workout-arms.module#WorkoutArmsPageModule'
   },
-
-  // {
-  //   path: 'workout-back',
-  //   loadChildren:
+    
+ // {
+//   path: 'workout-back',
+ //   loadChildren:
   //     './pages/workout-back/workout-back.module#WorkoutBackPageModule'
   // },
-
   {
-    path: 'work-select',
-    loadChildren: './pages/work-select/work-select.module#WorkSelectPageModule'
+        path: 'work-select',
+        loadChildren: './pages/work-select/work-select.module#WorkSelectPageModule'
   },
   {
-    path: 'add-food',
+    path: 'add-food/:mealType',
     loadChildren: './pages/add-food/add-food.module#AddFoodPageModule'
   }
 ];

@@ -66,6 +66,20 @@ export class AuthService {
       })
     );
   }
+  
+  addFood(foodInfo) {
+    return this.http.post<any>(`${this.url}/api/food-diary/add-food`, foodInfo).pipe(
+      map(res => {
+        return res;
+      }),
+      catchError(e => {
+        this.showAlert(e.error.msg);
+        console.log(e);
+        throw new Error(e);
+      })
+    );
+  }
+
   login(credentials) {
     return this.http.post(`${this.url}/api/login`, credentials).pipe(
       tap(res => {

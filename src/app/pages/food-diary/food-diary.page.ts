@@ -27,7 +27,6 @@ export class FoodDiaryPage implements OnInit {
   getFoodDiaries(){
   this.authService.GetFoodDiaries().subscribe(data => {
      this.foodDiaries = data;
-     console.log(this.foodDiaries);
    });
   }
 }
