@@ -4,10 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Storage } from '@ionic/storage';
 import { environment } from '../../environments/environment';
-import { tap, catchError } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
-
-const TOKEN_KEY = 'access_token';
+import { tap, catchError, mergeMap, map } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { IFoodDiaries } from '../interfaces/IFoodDiaries';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,8 @@ export class AuthService {
   url = environment.url;
   user = null;
   authenticationState = new BehaviorSubject(false);
-
+  TOKEN_KEY = 'access_token';
+  
   constructor(
     private http: HttpClient,
     private helper: JwtHelperService,
@@ -28,9 +28,9 @@ export class AuthService {
       this.checkToken();
     });
   }
-
+  
   checkToken() {
-    this.storage.get(TOKEN_KEY).then(token => {
+    this.storage.get(this.TOKEN_KEY).then(token => {
       if (token) {
         let decoded = this.helper.decodeToken(token);
         let isExpired = this.helper.isTokenExpired(token);
@@ -39,10 +39,15 @@ export class AuthService {
           this.user = decoded;
           this.authenticationState.next(true);
         } else {
-          this.storage.remove(TOKEN_KEY);
+          this.storage.remove(this.TOKEN_KEY);
         }
+        console.log(this.TOKEN_KEY);
       }
     });
+  }
+  
+  GetFoodDiaries(): Observable<IFoodDiaries[]> {
+    return this.http.get<IFoodDiaries[]>(`${this.url}/api/Food-diary`);
   }
 
   register(user) {
@@ -56,12 +61,27 @@ export class AuthService {
       })
     );
   }
+  
+  addFood(foodInfo) {
+    return this.http.post<any>(`${this.url}/api/food-diary/add-food`, foodInfo).pipe(
+      map(res => {
+        return res;
+      }),
+      catchError(e => {
+        this.showAlert(e.error.msg);
+        console.log(e);
+        throw new Error(e);
+      })
+    );
+  }
 
   login(credentials) {
     return this.http.post(`${this.url}/api/login`, credentials).pipe(
       tap(res => {
-        console.log(TOKEN_KEY, res['token']);
-        this.storage.set(TOKEN_KEY, res['token']);
+
+        this.storage.set(this.TOKEN_KEY, res['token']);
+        localStorage.setItem("access_token", res['token'])
+
         this.user = this.helper.decodeToken(res['token']);
         this.authenticationState.next(true);
       }),
@@ -73,7 +93,7 @@ export class AuthService {
   }
 
   logout() {
-    this.storage.remove(TOKEN_KEY).then(() => {
+    this.storage.remove(this.TOKEN_KEY).then(() => {
       this.authenticationState.next(false);
     });
   }

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
-  styleUrls: ['./register.page.scss']
+  styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
   newcredentialsForm: FormGroup;
@@ -15,7 +15,8 @@ export class RegisterPage implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private _router: Router
   ) {}
 
   ngOnInit() {
@@ -24,7 +25,7 @@ export class RegisterPage implements OnInit {
       firstName: [''],
       lastName: [''],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -34,14 +35,10 @@ export class RegisterPage implements OnInit {
       username: this.newcredentialsForm.get('username').value,
       firstName: this.newcredentialsForm.get('firstName').value,
       lastName: this.newcredentialsForm.get('lastName').value,
-      password: this.newcredentialsForm.get('password').value
+      password: this.newcredentialsForm.get('password').value,
     };
-    //logged for testing the data being transfered
-    //console.table(newUser);
     this.authService.register(newUser).subscribe(res => {
-      //console.log(res);
-      this.router.navigateByUrl('/login');
-      //this.authService.login(newUser).subscribe();
+      this._router.navigate(['/login']);
     });
     // .register(this.newcredentialsForm.value)
     // .subscribe(res => {
