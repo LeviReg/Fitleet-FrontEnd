@@ -9,14 +9,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { IFoodDiaries } from '../interfaces/IFoodDiaries';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  url = environment.url;
+  url = environment.devurl;
   user = null;
   authenticationState = new BehaviorSubject(false);
   TOKEN_KEY = 'access_token';
-  
+
   constructor(
     private http: HttpClient,
     private helper: JwtHelperService,
@@ -28,7 +28,7 @@ export class AuthService {
       this.checkToken();
     });
   }
-  
+
   checkToken() {
     this.storage.get(this.TOKEN_KEY).then(token => {
       if (token) {
@@ -45,7 +45,19 @@ export class AuthService {
       }
     });
   }
-  
+
+  CreateDiary() {
+    return this.http
+      .post<any>(`${this.url}/api/food-diary/create-diary`, {}, {})
+      .pipe(
+        catchError(e => {
+          this.showAlert(e.error.msg);
+          console.log(e);
+          throw new Error(e);
+        })
+      );
+  }
+
   GetFoodDiaries(): Observable<IFoodDiaries[]> {
     return this.http.get<IFoodDiaries[]>(`${this.url}/api/Food-diary`);
   }
@@ -60,25 +72,27 @@ export class AuthService {
       })
     );
   }
-  
+
   addFood(foodInfo) {
-    return this.http.post<any>(`${this.url}/api/food-diary/add-food`, foodInfo).pipe(
-      map(res => {
-        return res;
-      }),
-      catchError(e => {
-        this.showAlert(e.error.msg);
-        console.log(e);
-        throw new Error(e);
-      })
-    );
+    return this.http
+      .post<any>(`${this.url}/api/food-diary/add-food`, foodInfo)
+      .pipe(
+        map(res => {
+          return res;
+        }),
+        catchError(e => {
+          this.showAlert(e.error.msg);
+          console.log(e);
+          throw new Error(e);
+        })
+      );
   }
 
   login(credentials) {
     return this.http.post(`${this.url}/api/login`, credentials).pipe(
       tap(res => {
         this.storage.set(this.TOKEN_KEY, res['token']);
-        localStorage.setItem("access_token", res['token'])
+        localStorage.setItem('access_token', res['token']);
         this.user = this.helper.decodeToken(res['token']);
         this.authenticationState.next(true);
       }),
@@ -116,7 +130,7 @@ export class AuthService {
     let alert = this.alertController.create({
       message: msg,
       header: 'Error',
-      buttons: ['OK']
+      buttons: ['OK'],
     });
     alert.then(alert => alert.present());
   }
