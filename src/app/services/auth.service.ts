@@ -124,8 +124,12 @@ export class AuthService {
   }
   //connect open food facts to API
 
-  getWorkouts(): Observable<IWorkout[]> {
-    return this.http.get<IWorkout[]>(`${this.url}/api/workouts`);
+  getWorkouts(){
+    return this.http.get<IWorkout[]>(`${this.url}/api/workouts/`);
+  }
+
+  getWorkoutID(id: string) {
+    return this.http.get<IWorkout>(`${this.url}/api/workoutID/${id}`);
   }
 
   postWorkout(workout, WorkoutName) {
@@ -134,7 +138,7 @@ export class AuthService {
         name: workout,
         exercises: WorkoutName.map(el => {
           return {
-            name: el, //my a loop through
+            name: el, 
           };
         }),
       })

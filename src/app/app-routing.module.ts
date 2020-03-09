@@ -59,7 +59,9 @@ const routes: Routes = [
   {
     path: 'add-food/:mealType',
     loadChildren: './pages/add-food/add-food.module#AddFoodPageModule'
-  }
+  },
+  { path: 'edit-workout/:type', loadChildren: './pages/edit-workout/edit-workout.module#EditWorkoutPageModule' }
+
 ];
 
 @NgModule({

@@ -3,6 +3,7 @@ import { WorkoutServiceService } from 'src/app/services/workout-service.service'
 import { SearchResult, Data } from './WorkOutInterface';
 import { WorkoutService } from 'src/app/services/workouts.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { IWorkout } from 'src/app/interfaces/IExercise';
 
 @Component({
   selector: 'app-workout-tracker',
@@ -15,10 +16,16 @@ export class WorkoutTrackerPage implements OnInit {
     private _authService: AuthService
   ) {}
 
+  Workouts: IWorkout[];
+
   getWorkouts() {
-    this._authService.getWorkouts();
+    this._authService.getWorkouts().subscribe(data => {
+
+      this.Workouts = data;
+
+    });
   }
   ngOnInit() {
-    console.log(this._authService.getWorkouts());
+    this.getWorkouts();
   }
 }

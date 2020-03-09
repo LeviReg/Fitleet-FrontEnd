@@ -17,8 +17,8 @@ export class WorkoutService {
     return this.exercises.slice();
   }
 
-  setExercises(recipes: IExercise[]) {
-    this.exercises = recipes;
+  setExercises(exercise: IExercise[]) {
+    this.exercises = exercise;
     this.ExercisesChanged.next(this.exercises.slice());
   }
   //get a single Exercise

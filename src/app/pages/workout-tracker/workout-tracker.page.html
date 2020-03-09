@@ -3,23 +3,29 @@
 <ion-content color="primary">
   <ion-grid class="ion-text-center grid">
     <ion-card color="light" class="card">
-      <ion-row>
+      <ion-item *ngIf = "Workouts">
+        Previous Workouts
+      </ion-item>
+      <ion-row >
         <ion-col>
-          Pervious Workouts
+          <ion-list>
+
+            <ion-item *ngFor ="let workoutPast of Workouts; let i = index;">
+              <a [routerLink]="['/edit-workout',workoutPast._id ]" class="Workouts">{{workoutPast.name}}</a>
+            </ion-item>
+          </ion-list>
         </ion-col>
       </ion-row>
-      <ion-row style="height: 100;">
-        <ion-col>
-          <h3>
+          <ion-item>
+          <h5>
             Custom Workouts
-          </h3>
+          </h5>
           <a [routerLink]="['/work-select']">
-            <ion-fab-button>
-              <ion-icon name="add-circle"></ion-icon>
+            <ion-fab-button size="small">
+              <ion-icon name="add-circle" ></ion-icon>
             </ion-fab-button>
           </a>
-        </ion-col>
-      </ion-row>
+        </ion-item>
     </ion-card>
   </ion-grid>
 </ion-content>
