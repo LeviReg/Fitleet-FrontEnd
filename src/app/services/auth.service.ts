@@ -51,7 +51,8 @@ export class AuthService {
   }
 
   register(user) {
-    console.log('Credentials', user);
+    //testing data again, user schema is now correct
+    //console.log('Credentials', user);
     return this.http.post(`${this.url}/api/register`, user).pipe(
       catchError(e => {
         this.showAlert(e.error.msg);
@@ -77,8 +78,10 @@ export class AuthService {
   login(credentials) {
     return this.http.post(`${this.url}/api/login`, credentials).pipe(
       tap(res => {
+
         this.storage.set(this.TOKEN_KEY, res['token']);
         localStorage.setItem("access_token", res['token'])
+
         this.user = this.helper.decodeToken(res['token']);
         this.authenticationState.next(true);
       }),

@@ -1,4 +1,13 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import {
+  GoogleMaps,
+  GoogleMap,
+  GoogleMapsEvent,
+  GoogleMapOptions,
+  CameraPosition,
+  MarkerOptions,
+  Marker
+} from '@ionic-native/google-maps';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, Platform, AlertController } from '@ionic/angular';
 import { Subscription, Observable } from 'rxjs';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
@@ -22,6 +31,7 @@ const GORYOKAKU_JAPAN = { lat: 41.796875, lng: 140.757007 };
   templateUrl: 'pedometer.page.html',
   styleUrls: ['pedometer.page.scss'],
 })
+
 export class PedometerPage implements AfterViewInit {
   @ViewChild('map', { static: true }) mapElement: ElementRef;
   @ViewChild('directionsPanel', { static: true }) directionsPanel: ElementRef;
@@ -169,5 +179,6 @@ export class PedometerPage implements AfterViewInit {
     return this.storage.set('routes', null).then(res => {
       return res;
     });
+
   }
 }
