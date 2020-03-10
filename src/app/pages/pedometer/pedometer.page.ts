@@ -12,6 +12,7 @@ import {
   GoogleMapsEvent,
   Encoding,
   ILatLng,
+  LatLng,
 } from '@ionic-native/google-maps';
 
 @Component({
@@ -19,7 +20,7 @@ import {
   templateUrl: 'pedometer.page.html',
   styleUrls: ['pedometer.page.scss'],
 })
-export class PedometerPage implements AfterViewInit {
+export class PedometerPage {
   currentMapTrack: GoogleMap;
   map: GoogleMap;
   myLat: any;
@@ -39,7 +40,7 @@ export class PedometerPage implements AfterViewInit {
     private storage: Storage
   ) {}
 
-  async ngAfterViewInit() {
+  async ionViewDidEnter() {
     await this.plt.ready().then(() => {
       this.loadHistoricRoutes();
     });
@@ -110,22 +111,12 @@ export class PedometerPage implements AfterViewInit {
           this.trackedRoute.push({
             lat: data.coords.latitude,
             lng: data.coords.longitude,
+            points: data.coords,
           });
+
+          this.redrawPath(this.trackedRoute);
         }, 3000);
       });
-  }
-
-  redrawPath(path) {
-    this.map.clear();
-    this.map.addPolyline({
-      points: path,
-      geodesic: true,
-      strokeColor: '#ff00ff',
-      strokeOpacity: 1.0,
-      strokeWeight: 3,
-    });
-    console.log(path);
-    this.map.addPolyline(path);
   }
 
   stopTracking() {
@@ -135,7 +126,20 @@ export class PedometerPage implements AfterViewInit {
 
     this.isTracking = false;
     this.positionSubscription.unsubscribe();
-    //console.log(newRoute);
+    this.map.clear();
+  }
+
+  redrawPath(path) {
+    this.map.addPolyline({
+      points: path,
+      geodesic: true,
+      strokeColor: '#ff00ff',
+      strokeOpacity: 1.0,
+      strokeWeight: 3,
+    });
+
+    console.log(path);
+    this.map.addPolyline(path);
   }
 
   showHistoryRoute(route) {
