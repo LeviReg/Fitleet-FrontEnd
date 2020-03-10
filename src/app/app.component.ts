@@ -21,7 +21,7 @@ export class AppComponent {
     private router: Router,
     private menu: MenuController
   ) {
-    this.initializeApp();
+    //this.initializeApp();
   }
 
   Logout() {
@@ -32,25 +32,25 @@ export class AppComponent {
     this.menu.close();
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      Environment.setEnv({
-        // api key for server
-        API_KEY_FOR_BROWSER_RELEASE: 'AIzaSyBpfdLQn2EEVNl8UgmZItNDxBBOqMGj8B0',
+  // initializeApp() {
+  //   this.platform.ready().then(() => {
+  //     Environment.setEnv({
+  //       // api key for server
+  //       API_KEY_FOR_BROWSER_RELEASE: 'AIzaSyBpfdLQn2EEVNl8UgmZItNDxBBOqMGj8B0',
 
-        // api key for local development
-        API_KEY_FOR_BROWSER_DEBUG: 'AIzaSyBpfdLQn2EEVNl8UgmZItNDxBBOqMGj8B0',
-      });
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+  //       // api key for local development
+  //       API_KEY_FOR_BROWSER_DEBUG: 'AIzaSyBpfdLQn2EEVNl8UgmZItNDxBBOqMGj8B0',
+  //     });
+  //     this.statusBar.styleDefault();
+  //     this.splashScreen.hide();
 
-      this.authService.authenticationState.subscribe(state => {
-        if (state) {
-          this.router.navigate(['home']);
-        } else {
-          this.router.navigate(['login']);
-        }
-      });
-    });
-  }
+  //     this.authService.authenticationState.subscribe(state => {
+  //       if (state) {
+  //         this.router.navigate(['home']);
+  //       } else {
+  //         this.router.navigate(['login']);
+  //       }
+  //     });
+  //   });
+  // }
 }

@@ -32,7 +32,7 @@ export class ProfilePage implements OnInit {
         datasets: [
           {
             label: 'Progress through week',
-            data: [600, 300, 800, 500, 100, 700, 1000], // data for the line chart
+            data: [0, 0, 0, 100, 0, 0, 0], // data for the line chart
             backgroundColor: 'red', // the dots
             borderColor: 'black', // the line
             fill: false // fill bascailly fills all the space underneath the line     Must be false

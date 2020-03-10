@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { WorkoutServiceService } from 'src/app/services/workout-service.service';
+import { SearchResult, Data } from './WorkOutInterface';
+import { WorkoutService } from 'src/app/services/workouts.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { IWorkout } from 'src/app/interfaces/IExercise';
 
 @Component({
   selector: 'app-workout-tracker',
@@ -6,10 +11,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./workout-tracker.page.scss'],
 })
 export class WorkoutTrackerPage implements OnInit {
+  constructor(
+    private _service: WorkoutService,
+    private _authService: AuthService
+  ) {}
 
-  constructor() { }
+  Workouts: IWorkout[];
 
-  ngOnInit() {
+  getWorkouts() {
+    this._authService.getWorkouts().subscribe(data => {
+
+      this.Workouts = data;
+
+    });
   }
-
+  ngOnInit() {
+    this.getWorkouts();
+  }
 }

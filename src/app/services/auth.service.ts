@@ -7,12 +7,15 @@ import { environment } from '../../environments/environment';
 import { tap, catchError, mergeMap, map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IFoodDiaries } from '../interfaces/IFoodDiaries';
+import { from } from 'rxjs';
+import { WorkoutService } from './workouts.service';
+import { IWorkout } from '../interfaces/IExercise';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  url = environment.url;
+  url = environment.devurl;
   user = null;
   authenticationState = new BehaviorSubject(false);
   TOKEN_KEY = 'access_token';
@@ -22,7 +25,8 @@ export class AuthService {
     private helper: JwtHelperService,
     private storage: Storage,
     private plt: Platform,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private _exercise: WorkoutService
   ) {
     this.plt.ready().then(() => {
       this.checkToken();
@@ -101,13 +105,11 @@ export class AuthService {
       })
     );
   }
-
   logout() {
     this.storage.remove(this.TOKEN_KEY).then(() => {
       this.authenticationState.next(false);
     });
   }
-
   getSpecialData() {
     return this.http.get(`${this.url}/api/home`).pipe(
       catchError(e => {
@@ -120,11 +122,9 @@ export class AuthService {
       })
     );
   }
-
   isAuthenticated() {
     return this.authenticationState.value;
   }
-
   showAlert(msg) {
     let alert = this.alertController.create({
       message: msg,
@@ -132,5 +132,35 @@ export class AuthService {
       buttons: ['OK'],
     });
     alert.then(alert => alert.present());
+  }
+  //connect open food facts to API
+
+  getWorkouts(){
+    return this.http.get<IWorkout[]>(`${this.url}/api/workouts/`);
+  }
+
+  getWorkoutID(id: string) {
+    return this.http.get<IWorkout>(`${this.url}/api/workoutID/${id}`);
+  }
+
+  postWorkout(workout, WorkoutName) {
+    return this.http
+      .post<any>(`${this.url}/api/workouts/create`, {
+        name: workout,
+        exercises: WorkoutName.map(el => {
+          return {
+            name: el, 
+          };
+        }),
+      })
+      .pipe(
+        map(res => {
+          return res;
+        })
+      );
+  }
+
+  deleteWorkouts(id: string){
+    return this.http.delete(`${this.url}/api/deleteExercise/${id}`);
   }
 }

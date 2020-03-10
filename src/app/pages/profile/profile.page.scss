@@ -1,22 +1,15 @@
-ion-content {
-    font-family: sans-serif;
-    color: #3c3939;
-    background-color: gray;
+.card {
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
-ion-card {
-    width: auto;
-    margin: auto;
-    background: #ffffff;
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
+.grid {
+  flex-direction: column;
+  height: 100%;
+  place-content: center;
 }
-
-.image-container {
-    position: relative;
-
-}
-
-
-hr {
-    color: black;
+.pad {
+  margin-top: 3.5%;
+  text-align: center;
+  font-weight: bold;
 }
