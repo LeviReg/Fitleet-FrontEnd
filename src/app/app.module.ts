@@ -14,13 +14,14 @@ import { Insomnia } from '@ionic-native/insomnia/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { GoogleMaps } from '@ionic-native/google-maps';
+import { HTTP } from '@ionic-native/http/ngx';
 
 export function jwtOptionsFactory(storage) {
   return {
     tokenGetter: () => {
       return storage.get('access_token');
     },
-    whitelistedDomains: ['localhost:5000']
+    whitelistedDomains: ['localhost:5000'],
   };
 }
 
@@ -37,24 +38,25 @@ export function jwtOptionsFactory(storage) {
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
         useFactory: jwtOptionsFactory,
-        deps: [Storage]
-      }
-    })
+        deps: [Storage],
+      },
+    }),
   ],
   providers: [
     {
-      provide : HTTP_INTERCEPTORS,
+      provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi   : true
+      multi: true,
     },
+    HTTP,
     StatusBar,
     SplashScreen,
     GoogleMaps,
     BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Insomnia,
-    Geolocation
+    Geolocation,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

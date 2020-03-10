@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HTTP } from '@ionic-native/http/ngx';
 import {
   BarcodeScanner,
   BarcodeScanResult,
@@ -16,10 +17,7 @@ export class ScannerComponent implements OnInit {
   barcode: BarcodeInterface;
   options: any;
 
-  constructor(
-    private http: HttpClient,
-    private barcodeScanner: BarcodeScanner
-  ) {
+  constructor(private http: HTTP, private barcodeScanner: BarcodeScanner) {
     this.options = {
       prompt: 'Scan the Barcode. ',
       orientation: 'portrait',
@@ -27,35 +25,30 @@ export class ScannerComponent implements OnInit {
     };
   }
 
+  storeData: any;
+  @Output() sendData: EventEmitter<BarcodeInterface> = new EventEmitter();
+
   ngOnInit() {}
 
-  RetreiveInfo(barcode): Observable<BarcodeInterface> {
-    return this.http
-      .get<BarcodeInterface>(
-        `https://world.openfoodfacts.org/api/v3/product/` + barcode
-      )
-      .pipe(
-        map(res => {
-          return res as BarcodeInterface;
-        })
-      );
+  RetreiveInfo(barcode) {
+    return this.http.get(
+      `https://world.openfoodfacts.org/api/v3/product/` + barcode,
+      {},
+      {}
+    );
   }
 
-  async getInfo(bar) {
-    this.barcode = await this.RetreiveInfo(bar).toPromise();
-    console.log(this.barcode);
-  }
-
-  ScanBarcode() {
-    this.barcodeScanner
+  async ScanBarcode() {
+    await this.barcodeScanner
       .scan(this.options)
-      .then(barcodeData => {
-        console.table(barcodeData);
-        this.RetreiveInfo(barcodeData.text).subscribe(
-          (res: BarcodeInterface) => {
-            return res;
+      .then(async barcodeData => {
+        await this.RetreiveInfo(barcodeData.text).then(res => {
+          this.storeData = res.data as BarcodeInterface;
+          if (this.storeData != undefined) {
+            this.sendData.emit(JSON.parse(this.storeData));
           }
-        );
+          return res.data;
+        });
       })
       .catch(err => {
         console.log('Error', err);
