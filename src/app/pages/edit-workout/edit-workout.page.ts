@@ -17,15 +17,25 @@ export class EditWorkoutPage implements OnInit {
   Workout: IWorkout;
   type: string;
   name: string;
-  x: string = 'mark';
+  exercises:IExercise[];
 
   async getWorkout() {
     await this._authService.getWorkoutID(this.type)
     .subscribe(data => {
       this.Workout = data
+      this.exercises = data.exercises
       console.log(this.Workout);
     });
     //this._dataStorage.setExercises(this.exercise);
+  }
+
+  deleteExercise(name:string){
+    console.log(name);
+   this.exercises = this.exercises.filter(e => e._id !== name)
+   this._authService.deleteWorkouts(name).subscribe(data=>{
+     console.log(data);
+   })
+
   }
 
 

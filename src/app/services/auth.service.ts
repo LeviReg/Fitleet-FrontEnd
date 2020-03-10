@@ -149,4 +149,7 @@ export class AuthService {
       );
   }
 
+  deleteWorkouts(id: string){
+    return this.http.delete(`${this.url}/api/deleteExercise/${id}`);
+  }
 }

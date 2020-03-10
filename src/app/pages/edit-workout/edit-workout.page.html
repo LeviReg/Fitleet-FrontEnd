@@ -12,13 +12,23 @@
     <ion-card *ngIf="Workout">
       <ion-item>
         <ion-title>{{Workout.name}}</ion-title>
-
       </ion-item>
-
       <ion-list>
         <ion-label >Exercises</ion-label>
-        <ion-item *ngFor="let exercise of Workout.exercises">{{exercise.name}}</ion-item>
+        <ion-item *ngFor="let exercise of exercises" >
+         <ion-label>{{exercise.name}}</ion-label>
+          <ion-fab-button class="ion-text-end" size="small" (click)="deleteExercise(exercise._id)">
+            <ion-icon name="trash"></ion-icon>  
+          </ion-fab-button>
+        </ion-item>
       </ion-list>
+      <ion-item>
+        <ion-button 
+        shape="round"
+        class="btn"
+        size="Large"
+        >Update Workout</ion-button>
+      </ion-item>
       </ion-card>
   </ion-grid>
 </ion-content>
