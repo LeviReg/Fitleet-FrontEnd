@@ -13,19 +13,13 @@ import {
   Encoding,
   ILatLng,
 } from '@ionic-native/google-maps';
-import { ThrowStmt } from '@angular/compiler';
 
-declare var google;
-const GORYOKAKU_JAPAN = { lat: 41.796875, lng: 140.757007 };
 @Component({
   selector: 'app-pedometer',
   templateUrl: 'pedometer.page.html',
   styleUrls: ['pedometer.page.scss'],
 })
 export class PedometerPage implements AfterViewInit {
-  @ViewChild('map', { static: true }) mapElement: ElementRef;
-  @ViewChild('directionsPanel', { static: true }) directionsPanel: ElementRef;
-
   currentMapTrack: GoogleMap;
   map: GoogleMap;
   myLat: any;
@@ -45,25 +39,31 @@ export class PedometerPage implements AfterViewInit {
     private storage: Storage
   ) {}
 
-  ngAfterViewInit() {
-    this.plt.ready().then(() => {
+  async ngAfterViewInit() {
+    await this.plt.ready().then(() => {
       this.loadHistoricRoutes();
     });
-    this.geolocation.getCurrentPosition().then(res => {
-      this.loadMap(res);
-    });
+    this.geolocation.getCurrentPosition().then(
+      res => {
+        this.loadMap(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   loadMap(position: Geoposition) {
     console.log(position);
+
     this.map = GoogleMaps.create('map');
 
-    const GORYOKAKU_JAPAN = { lat: 41.796875, lng: 140.757007 };
     this.map.setOptions({
       backgroundColor: 'white',
       controls: {
         compass: true,
-        myLocationButton: false,
+        myLocationButton: true,
+        myLocation: true,
         indoorPicker: true,
         zoom: true, // Only for Android
       },
@@ -78,7 +78,7 @@ export class PedometerPage implements AfterViewInit {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         },
-        tilt: 30,
+        tilt: 0,
         zoom: 15,
         bearing: 50,
       },
@@ -86,29 +86,7 @@ export class PedometerPage implements AfterViewInit {
         building: false,
       },
     });
-
-    let marker: Marker = this.map.addMarkerSync({
-      title: 'Ionic',
-      icon: 'blue',
-      animation: 'DROP',
-      position: {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      },
-    });
   }
-
-  // loadMap() {
-  //   let mapOptions = {
-  //     zoom: 13,
-  //     mapTypeId: google.maps.MapTypeId.ROADMAP,
-  //     streetViewControl: false,
-  //     fullscreenControl: false
-  //   };
-
-  //   this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
-  // }
 
   loadHistoricRoutes() {
     this.storage.get('routes').then(data => {
