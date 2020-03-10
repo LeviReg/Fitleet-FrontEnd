@@ -30,10 +30,12 @@ export class FoodDiaryPage {
     });
   }
 
-  createDiary() {
-    this.authService.CreateDiary().subscribe(res => {
+  async createDiary() {
+    await this.authService.CreateDiary().subscribe(res => {
       console.log(res);
     });
     console.log('Create Diary Called');
+
+    await this.getFoodDiaries();
   }
 }
