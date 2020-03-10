@@ -12,7 +12,7 @@ import { IFoodDiaries } from '../interfaces/IFoodDiaries';
   providedIn: 'root',
 })
 export class AuthService {
-  url = environment.devurl;
+  url = environment.url;
   user = null;
   authenticationState = new BehaviorSubject(false);
   TOKEN_KEY = 'access_token';
