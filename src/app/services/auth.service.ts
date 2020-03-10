@@ -18,7 +18,6 @@ import { Router } from '@angular/router';
 export class AuthService {
   url = environment.url;
   user = null;
-  authenticationState = new BehaviorSubject(false);
   TOKEN_KEY = 'access_token';
 
   constructor(
@@ -43,7 +42,6 @@ export class AuthService {
 
         if (!isExpired) {
           this.user = decoded;
-          this.authenticationState.next(true);
         } else {
           this.storage.remove(this.TOKEN_KEY);
         }
@@ -101,7 +99,6 @@ export class AuthService {
         this.storage.set(this.TOKEN_KEY, res['token']);
         localStorage.setItem('access_token', res['token']);
         this.user = this.helper.decodeToken(res['token']);
-        this.authenticationState.next(true);
         this.router.navigate(['/home']);
       }),
       catchError(e => {
@@ -111,9 +108,8 @@ export class AuthService {
     );
   }
   logout() {
-    this.storage.remove(this.TOKEN_KEY).then(() => {
-      this.authenticationState.next(false);
-    });
+    localStorage.removeItem(this.TOKEN_KEY);
+    this.router.navigate(['/login']);
   }
   getSpecialData() {
     return this.http.get(`${this.url}/api/home`).pipe(
