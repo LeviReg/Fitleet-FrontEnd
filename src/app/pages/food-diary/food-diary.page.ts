@@ -11,7 +11,7 @@ import { IFoodDiaries } from 'src/app/interfaces/IFoodDiaries';
   templateUrl: './food-diary.page.html',
   styleUrls: ['./food-diary.page.scss'],
 })
-export class FoodDiaryPage implements OnInit {
+export class FoodDiaryPage {
   foodDiaries: IFoodDiaries[];
 
   constructor(
@@ -20,8 +20,8 @@ export class FoodDiaryPage implements OnInit {
     private authService: AuthService
   ) {}
 
-  ngOnInit() {
-    this.getFoodDiaries();
+  async ionViewDidEnter() {
+    await this.getFoodDiaries();
   }
 
   getFoodDiaries() {

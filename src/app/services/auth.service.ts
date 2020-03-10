@@ -10,12 +10,13 @@ import { IFoodDiaries } from '../interfaces/IFoodDiaries';
 import { from } from 'rxjs';
 import { WorkoutService } from './workouts.service';
 import { IWorkout } from '../interfaces/IExercise';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  url = environment.devurl;
+  url = environment.url;
   user = null;
   authenticationState = new BehaviorSubject(false);
   TOKEN_KEY = 'access_token';
@@ -26,7 +27,8 @@ export class AuthService {
     private storage: Storage,
     private plt: Platform,
     private alertController: AlertController,
-    private _exercise: WorkoutService
+    private _exercise: WorkoutService,
+    private router: Router
   ) {
     this.plt.ready().then(() => {
       this.checkToken();
@@ -92,12 +94,15 @@ export class AuthService {
   }
 
   login(credentials) {
+    console.log(credentials);
     return this.http.post(`${this.url}/api/login`, credentials).pipe(
       tap(res => {
+        console.log(res);
         this.storage.set(this.TOKEN_KEY, res['token']);
         localStorage.setItem('access_token', res['token']);
         this.user = this.helper.decodeToken(res['token']);
         this.authenticationState.next(true);
+        this.router.navigate(['/home']);
       }),
       catchError(e => {
         this.showAlert(e.error.msg);
@@ -122,9 +127,7 @@ export class AuthService {
       })
     );
   }
-  isAuthenticated() {
-    return this.authenticationState.value;
-  }
+
   showAlert(msg) {
     let alert = this.alertController.create({
       message: msg,
@@ -135,7 +138,7 @@ export class AuthService {
   }
   //connect open food facts to API
 
-  getWorkouts(){
+  getWorkouts() {
     return this.http.get<IWorkout[]>(`${this.url}/api/workouts/`);
   }
 
@@ -149,7 +152,7 @@ export class AuthService {
         name: workout,
         exercises: WorkoutName.map(el => {
           return {
-            name: el, 
+            name: el,
           };
         }),
       })
@@ -160,7 +163,7 @@ export class AuthService {
       );
   }
 
-  deleteWorkouts(id: string){
+  deleteWorkouts(id: string) {
     return this.http.delete(`${this.url}/api/deleteExercise/${id}`);
   }
 }

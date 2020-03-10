@@ -9,63 +9,66 @@ const routes: Routes = [
   {
     path: 'home',
     pathMatch: 'full',
-    loadChildren: './pages/home/home.module#HomePageModule'
+    loadChildren: './pages/home/home.module#HomePageModule',
+    canActivate: [AuthGuardService],
   },
   {
     path: 'register',
-    loadChildren: './pages/register/register.module#RegisterPageModule'
+    loadChildren: './pages/register/register.module#RegisterPageModule',
   },
   {
     path: 'pedometer',
-    loadChildren: './pages/pedometer/pedometer.module#PedometerPageModule'
+    loadChildren: './pages/pedometer/pedometer.module#PedometerPageModule',
+    canActivate: [AuthGuardService],
   },
   {
     path: 'food-diary',
-    loadChildren: './pages/food-diary/food-diary.module#FoodDiaryPageModule'
+    loadChildren: './pages/food-diary/food-diary.module#FoodDiaryPageModule',
+    canActivate: [AuthGuardService],
   },
   {
     path: 'workout-tracker',
     loadChildren:
-      './pages/workout-tracker/workout-tracker.module#WorkoutTrackerPageModule'
+      './pages/workout-tracker/workout-tracker.module#WorkoutTrackerPageModule',
+    canActivate: [AuthGuardService],
   },
   {
     path: 'profile',
 
-    loadChildren: './pages/profile/profile.module#ProfilePageModule'
+    loadChildren: './pages/profile/profile.module#ProfilePageModule',
+    canActivate: [AuthGuardService],
   },
   {
     path: 'rest',
-    loadChildren: './pages/rest-timer/rest-timer.module#RestTimerPageModule'
-  },
-  {
-    path: 'barcode-scanner',
-    loadChildren:
-      './pages/barcode-scanner/barcode-scanner.module#BarcodeScannerPageModule'
+    loadChildren: './pages/rest-timer/rest-timer.module#RestTimerPageModule',
+    canActivate: [AuthGuardService],
   },
   {
     path: 'workout-arms/:type',
-    loadChildren:'./pages/workout-arms/workout-arms.module#WorkoutArmsPageModule'
+    loadChildren:
+      './pages/workout-arms/workout-arms.module#WorkoutArmsPageModule',
+    canActivate: [AuthGuardService],
   },
-    
- // {
-//   path: 'workout-back',
- //   loadChildren:
-  //     './pages/workout-back/workout-back.module#WorkoutBackPageModule'
-  // },
   {
-        path: 'work-select',
-        loadChildren: './pages/work-select/work-select.module#WorkSelectPageModule'
+    path: 'work-select',
+    loadChildren: './pages/work-select/work-select.module#WorkSelectPageModule',
+    canActivate: [AuthGuardService],
   },
   {
     path: 'add-food/:mealType',
-    loadChildren: './pages/add-food/add-food.module#AddFoodPageModule'
+    loadChildren: './pages/add-food/add-food.module#AddFoodPageModule',
+    canActivate: [AuthGuardService],
   },
-  { path: 'edit-workout/:type', loadChildren: './pages/edit-workout/edit-workout.module#EditWorkoutPageModule' }
-
+  {
+    path: 'edit-workout/:type',
+    loadChildren:
+      './pages/edit-workout/edit-workout.module#EditWorkoutPageModule',
+    canActivate: [AuthGuardService],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
