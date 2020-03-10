@@ -6,4 +6,5 @@ export interface IExercise {
 export interface IWorkout {
   exercises: IExercise[];
   name: string;
+  _id: string;
 }
