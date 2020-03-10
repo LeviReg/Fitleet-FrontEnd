@@ -1,9 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
-import { WorkoutServiceService } from 'src/app/services/workout-service.service';
-//import { contents, quotes } from './quoteInterface';
-import { Contents, Quote } from './quoteInterface';
-import { checkAvailability } from '@ionic-native/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -25,13 +21,9 @@ export class ProfilePage implements OnInit {
       console.log(this.result.contents.quotes[0].quote);
     });
   }
-  check() {
-    console.log(this.result);
-  }
 
   ngOnInit() {
     this.LogQuote();
-
     //PedoMetor Chart
     // A Chart Object has to be canvas
     this.chart = new Chart('pedometorCanvas', {
@@ -51,7 +43,7 @@ export class ProfilePage implements OnInit {
         datasets: [
           {
             label: 'Progress through week',
-            data: [1000, 3000, 3000, 3500, 3000, 2500, 4500], // data for the line chart
+            data: [0, 0, 0, 100, 0, 0, 0], // data for the line chart
             backgroundColor: 'red', // the dots
             borderColor: 'black', // the line
             fill: false, // fill bascailly fills all the space underneath the line     Must be false
@@ -80,12 +72,12 @@ export class ProfilePage implements OnInit {
       data: {
         datasets: [
           {
-            data: [45, 30, 25], //data
-            backgroundColor: ['green', 'orange', 'red'], // Colours
+            data: [45, 10, 5, 25, 15], //data
+            backgroundColor: ['red', 'orange', 'yellow', 'green', 'blue'], // Colours
             label: 'Dataset 1',
           },
         ],
-        labels: ['Protein', 'Carbohydrate', 'Fat'], // names
+        labels: ['Calories', 'Fat', 'Protein', 'Carbs', 'Macros'], // names
       },
     });
   }

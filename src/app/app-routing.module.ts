@@ -48,11 +48,6 @@ const routes: Routes = [
       './pages/workout-arms/workout-arms.module#WorkoutArmsPageModule',
   },
 
-  // {
-  //   path: 'workout-back',
-  //   loadChildren:
-  //     './pages/workout-back/workout-back.module#WorkoutBackPageModule'
-  // },
   {
     path: 'work-select',
     loadChildren: './pages/work-select/work-select.module#WorkSelectPageModule',

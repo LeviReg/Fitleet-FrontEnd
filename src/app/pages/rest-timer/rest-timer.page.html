@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<ion-content color="dark">
+<ion-content color="primary">
   <!--Adding the datetime picker-->
   <ion-item color="primary">
     <ion-label> Rest Duration</ion-label>
@@ -12,24 +12,24 @@
   </ion-item>
 
   <!-- Circle progress timer and its settings -->
-  <div style="height: 50%">
+  <div class="progresscircle">
     <circle-progress
       (click)="startTimer()"
       [percent]="percent"
       [maxPercent]="100"
-      [radius]="radius"
+      [radius]="160"
       [showTitle]="false"
       [showSubtitle]="true"
       [subtitle]="remainingTime"
-      [subtitleFontSize]="40"
+      [subtitleFontSize]="55"
       [showUnits]="false"
       [outerStrokeWidth]="16"
-      [outerStrokeColor]="--ion-color-primary"
+      [outerStrokeColor]="red"
       [showZeroOuterStroke]="false"
-      [backgroundGradientStopColor]="--ion-color-primary"
       [backgroundStrokeWidth]="3"
-      [outerStrokeGradient]="true"
-      [showInnerStroke]="false"
+      [outerStrokeGradient]="false"
+      [showInnerStroke]="true"
+      [subtitleColor]="subtitleColor"
     ></circle-progress>
   </div>
 

@@ -24,14 +24,15 @@ export class WorkoutArmsPage implements OnInit {
     this._dataStorage.addExercise(exercise);
   }
 
+  /*
   getInfo() {
     this._service
       .fetchData(this.type)
       .subscribe(data => (this.Search = data['suggestions']));
-  }
+  }*/
 
   ngOnInit() {
     this.type = this.active.snapshot.paramMap.get('type');
-    this.getInfo();
+    // this.getInfo();
   }
 }

@@ -136,8 +136,8 @@ export class AuthService {
     });
     alert.then(alert => alert.present());
   }
-  //connect open food facts to API
 
+  //Calls quote to get the quote of the day.
   quoteOfTheDay() {
     return this._http.get(this._QuoteApi + 'qod', {}, {});
   }

@@ -13,8 +13,8 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 const routes: Routes = [
   {
     path: '',
-    component: RestTimerPage
-  }
+    component: RestTimerPage,
+  },
 ];
 
 @NgModule({
@@ -27,25 +27,21 @@ const routes: Routes = [
 
     NgCircleProgressModule.forRoot({
       // set defaults here
-      radius: 100,
+      titleFontSize: '25',
+      radius: 160,
       outerStrokeWidth: 16,
-      innerStrokeWidth: 8,
-      /* Original colors 
-      outerStrokeColor: '#78C000',
-      innerStrokeColor: '#C7E596', */
-      //[outerStrokeGradientStopColor]="'#000005a'"
-      // [backgroundStroke]="'#000005a'"
-      //   [outerStrokeGradient]="true"
-      //[outerStrokeGradient]="true"
-      // outerStrokeColor: '#005a00',
-      // innerStrokeColor: '#005a00',
-      //animationDuration: 300,
+      innerStrokeWidth: 1,
+      backgroundGradientStopColor: 'white',
+      innerStrokeColor: '#ffffff',
+      outerStrokeColor: '#ffffff',
       animation: false,
       responsive: true,
-      renderOnClick: false
-    })
+      renderOnClick: false,
+      titleColor: '#ffffff',
+      subtitleColor: '#ffffff',
+    }),
   ],
 
-  declarations: [RestTimerPage]
+  declarations: [RestTimerPage],
 })
 export class RestTimerPageModule {}

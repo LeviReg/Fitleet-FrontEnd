@@ -9,8 +9,6 @@ import { Insomnia } from '@ionic-native/insomnia/ngx';
   styleUrls: ['./rest-timer.page.scss'],
 })
 export class RestTimerPage implements OnInit {
-
-
   percent: number = 0;
   radius: number = 100;
 
@@ -25,16 +23,13 @@ export class RestTimerPage implements OnInit {
   elapsed: any = {
     h: '00',
     m: '00',
-    s: '00'
-  }
+    s: '00',
+  };
 
   //overalltimer
   countDownTimer: any = false;
 
-
-
   startTimer() {
-
     //clears(stops it) the old timer every time the counter is clicked.
     if (this.timer) {
       clearInterval(this.timer);
@@ -42,8 +37,6 @@ export class RestTimerPage implements OnInit {
     //if totalTimer is false then run progresTimer() as to not reset totalTimer
     if (!this.countDownTimer) {
       this.progressTimer();
-      //Keeps phone from going into sleep mode. run keep awake at start of timer.
-      this.insomnia.keepAwake();
     }
 
     this.timer = false;
@@ -66,7 +59,7 @@ export class RestTimerPage implements OnInit {
       //divide progress by total amount of seconds and * 100 to get the percentage
       this.percent = Math.floor((this.progress / totalSeconds) * 100);
       this.progress++;
-    }, 1000)
+    }, 1000);
   }
 
   progressTimer() {
@@ -79,22 +72,21 @@ export class RestTimerPage implements OnInit {
 
       // Time calculations for hours, minutes and seconds
 
-      this.elapsed.h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      this.elapsed.h = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
       this.elapsed.m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       this.elapsed.s = Math.floor((distance % (1000 * 60)) / 1000);
 
       this.elapsed.h = this.pad(this.elapsed.h, 2);
       this.elapsed.m = this.pad(this.elapsed.m, 2);
       this.elapsed.s = this.pad(this.elapsed.s, 2);
-
-    }, 1000)
-
-
+    }, 1000);
   }
 
   pad(num, size) {
-    let s = num + "";
-    while (s.length < size) s = "0" + s;
+    let s = num + '';
+    while (s.length < size) s = '0' + s;
     return s;
   }
 
@@ -110,21 +102,11 @@ export class RestTimerPage implements OnInit {
     this.elapsed = {
       h: '00',
       m: '00',
-      s: '00'
-    }
-    //Allows the phone to sleep again after time is stopped
-    this.insomnia.allowSleepAgain()
+      s: '00',
+    };
   }
 
+  constructor() {}
 
-  //Inject insomnia 
-  constructor(private insomnia: Insomnia) {
-
-    //this.insomnia.keepAwake.
-
-  }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
