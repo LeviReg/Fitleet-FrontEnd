@@ -10,10 +10,11 @@
   border-radius: 20px;
 }
 
-ion-item {
-  --background: none;
+ion-button {
+  display: flex;
+  flex-direction: column;
 }
 
-.Workouts{
-  text-decoration: none;
+ion-icon {
+  padding-right: 5px;
 }

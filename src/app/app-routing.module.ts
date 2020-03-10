@@ -43,9 +43,25 @@ const routes: Routes = [
       './pages/barcode-scanner/barcode-scanner.module#BarcodeScannerPageModule'
   },
   {
+    path: 'workout-arms/:type',
+    loadChildren:'./pages/workout-arms/workout-arms.module#WorkoutArmsPageModule'
+  },
+    
+ // {
+//   path: 'workout-back',
+ //   loadChildren:
+  //     './pages/workout-back/workout-back.module#WorkoutBackPageModule'
+  // },
+  {
+        path: 'work-select',
+        loadChildren: './pages/work-select/work-select.module#WorkSelectPageModule'
+  },
+  {
     path: 'add-food/:mealType',
     loadChildren: './pages/add-food/add-food.module#AddFoodPageModule'
-  }
+  },
+  { path: 'edit-workout/:type', loadChildren: './pages/edit-workout/edit-workout.module#EditWorkoutPageModule' }
+
 ];
 
 @NgModule({
