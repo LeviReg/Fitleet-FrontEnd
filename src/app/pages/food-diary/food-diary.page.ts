@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, LoadingController } from '@ionic/angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { scan } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
@@ -17,17 +17,36 @@ export class FoodDiaryPage {
   constructor(
     public navCtrl: NavController,
     public barcodeScanner: BarcodeScanner,
-    private authService: AuthService
+    private authService: AuthService,
+    public loadingCtrl: LoadingController
   ) {}
 
   async ionViewDidEnter() {
-    await this.getFoodDiaries();
+    await this.presentLoadingCustom().then(res => {
+      this.getFoodDiaries();
+    });
   }
 
   getFoodDiaries() {
     this.authService.GetFoodDiaries().subscribe(data => {
       this.foodDiaries = data;
     });
+  }
+
+  async presentLoadingCustom() {
+    let loading = this.loadingCtrl.create({
+      spinner: null,
+      showBackdrop: true,
+      cssClass: 'text-center',
+      message: `  
+      <ion-text class-"ion-text-center">Loading ... </ion-text>
+      </br>
+      <ion-item lines="none">
+        <img src="../../assets/loader.gif">
+        </ion-item>`,
+      duration: 3000,
+    });
+    return (await loading).present();
   }
 
   async createDiary() {
