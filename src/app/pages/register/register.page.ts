@@ -13,6 +13,7 @@ export class RegisterPage implements OnInit {
   newcredentialsForm: FormGroup;
 
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private _router: Router

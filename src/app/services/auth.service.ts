@@ -20,8 +20,6 @@ export class AuthService {
   authenticationState = new BehaviorSubject(false);
   TOKEN_KEY = 'access_token';
 
-  
-
   constructor(
     private http: HttpClient,
     private helper: JwtHelperService,
@@ -52,12 +50,23 @@ export class AuthService {
     });
   }
 
+  CreateDiary() {
+    return this.http
+      .post<any>(`${this.url}/api/food-diary/create-diary`, {}, {})
+      .pipe(
+        catchError(e => {
+          this.showAlert(e.error.msg);
+          console.log(e);
+          throw new Error(e);
+        })
+      );
+  }
+
   GetFoodDiaries(): Observable<IFoodDiaries[]> {
     return this.http.get<IFoodDiaries[]>(`${this.url}/api/Food-diary`);
   }
 
   register(user) {
-    console.log('Credentials', user);
     return this.http.post(`${this.url}/api/register`, user).pipe(
       catchError(e => {
         this.showAlert(e.error.msg);
@@ -66,18 +75,20 @@ export class AuthService {
       })
     );
   }
-  
+
   addFood(foodInfo) {
-    return this.http.post<any>(`${this.url}/api/food-diary/add-food`, foodInfo).pipe(
-      map(res => {
-        return res;
-      }),
-      catchError(e => {
-        this.showAlert(e.error.msg);
-        console.log(e);
-        throw new Error(e);
-      })
-    );
+    return this.http
+      .post<any>(`${this.url}/api/food-diary/add-food`, foodInfo)
+      .pipe(
+        map(res => {
+          return res;
+        }),
+        catchError(e => {
+          this.showAlert(e.error.msg);
+          console.log(e);
+          throw new Error(e);
+        })
+      );
   }
 
   login(credentials) {

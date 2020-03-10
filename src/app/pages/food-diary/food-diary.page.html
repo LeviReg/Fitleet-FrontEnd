@@ -1,7 +1,19 @@
 <app-navbar [headerTitle]="'Food-Diary'"></app-navbar>
+<div class="ion-text-center color">
+  <ion-button
+    color="light"
+    (click)="createDiary()"
+    *ngIf="foodDiaries?.length <= 0"
+    >Create Food Diary</ion-button
+  >
+</div>
 <ion-content color="primary">
   <ion-grid>
-    <ion-card *ngFor ="let diaries of foodDiaries; let i = index;" color="light" class="cards">
+    <ion-card
+      *ngFor="let diaries of foodDiaries; let i = index;"
+      color="light"
+      class="cards"
+    >
       <ion-item class="header">
         <ion-title class="title">Breakfast</ion-title>
         <ion-fab horizontal="end">
@@ -14,14 +26,18 @@
           ></ion-fab-button>
         </ion-fab>
       </ion-item>
-      <ion-list *ngFor = "let f of diaries.foods;" >
-        <ion-item *ngIf = "f.mealType == 'breakfast'">
+      <ion-list *ngFor="let f of diaries.foods;">
+        <ion-item *ngIf="f.mealType == 'breakfast'">
           <ion-label>{{f.foodName}}</ion-label>
           <ion-label class="ion-text-end">{{f.calories}} cals</ion-label>
         </ion-item>
       </ion-list>
     </ion-card>
-    <ion-card *ngFor ="let diaries of foodDiaries; let i = index;" color="light" class="cards">
+    <ion-card
+      *ngFor="let diaries of foodDiaries; let i = index;"
+      color="light"
+      class="cards"
+    >
       <ion-item class="header">
         <ion-title class="title">Lunch</ion-title>
         <ion-fab horizontal="end">
@@ -34,14 +50,18 @@
           ></ion-fab-button>
         </ion-fab>
       </ion-item>
-      <ion-list *ngFor = "let f of diaries.foods;" >
-        <ion-item *ngIf = "f.mealType == 'lunch'">
+      <ion-list *ngFor="let f of diaries.foods;">
+        <ion-item *ngIf="f.mealType == 'lunch'">
           <ion-label>{{f.foodName}}</ion-label>
           <ion-label class="ion-text-end">{{f.calories}} cals</ion-label>
         </ion-item>
       </ion-list>
     </ion-card>
-    <ion-card *ngFor ="let diaries of foodDiaries; let i = index;" color="light" class="cards">
+    <ion-card
+      *ngFor="let diaries of foodDiaries; let i = index;"
+      color="light"
+      class="cards"
+    >
       <ion-item class="header">
         <ion-title class="title">Dinner</ion-title>
         <ion-fab horizontal="end">
@@ -54,14 +74,18 @@
           ></ion-fab-button>
         </ion-fab>
       </ion-item>
-      <ion-list *ngFor = "let f of diaries.foods;">
-        <ion-item *ngIf = "f.mealType == 'dinner'">
+      <ion-list *ngFor="let f of diaries.foods;">
+        <ion-item *ngIf="f.mealType == 'dinner'">
           <ion-label>{{f.foodName}}</ion-label>
           <ion-label class="ion-text-end">{{f.calories}} cals</ion-label>
         </ion-item>
       </ion-list>
     </ion-card>
-    <ion-card *ngFor ="let diaries of foodDiaries; let i = index;" color="light" class="cards">
+    <ion-card
+      *ngFor="let diaries of foodDiaries; let i = index;"
+      color="light"
+      class="cards"
+    >
       <ion-item class="header">
         <ion-title class="title">Snacks</ion-title>
         <ion-fab horizontal="end">
@@ -74,8 +98,8 @@
           ></ion-fab-button>
         </ion-fab>
       </ion-item>
-      <ion-list *ngFor = "let f of diaries.foods;">
-        <ion-item *ngIf = "f.mealType == 'snack'">
+      <ion-list *ngFor="let f of diaries.foods;">
+        <ion-item *ngIf="f.mealType == 'snack'">
           <ion-label>{{f.foodName}}</ion-label>
           <ion-label class="ion-text-end">{{f.calories}} cals</ion-label>
         </ion-item>
