@@ -4,7 +4,10 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { scan } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
-import { IFoodDiaries, foods } from 'src/app/interfaces/IFoodDiaries';
+
+
+import { IFoodDiaries, IFoods } from 'src/app/interfaces/IFoodDiaries';
+
 
 @Component({
   selector: 'app-food-diary',
@@ -12,7 +15,8 @@ import { IFoodDiaries, foods } from 'src/app/interfaces/IFoodDiaries';
   styleUrls: ['./food-diary.page.scss'],
 })
 export class FoodDiaryPage {
-  foodDiaries: foods[];
+  foodDiaries: IFoodDiaries[];
+
   buttonPressed = false;
   pulledDown = true;
 
@@ -28,6 +32,7 @@ export class FoodDiaryPage {
       this.getFoodDiaries();
     });
   }
+
 
   async getFoodDiaries() {
     return this.authService.GetFoodDiaries().subscribe(data => {

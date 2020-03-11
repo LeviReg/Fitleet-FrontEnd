@@ -67,7 +67,7 @@ export class AuthService {
   }
 
   GetFoodDiaries(): Observable<IFoodDiaries[]> {
-    return this.http.get<IFoodDiaries[]>(`${this.url}/api/Food-diary`);
+    return this.http.get<IFoodDiaries[]>(`${this.url}/api/food-diary`);
   }
 
   register(user) {
