@@ -12,7 +12,7 @@ import { IFoodDiaries, foods } from 'src/app/interfaces/IFoodDiaries';
   styleUrls: ['./food-diary.page.scss'],
 })
 export class FoodDiaryPage {
-  foodDiaries: foods[];
+  foodDiaries: IFoodDiaries[];
   buttonPressed = false;
   pulledDown = true;
 
@@ -61,10 +61,6 @@ export class FoodDiaryPage {
     return (await loading).present();
   }
 
-  logFoods(id: string) {
-    console.log(id);
-  }
-
   deleteFoods(name: string) {
     this.foodDiaries = this.foodDiaries.filter(e => e._id !== name);
     this.authService.deleteFood(name).subscribe(data => {
@@ -73,6 +69,7 @@ export class FoodDiaryPage {
   }
 
   createDiary() {
+    console.log('Pressed');
     this.authService.CreateDiary().subscribe(res => {
       console.log(res);
     });

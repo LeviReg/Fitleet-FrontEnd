@@ -70,6 +70,18 @@ const routes: Routes = [
       './pages/edit-workout/edit-workout.module#EditWorkoutPageModule',
     canActivate: [AuthGuardService],
   },
+  {
+    path: 'previous-diaries',
+    loadChildren:
+      './pages/previous-diaries/previous-diaries.module#PreviousDiariesPageModule',
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'previous-diary/:id',
+    loadChildren:
+      './pages/previous-diary/previous-diary.module#PreviousDiaryPageModule',
+    canActivate: [AuthGuardService],
+  },
 ];
 
 @NgModule({

@@ -149,6 +149,10 @@ export class AuthService {
     return this.http.get<IWorkout>(`${this.url}/api/workoutID/${id}`);
   }
 
+  getFoodDiaryByID(id: string): Observable<IFoodDiaries[]> {
+    return this.http.get<IFoodDiaries[]>(`${this.url}/api/foodDiaryByID/${id}`);
+  }
+
   postWorkout(workout, WorkoutName) {
     return this.http
       .post<any>(`${this.url}/api/workouts/create`, {

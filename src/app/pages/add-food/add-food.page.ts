@@ -13,6 +13,7 @@ export class AddFoodPage implements OnInit {
   mealType: string;
   foodInfo: any;
   returnedFood: BarcodeInterface;
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
