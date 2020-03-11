@@ -5,7 +5,7 @@ import { WorkoutServiceService } from 'src/app/services/workout-service.service'
 import { Contents, Quote } from './quoteInterface';
 import { checkAvailability } from '@ionic-native/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { IProfile } from 'src/app/interfaces/IProfile';
+import { IProfile, IPedometer } from 'src/app/interfaces/IProfile';
 
 @Component({
   selector: 'app-profile',
@@ -16,12 +16,15 @@ export class ProfilePage implements OnInit {
   chart: any; // Pedometor Data
   doughnut: any; // Food Data
 
-  pedometer: IProfile[] = [];
+  pedometer: IProfile;
+  steps: IPedometer[];
   private result: any;
   
   constructor(private _service: AuthService) {}
 
-
+  ngOnInit():void{
+    
+  }
 
   LogQuote() {
     return this._service.quoteOfTheDay().then(data => {
@@ -33,7 +36,7 @@ export class ProfilePage implements OnInit {
     console.log(this.result);
   }
 
-  ngOnInit() {
+  ionViewDidEnter() {
     this.LogQuote();
     this.getWalk();
     //PedoMetor Chart
@@ -96,8 +99,13 @@ export class ProfilePage implements OnInit {
     
   }
   
-  async getWalk(){
-    this.pedometer = await this._service.getPedometerNumber().toPromise()
-    console.log(this.pedometer);
+   getWalk(){
+      this._service.getPedometerNumber().subscribe(data =>{
+      this.pedometer = data;
+      this.steps = data.pedometer;
+      console.log(data);
+      console.log(data.pedometer)
+    })
+
   }
 }
