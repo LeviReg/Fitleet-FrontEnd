@@ -20,7 +20,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   // url = environment.url;
-  url = environment.devurl;
+  url = environment.url;
   user = null;
   TOKEN_KEY = 'access_token';
   private _QuoteApi = 'https://quotes.rest/';
@@ -182,12 +182,11 @@ export class AuthService {
   deleteWorkouts(id: string) {
     return this.http.delete(`${this.url}/api/deleteExercise/${id}`);
   }
-  
-  
-  getPedometerNumber(): Observable<IProfile>{
+
+  getPedometerNumber(): Observable<IProfile> {
     return this.http.get<IProfile>(`${this.url}/api/pedometer`);
   }
-  
+
   deleteFood(id: string) {
     return this.http.delete(`${this.url}/api/deleteFood/${id}`);
   }

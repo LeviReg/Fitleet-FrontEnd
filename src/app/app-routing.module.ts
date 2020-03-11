@@ -39,7 +39,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
-    path: 'rest',
+    path: 'rest-timer',
     loadChildren: './pages/rest-timer/rest-timer.module#RestTimerPageModule',
     canActivate: [AuthGuardService],
   },
