@@ -18,25 +18,6 @@ export class WorkoutServiceService {
       .get<SearchResult>(this._privateURL + name)
       .pipe(tap(data => console.log('All: ' + JSON.stringify(data))));
   }
-  // //gets search results back as searchresult objects
-  // getArms(): Observable<SearchResult> {
-  //   //console.log(bookName);
-  //   return this._http
-  //     .get<SearchResult>(this._privateURL + 'biceps')
-  //     .pipe(tap(data => console.log('All: ' + JSON.stringify(data))));
-  // }
-  // getLegs(): Observable<SearchResult> {
-  //   //console.log(bookName);
-  //   return this._http
-  //     .get<SearchResult>(this._privateURL + 'squat')
-  //     .pipe(tap(data => console.log('All: ' + JSON.stringify(data))));
-  // }
-  // getShoulder(): Observable<SearchResult> {
-  //   //console.log(bookName);
-  //   return this._http
-  //     .get<SearchResult>(this._privateURL + 'shoulder')
-  //     .pipe(tap(data => console.log('All: ' + JSON.stringify(data))));
-  // }
 
   getWorkouts() {}
 
