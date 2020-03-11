@@ -27,11 +27,9 @@ export class PedometerPage {
   myLat: any;
   myLng: any;
   routes: Observable<any>[];
-
   isTracking = false;
   trackedRoute = [];
   previousTracks: any = [];
-
   positionSubscription: Subscription;
 
   constructor(
@@ -40,10 +38,10 @@ export class PedometerPage {
     private geolocation: Geolocation,
     private storage: Storage
   ) {}
-
+  // ion view did enter is used, to render map each time the page is navigated into
   async ionViewDidEnter() {
     await this.plt.ready().then(() => {
-      this.loadHistoricRoutes();
+      this.loadPreviousRuns();
     });
     this.geolocation.getCurrentPosition().then(
       res => {
@@ -54,12 +52,10 @@ export class PedometerPage {
       }
     );
   }
-
+  // this loads the map
   loadMap(position: Geoposition) {
-    console.log(position);
-
+    //console.log(position);
     this.map = GoogleMaps.create('map');
-
     this.map.setOptions({
       backgroundColor: 'white',
       controls: {
@@ -89,16 +85,16 @@ export class PedometerPage {
       },
     });
   }
-
-  loadHistoricRoutes() {
+  // this loads the previous workouts
+  loadPreviousRuns() {
     this.storage.get('routes').then(data => {
       if (data) {
         this.previousTracks = data;
       }
     });
   }
-
-  startTracking() {
+  //starts workout based on current geolocation
+  startWorkout() {
     this.isTracking = true;
     this.routes = [];
 
@@ -118,18 +114,20 @@ export class PedometerPage {
         }, 3000);
       });
   }
-
-  stopTracking() {
+  //stops workout and logs the route you took
+  stopWorkout() {
     let newRoute = { finished: new Date().getTime(), path: this.trackedRoute };
     let distance = getPathLength(newRoute.path);
+    //let steps = getPathLength(newRoute.path);
     console.log('Distance: ', distance / 1000, 'KM');
+    console.log('Distance: ', distance / 0.27, 'Steps');
     this.previousTracks.push(newRoute);
     this.storage.set('routes', this.previousTracks);
     this.isTracking = false;
     this.positionSubscription.unsubscribe();
     this.map.clear();
   }
-
+  //redraws previous track that you ran
   redrawPath(path) {
     this.map.addPolyline({
       points: path,
@@ -138,18 +136,16 @@ export class PedometerPage {
       strokeOpacity: 1.0,
       strokeWeight: 3,
     });
-
-    console.log(path);
     this.map.addPolyline(path);
   }
-
-  showHistoryRoute(route) {
+  //redraws the old route on the map
+  showOldWorkouts(route) {
     this.map.clear();
     this.redrawPath(route);
     //console.log(this.previousTracks);
   }
-
-  clearTracks() {
+  //clears old workouts that were saved to local storage
+  clearOldWorkouts() {
     return this.storage.set('routes', null).then(res => {
       return res;
     });
