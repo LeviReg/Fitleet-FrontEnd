@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { AuthService } from 'src/app/services/auth.service';
+import { IUser } from 'src/app/interfaces/IUser';
+import { Quote } from './quoteInterface';
 
 @Component({
   selector: 'app-profile',
@@ -10,20 +12,31 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ProfilePage implements OnInit {
   chart: any; // Pedometor Data
   doughnut: any; // Food Data
+  authUser: IUser;
 
   constructor(private _service: AuthService) {}
 
+  //needs renaming
   private result: any;
 
-  LogQuote() {
+  private UsersName: any;
+  private pedometer: any;
+
+  GetQuote() {
     return this._service.quoteOfTheDay().then(data => {
       this.result = JSON.parse(data.data);
       console.log(this.result.contents.quotes[0].quote);
     });
   }
 
-  ngOnInit() {
-    this.LogQuote();
+  async ngOnInit() {
+    this.GetQuote();
+    // this.GetUsername();
+
+    this.authUser = await this._service.fetchSingleUser().toPromise();
+
+    console.log(this.authUser);
+
     //PedoMetor Chart
     // A Chart Object has to be canvas
     this.chart = new Chart('pedometorCanvas', {
@@ -72,12 +85,12 @@ export class ProfilePage implements OnInit {
       data: {
         datasets: [
           {
-            data: [45, 10, 5, 25, 15], //data
-            backgroundColor: ['red', 'orange', 'yellow', 'green', 'blue'], // Colours
+            data: [120, 300, 45], //data
+            backgroundColor: ['green', 'red', 'blue'], // Colours
             label: 'Dataset 1',
           },
         ],
-        labels: ['Calories', 'Fat', 'Protein', 'Carbs', 'Macros'], // names
+        labels: ['Protein', 'Carbohydrates', 'Fat'], // names
       },
     });
   }

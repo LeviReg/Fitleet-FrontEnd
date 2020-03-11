@@ -11,12 +11,14 @@ import { from } from 'rxjs';
 import { WorkoutService } from './workouts.service';
 import { IWorkout } from '../interfaces/IExercise';
 import { HTTP } from '@ionic-native/http/ngx';
+import { IUser } from '../interfaces/IUser';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  url = environment.url;
+  // url = environment.url;
+  url = environment.devurl;
   user = null;
   authenticationState = new BehaviorSubject(false);
   TOKEN_KEY = 'access_token';
@@ -141,6 +143,13 @@ export class AuthService {
   quoteOfTheDay() {
     return this._http.get(this._QuoteApi + 'qod', {}, {});
   }
+  //gets username for profile page
+  ReturnUsername(id: string) {
+    return this._http.get(`${this.url}/api/getUser/`, {}, {});
+  }
+
+  fetchSingleUser = (): Observable<IUser> =>
+    this.http.get<IUser>(`${this.url}/api/getUser`);
 
   getWorkouts() {
     return this.http.get<IWorkout[]>(`${this.url}/api/workouts/`);

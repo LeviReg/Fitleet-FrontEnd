@@ -27,10 +27,14 @@ const routes: Routes = [
 
     NgCircleProgressModule.forRoot({
       // set defaults here
-      titleFontSize: '25',
+      titleFontSize: '35',
+      subtitleFontSize: '18',
       radius: 160,
-      outerStrokeWidth: 16,
-      innerStrokeWidth: 1,
+      //show the title?
+      showTitle: false,
+      subtitle: 'Start Timer',
+      outerStrokeWidth: 20,
+      innerStrokeWidth: 3,
       backgroundGradientStopColor: 'white',
       innerStrokeColor: '#ffffff',
       outerStrokeColor: '#ffffff',

@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-//import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
-//always on screen
 import { Insomnia } from '@ionic-native/insomnia/ngx';
 
 @Component({
