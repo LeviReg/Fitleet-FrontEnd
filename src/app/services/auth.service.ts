@@ -11,12 +11,13 @@ import { from } from 'rxjs';
 import { WorkoutService } from './workouts.service';
 import { IWorkout } from '../interfaces/IExercise';
 import { HTTP } from '@ionic-native/http/ngx';
+import { IProfile } from '../interfaces/IProfile';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  url = environment.url;
+  url = environment.devurl;
   user = null;
   authenticationState = new BehaviorSubject(false);
   TOKEN_KEY = 'access_token';
@@ -169,5 +170,10 @@ export class AuthService {
 
   deleteWorkouts(id: string) {
     return this.http.delete(`${this.url}/api/deleteExercise/${id}`);
+  }
+  
+  
+  getPedometerNumber(): Observable<IProfile[]>{
+    return this.http.get<IProfile[]>(`${this.url}/api/pedometer`);
   }
 }
