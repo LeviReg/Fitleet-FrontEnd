@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, LoadingController } from '@ionic/angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { scan } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
@@ -11,17 +11,20 @@ import { IFoodDiaries } from 'src/app/interfaces/IFoodDiaries';
   templateUrl: './food-diary.page.html',
   styleUrls: ['./food-diary.page.scss'],
 })
-export class FoodDiaryPage implements OnInit {
+export class FoodDiaryPage {
   foodDiaries: IFoodDiaries[];
 
   constructor(
     public navCtrl: NavController,
     public barcodeScanner: BarcodeScanner,
-    private authService: AuthService
+    private authService: AuthService,
+    public loadingCtrl: LoadingController
   ) {}
 
-  ngOnInit() {
-    this.getFoodDiaries();
+  async ionViewDidEnter() {
+    await this.presentLoadingCustom().then(res => {
+      this.getFoodDiaries();
+    });
   }
 
   getFoodDiaries() {
@@ -30,10 +33,28 @@ export class FoodDiaryPage implements OnInit {
     });
   }
 
-  createDiary() {
-    this.authService.CreateDiary().subscribe(res => {
+  async presentLoadingCustom() {
+    let loading = this.loadingCtrl.create({
+      spinner: null,
+      showBackdrop: true,
+      cssClass: 'text-center',
+      message: `  
+      <ion-text class-"ion-text-center">Loading ... </ion-text>
+      </br>
+      <ion-item lines="none">
+        <img src="../../assets/loader.gif">
+        </ion-item>`,
+      duration: 3000,
+    });
+    return (await loading).present();
+  }
+
+  async createDiary() {
+    await this.authService.CreateDiary().subscribe(res => {
       console.log(res);
     });
     console.log('Create Diary Called');
+
+    await this.getFoodDiaries();
   }
 }

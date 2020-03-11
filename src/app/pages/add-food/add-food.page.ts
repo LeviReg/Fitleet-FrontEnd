@@ -20,10 +20,10 @@ export class AddFoodPage implements OnInit {
     private router: Router
   ) {
     this.foodForm = this.formBuilder.group({
-      foodName: [],
+      foodName: ['', Validators.required],
       servingSize: [],
       weightType: [],
-      calories: [],
+      calories: ['', Validators.required],
     });
   }
 
@@ -37,8 +37,6 @@ export class AddFoodPage implements OnInit {
   }
 
   populateFields() {
-    console.log(this.returnedFood);
-    console.log(this.returnedFood.product.nutriments['energy-kcal_100g']);
     if (this.returnedFood != undefined) {
       this.foodForm
         .get('foodName')
@@ -57,7 +55,6 @@ export class AddFoodPage implements OnInit {
       calories: this.foodForm.get('calories').value,
       mealType: this.mealType,
     };
-    console.log(this.foodInfo);
     this.authService.addFood(this.foodInfo).subscribe(res => {
       console.log(res);
     });

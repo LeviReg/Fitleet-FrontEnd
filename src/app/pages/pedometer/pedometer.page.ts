@@ -19,7 +19,7 @@ import {
   templateUrl: 'pedometer.page.html',
   styleUrls: ['pedometer.page.scss'],
 })
-export class PedometerPage implements AfterViewInit {
+export class PedometerPage {
   currentMapTrack: GoogleMap;
   map: GoogleMap;
   myLat: any;
@@ -39,7 +39,7 @@ export class PedometerPage implements AfterViewInit {
     private storage: Storage
   ) {}
 
-  async ngAfterViewInit() {
+  async ionViewWillEnter() {
     await this.plt.ready().then(() => {
       this.loadHistoricRoutes();
     });
