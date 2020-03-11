@@ -5,9 +5,7 @@ import { scan } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
 
-
 import { IFoodDiaries, IFoods } from 'src/app/interfaces/IFoodDiaries';
-
 
 @Component({
   selector: 'app-food-diary',
@@ -16,7 +14,6 @@ import { IFoodDiaries, IFoods } from 'src/app/interfaces/IFoodDiaries';
 })
 export class FoodDiaryPage {
   foodDiaries: IFoodDiaries[];
-
   buttonPressed = false;
   pulledDown = true;
 
@@ -32,7 +29,6 @@ export class FoodDiaryPage {
       this.getFoodDiaries();
     });
   }
-
 
   async getFoodDiaries() {
     return this.authService.GetFoodDiaries().subscribe(data => {
@@ -66,10 +62,6 @@ export class FoodDiaryPage {
     return (await loading).present();
   }
 
-  logFoods(id: string) {
-    console.log(id);
-  }
-
   deleteFoods(name: string) {
     this.foodDiaries = this.foodDiaries.filter(e => e._id !== name);
     this.authService.deleteFood(name).subscribe(data => {
@@ -78,6 +70,7 @@ export class FoodDiaryPage {
   }
 
   createDiary() {
+    console.log('Pressed');
     this.authService.CreateDiary().subscribe(res => {
       console.log(res);
     });

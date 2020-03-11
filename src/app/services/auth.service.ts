@@ -20,7 +20,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   // url = environment.url;
-  url = environment.devurl;
+  url = environment.url;
   user = null;
   TOKEN_KEY = 'access_token';
   private _QuoteApi = 'https://quotes.rest/';
@@ -101,7 +101,6 @@ export class AuthService {
     console.log(credentials);
     return this.http.post(`${this.url}/api/login`, credentials).pipe(
       tap(res => {
-        console.log(res);
         this.storage.set(this.TOKEN_KEY, res['token']);
         localStorage.setItem('access_token', res['token']);
         this.user = this.helper.decodeToken(res['token']);
@@ -159,6 +158,10 @@ export class AuthService {
     return this.http.get<IWorkout>(`${this.url}/api/workoutID/${id}`);
   }
 
+  getFoodDiaryByID(id: string): Observable<IFoodDiaries[]> {
+    return this.http.get<IFoodDiaries[]>(`${this.url}/api/foodDiaryByID/${id}`);
+  }
+
   postWorkout(workout, WorkoutName) {
     return this.http
       .post<any>(`${this.url}/api/workouts/create`, {
@@ -179,12 +182,11 @@ export class AuthService {
   deleteWorkouts(id: string) {
     return this.http.delete(`${this.url}/api/deleteExercise/${id}`);
   }
-  
-  
-  getPedometerNumber(): Observable<IProfile>{
+
+  getPedometerNumber(): Observable<IProfile> {
     return this.http.get<IProfile>(`${this.url}/api/pedometer`);
   }
-  
+
   deleteFood(id: string) {
     return this.http.delete(`${this.url}/api/deleteFood/${id}`);
   }

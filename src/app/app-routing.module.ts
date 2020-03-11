@@ -39,7 +39,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
-    path: 'rest',
+    path: 'rest-timer',
     loadChildren: './pages/rest-timer/rest-timer.module#RestTimerPageModule',
     canActivate: [AuthGuardService],
   },
@@ -68,6 +68,18 @@ const routes: Routes = [
     path: 'edit-workout/:type',
     loadChildren:
       './pages/edit-workout/edit-workout.module#EditWorkoutPageModule',
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'previous-diaries',
+    loadChildren:
+      './pages/previous-diaries/previous-diaries.module#PreviousDiariesPageModule',
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'previous-diary/:id',
+    loadChildren:
+      './pages/previous-diary/previous-diary.module#PreviousDiaryPageModule',
     canActivate: [AuthGuardService],
   },
 ];

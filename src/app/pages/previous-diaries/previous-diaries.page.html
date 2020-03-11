@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Previous Diaries</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="primary">
+  <ion-grid>
+    <ion-card
+      *ngFor="let diaries of foodDiaries; let i = index;"
+      color="light"
+      class="cards"
+    >
+      <ion-item class="header">
+        <ion-title
+          [routerLink]="['/previous-diary', diaries._id]"
+          class="ion-text-start title"
+          >Diary From {{diaries.createdAt}}</ion-title
+        >
+      </ion-item>
+    </ion-card>
+  </ion-grid>
+</ion-content>

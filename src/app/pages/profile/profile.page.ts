@@ -10,23 +10,17 @@ import { IProfile, IPedometer } from 'src/app/interfaces/IProfile';
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage {
   chart: any; // Calorie Data
   doughnut: any; // Food Data
   authUser: IUser;
 
   pedometer: IProfile;
   steps: IPedometer[];
-  private result: any;
-  
+  result: any;
+
   constructor(private _service: AuthService) {}
   //needs renaming
-  private result: any;
-  private UsersName: any;
-  
-  ngOnInit():void{
-    
-  }
 
   GetQuote() {
     return this._service.quoteOfTheDay().then(data => {
@@ -35,13 +29,10 @@ export class ProfilePage implements OnInit {
     });
   }
 
-  async ngOnInit() {
+  async ionViewDidEnter() {
     this.GetQuote();
 
     this.authUser = await this._service.fetchSingleUser().toPromise();
-
-    console.log(this.authUser);
-
     // A Chart Object has to be canvas
     this.chart = new Chart('CalorieCanvas', {
       type: 'line', //type of chart
@@ -96,18 +87,15 @@ export class ProfilePage implements OnInit {
         ],
         labels: ['Protein', 'Carbohydrates', 'Fat'], // names
       },
-    });    
-    
-    
+    });
   }
-  
-   getWalk(){
-      this._service.getPedometerNumber().subscribe(data =>{
+
+  getWalk() {
+    this._service.getPedometerNumber().subscribe(data => {
       this.pedometer = data;
       this.steps = data.pedometer;
       console.log(data);
-      console.log(data.pedometer)
-    })
-
+      console.log(data.pedometer);
+    });
   }
 }

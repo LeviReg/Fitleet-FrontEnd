@@ -1,5 +1,18 @@
 <app-navbar [headerTitle]="'Food-Diary'"></app-navbar>
 <ion-content color="primary">
+  <ion-tabs color="secondary">
+    <ion-tab-bar color="secondary" slot="bottom">
+      <ion-tab-button tab="schedule">
+        <ion-icon name="book"></ion-icon>
+        <ion-label>Current Diary</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button [routerLink]="['/previous-diaries']">
+        <ion-icon name="book"></ion-icon>
+        <ion-label>Previous Diaries</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
   <ion-refresher color="primary" slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
