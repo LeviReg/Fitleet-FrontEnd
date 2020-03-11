@@ -1,14 +1,3 @@
-/*
-export interface contents {
-  quotes: string[];
-}
-
-export interface quotes {
-  quote: string;
-  author: string;
-  category: string;
-}*/
-
 export interface Success {
   total: number;
 }
