@@ -10,7 +10,7 @@ import { IFoodDiaries } from 'src/app/interfaces/IFoodDiaries';
 })
 export class PreviousDiaryPage implements OnInit {
   id: string;
-  foodDiaries: IFoodDiaries[];
+  foodDiaries: any[];
   constructor(
     private active: ActivatedRoute,
     private authService: AuthService
@@ -23,7 +23,7 @@ export class PreviousDiaryPage implements OnInit {
 
   getSelectedDiary() {
     return this.authService.getFoodDiaryByID(this.id).subscribe((data: any) => {
-      this.foodDiaries = data;
+      this.foodDiaries = data.foods;
       console.log('The data', this.foodDiaries);
     });
   }
