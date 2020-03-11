@@ -22,6 +22,7 @@ export class WorkoutServiceService {
       .pipe(tap(data => console.log('All: ' + JSON.stringify(data))));
   }
 
+
   quoteOfTheDay() {
     return this._http.get(this._QuoteApi + 'qod');
   }

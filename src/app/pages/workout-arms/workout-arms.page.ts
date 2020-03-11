@@ -27,10 +27,15 @@ export class WorkoutArmsPage implements OnInit {
     this._dataStorage.addExercise(exercise);
   }
 
+  /*
   getInfo() {
     this.Search = [];
     this._service
       .fetchData(this.type)
+      .subscribe(data => (this.Search = data['suggestions']));
+  }*/
+
+  ngOnInit() {
       .subscribe(data => (this.Search.push(...data['suggestions'])));   
           
       if(this.type == 'biceps'){
@@ -42,6 +47,6 @@ export class WorkoutArmsPage implements OnInit {
   
   ionViewDidEnter() {
     this.type = this.active.snapshot.paramMap.get('type');
-    this.getInfo();
+    // this.getInfo();
   }
 }
