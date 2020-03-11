@@ -77,7 +77,7 @@ export class PedometerPage {
           lng: position.coords.longitude,
         },
         tilt: 0,
-        zoom: 15,
+        zoom: 16,
         bearing: 50,
       },
       preferences: {

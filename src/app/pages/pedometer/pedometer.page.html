@@ -28,19 +28,17 @@
     <div #map id="map"></div>
   </ion-card>
 
-  <ion-card>
-    <ion-item
-      color="light"
-      *ngFor="let route of previousTracks"
-      lines="none"
-      class="runs"
+  <ion-item
+    color="light"
+    *ngFor="let route of previousTracks"
+    lines="none"
+    class="runs"
+  >
+    {{ route.finished | date }}
+    <ion-button fill="clear" item-end (click)="showOldWorkouts(route.path)"
+      >View Run</ion-button
     >
-      {{ route.finished | date }}
-      <ion-button fill="clear" item-end (click)="showOldWorkouts(route.path)"
-        >View Run</ion-button
-      >
-    </ion-item>
-  </ion-card>
+  </ion-item>
 
   <ion-button
     center
