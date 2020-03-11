@@ -9,6 +9,6 @@ import { ScannerComponent } from './scanner.component';
 @NgModule({
   imports: [CommonModule, IonicModule, FormsModule, RouterModule],
   declarations: [ScannerComponent],
-  exports: [ScannerComponent]
+  exports: [ScannerComponent],
 })
 export class ScannerComponentModule {}

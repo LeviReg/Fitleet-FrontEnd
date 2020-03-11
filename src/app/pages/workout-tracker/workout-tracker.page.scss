@@ -1,12 +1,29 @@
-.container {
-    position: relative;
-    margin: auto;
-    color: white;
+.grid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  place-content: center;
 }
 
-.centered {
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    transform: translate(-50%, -50%);
+.card {
+  padding: 60px;
+  border-radius: 20px;
+}
+
+ion-item {
+  --background: none;
+}
+
+.Workouts{
+  text-decoration: none;
+}
+
+.icon-x-large {
+  font-size: 64px;
+  margin-top: 48px;
+}
+
+.rounded {
+  border-radius: 20px;
+  padding: 0;
 }

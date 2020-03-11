@@ -1,72 +1,50 @@
-<app-navbar [headerTitle]="'Workouts'"></app-navbar>
-<ion-content>
-  <ion-card>
-    <ion-card class="pic-and-route">
-      <div class="container-fluid" style="display: inline-block;">
-        <div class="Workout-image">
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4uBsqiHlXdO0xOGlr-1FI-K0SSoRYOReJuy52kDBUzODcDpe6Xg&s"
-            alt="armWorkout"
-            class="img-responsive"
-            id="Workout-image"
-            style="height: 100%; width: 500%; "
-          />
-        </div>
-      </div>
-    </ion-card>
+<ion-header>
+  <ion-toolbar color="secondary" class="ion-text-start">
+    <ion-item color="secondary" lines="none">
+      <ion-menu-button color="light">
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-menu-button>
+      <ion-title>Workouts</ion-title>
+    </ion-item>
+    <ion-buttons slot="primary">
+      <a [routerLink]="['/work-select']">
+        <ion-button color="light">
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ion-button>
+      </a>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
-    <!--Title of the Workout-->
-    <h2
-      class="workout-tracker"
-      style="  font-family: 'Hind', sans-serif;
-      font-weight: 600;
-      text-transform: uppercase;
-      color: black;
-      text-align: center;
-      font-size: 1.5em;
-      letter-spacing: 4px;
-      margin: 0;
-      padding: 0;"
-    >
-      Biceip Curl
-    </h2>
+<ion-content color="primary">
+  <ion-grid>
+    <ion-row *ngIf="Workouts && Workouts.length">
+      <ion-col>
+        <ion-card
+          class="rounded"
+          color="light"
+          *ngFor="let workoutPast of Workouts; let i = index;"
+        >
+          <ion-item
+            color="light"
+            [routerLink]="['/edit-workout',workoutPast._id ]"
+          >
+            <ion-item class="Workouts">{{workoutPast.name}}</ion-item>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
 
-    <!--Desciption on how to do it-->
-    <ion-card style="margin-left: 5%; margin-right: 5%;">
-      <div
-        class="workout-decription"
-        style="margin-left: 5px; margin-right: 5px;"
-      >
-        To do a bicep curl you need to have the weight in your hand. Lift the
-        Dumbbell while keeping your arm at you side of your body
-      </div>
-
-      <p></p>
-
-      <!-- Start workout with button linking to  -->
-      <div class="workout-sets-reps">
-        <ul>
-          <li>
-            1 <span>set</span> &#8594; 15<span>KG</span> &#215; 15<span
-              >reps</span
-            >
-          </li>
-          <li>
-            2 <span>set</span> &#8594; 10<span>KG</span>&#215; 15<span
-              >reps</span
-            >
-          </li>
-          <li>
-            3 <span>set</span> &#8594; 5<span>KG</span> &#215; 15<span
-              >reps</span
-            >
-          </li>
-        </ul>
-      </div>
-    </ion-card>
-
-    <button class="btn btn-success" style="text-align: center;">
-      Start Timer
-    </button>
-  </ion-card>
+    <ion-row *ngIf="Workouts && !Workouts.length">
+      <ion-col size="12" class="ion-text-center">
+        <ion-icon class="icon-x-large" color="medium" name="sad"></ion-icon>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <ion-label color="medium">You have no workouts</ion-label>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <ion-label color="medium">Click the + icon to add one</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -1,8 +1,15 @@
-<app-navbar [headerTitle]="'Add Food'"></app-navbar>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Food</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content color="primary">
   <ion-card class="card-center" color="light">
     <ion-item lines="none">
-      <app-scanner class="center"></app-scanner>
+      <app-scanner class="center" (sendData)="getData($event)"></app-scanner>
     </ion-item>
     <form [formGroup]="foodForm" (ngSubmit)="onSubmit()">
       <ion-item>
@@ -11,7 +18,11 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">Serving Size</ion-label>
-        <ion-input type="text" formControlName="servingSize" required></ion-input>
+        <ion-input
+          type="text"
+          formControlName="servingSize"
+          required
+        ></ion-input>
         <ion-select
           multiple="false"
           formControlName="weightType"
@@ -28,7 +39,11 @@
       </ion-item>
 
       <ion-item>
-        <ion-button (click)="onSubmit()" size="large" class="center"
+        <ion-button
+          [disabled]="!foodForm.valid"
+          (click)="onSubmit()"
+          size="large"
+          class="center"
           >Add</ion-button
         >
       </ion-item>

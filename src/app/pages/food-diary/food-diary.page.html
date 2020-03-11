@@ -1,13 +1,32 @@
 <app-navbar [headerTitle]="'Food-Diary'"></app-navbar>
-<div class="ion-text-center color">
-  <ion-button
-    color="light"
-    (click)="createDiary()"
-    *ngIf="foodDiaries?.length <= 0"
-    >Create Food Diary</ion-button
-  >
-</div>
 <ion-content color="primary">
+  <ion-refresher color="primary" slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="foodDiaries?.length <= 0" class="ion-text-center" color="primary">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          <ion-icon class="icon-x-large" color="medium" name="sad"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-label>Looks like you have no food diaries!</ion-label>
+    <br />
+    <ion-label>Press the button below to create one!</ion-label>
+    <ion-button color="light" (click)="createDiary()"
+      >Create Food Diary</ion-button
+    >
+  </div>
+  <div class="ion-text-center">
+    <ion-label *ngIf="pulledDown == false">Pull down to refresh!</ion-label>
+  </div>
   <ion-grid>
     <ion-card
       *ngFor="let diaries of foodDiaries; let i = index;"
@@ -28,6 +47,13 @@
       </ion-item>
       <ion-list *ngFor="let f of diaries.foods;">
         <ion-item *ngIf="f.mealType == 'breakfast'">
+          <ion-fab-button
+            class="ion-text-end, buttonSize"
+            size="small"
+            (click)="deleteFoods(f._id)"
+          >
+            <ion-icon name="trash"></ion-icon>
+          </ion-fab-button>
           <ion-label>{{f.foodName}}</ion-label>
           <ion-label class="ion-text-end">{{f.calories}} cals</ion-label>
         </ion-item>
@@ -52,6 +78,13 @@
       </ion-item>
       <ion-list *ngFor="let f of diaries.foods;">
         <ion-item *ngIf="f.mealType == 'lunch'">
+          <ion-fab-button
+            class="ion-text-end, buttonSize"
+            size="small"
+            (click)="deleteFoods(f._id)"
+          >
+            <ion-icon name="trash"></ion-icon>
+          </ion-fab-button>
           <ion-label>{{f.foodName}}</ion-label>
           <ion-label class="ion-text-end">{{f.calories}} cals</ion-label>
         </ion-item>
@@ -76,6 +109,13 @@
       </ion-item>
       <ion-list *ngFor="let f of diaries.foods;">
         <ion-item *ngIf="f.mealType == 'dinner'">
+          <ion-fab-button
+            class="ion-text-end, buttonSize"
+            size="small"
+            (click)="deleteFoods(f._id)"
+          >
+            <ion-icon name="trash"></ion-icon>
+          </ion-fab-button>
           <ion-label>{{f.foodName}}</ion-label>
           <ion-label class="ion-text-end">{{f.calories}} cals</ion-label>
         </ion-item>
@@ -100,6 +140,13 @@
       </ion-item>
       <ion-list *ngFor="let f of diaries.foods;">
         <ion-item *ngIf="f.mealType == 'snack'">
+          <ion-fab-button
+            class="ion-text-end, buttonSize"
+            size="small"
+            (click)="deleteFoods(f._id)"
+          >
+            <ion-icon name="trash"></ion-icon>
+          </ion-fab-button>
           <ion-label>{{f.foodName}}</ion-label>
           <ion-label class="ion-text-end">{{f.calories}} cals</ion-label>
         </ion-item>

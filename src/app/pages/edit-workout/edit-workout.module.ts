@@ -5,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { BarcodeScannerPage } from './barcode-scanner.page';
+import { EditWorkoutPage } from './edit-workout.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: BarcodeScannerPage
+    component: EditWorkoutPage
   }
 ];
 
@@ -21,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [BarcodeScannerPage]
+  declarations: [EditWorkoutPage]
 })
-export class BarcodeScannerPageModule {}
+export class EditWorkoutPageModule {}

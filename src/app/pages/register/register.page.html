@@ -9,11 +9,7 @@
     <ion-img src="assets/fitleet-logo.png" class="logo"></ion-img>
   </ion-item>
   <ion-card class="card-center" color="secondary">
-    <form
-      [formGroup]="newcredentialsForm"
-      (ngSubmit)="onSubmit()"
-      color="primary"
-    >
+    <form [formGroup]="newcredentialsForm" color="primary">
       <ion-item lines="none">
         <ion-label position="floating">Username</ion-label>
         <ion-input type="username" formControlName="username"></ion-input>

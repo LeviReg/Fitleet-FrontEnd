@@ -1,22 +1,21 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BarcodeScannerPage } from './barcode-scanner.page';
+import { WorkoutArmsPage } from './workout-arms.page';
 
-describe('BarcodeScannerPage', () => {
-  let component: BarcodeScannerPage;
-  let fixture: ComponentFixture<BarcodeScannerPage>;
+describe('WorkoutArmsPage', () => {
+  let component: WorkoutArmsPage;
+  let fixture: ComponentFixture<WorkoutArmsPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BarcodeScannerPage ],
+      declarations: [WorkoutArmsPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BarcodeScannerPage);
+    fixture = TestBed.createComponent(WorkoutArmsPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
