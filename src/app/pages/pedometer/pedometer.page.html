@@ -1,7 +1,10 @@
 <app-navbar [headerTitle]="'Pedometer'"></app-navbar>
-<ion-content class="ion-padding">
+<ion-content class="ion-padding" color="primary">
   <ion-button
-    expand="full"
+    size="large"
+    shape="round"
+    color="success"
+    expand="block"
     icon-left
     (click)="startTracking()"
     *ngIf="!isTracking"
@@ -10,8 +13,10 @@
     Start Run
   </ion-button>
   <ion-button
-    expand="full"
+    size="large"
+    shape="round"
     color="danger"
+    expand="block"
     icon-left
     (click)="stopTracking()"
     *ngIf="isTracking"
@@ -19,22 +24,29 @@
     <ion-icon name="hand"></ion-icon>
     Finish Run
   </ion-button>
+  <ion-card color="green">
+    <div #map id="map"></div>
+  </ion-card>
+  <ion-card>
+    <ion-list>
+      <ion-list-header color="light">Previous Runs</ion-list-header>
 
-  <div #map id="map"></div>
-
-  <ion-list>
-    <ion-list-header>Previous Runs</ion-list-header>
-
-    <ion-item *ngFor="let route of previousTracks">
-      {{ route.finished | date }}, {{ route.path.length }} Waypoints
-      <ion-button fill="clear" item-end (click)="showHistoryRoute(route.path)"
-        >View Run</ion-button
-      >
-    </ion-item>
-  </ion-list>
-
-  <ion-item>
-    <ion-button fill="clear" item-end (click)="clearTracks()"
+      <ion-item color="light" *ngFor="let route of previousTracks" lines="none">
+        {{ route.finished | date }}
+        <ion-button fill="clear" item-end (click)="showHistoryRoute(route.path)"
+          >View Run</ion-button
+        >
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-item lines="none" class="ion-text-center">
+    <ion-button
+      center
+      color="danger"
+      size="small"
+      expand="block"
+      shape="round"
+      (click)="clearTracks()"
       >Clear Old Runs</ion-button
     >
   </ion-item>

@@ -4,6 +4,7 @@ import { Subscription, Observable } from 'rxjs';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
 import { Storage } from '@ionic/storage';
 import { filter } from 'rxjs/operators';
+import { getDistance, getPathLength } from 'geolib';
 import {
   GoogleMaps,
   GoogleMap,
@@ -29,7 +30,7 @@ export class PedometerPage {
 
   isTracking = false;
   trackedRoute = [];
-  previousTracks = [];
+  previousTracks: any = [];
 
   positionSubscription: Subscription;
 
@@ -102,7 +103,7 @@ export class PedometerPage {
     this.routes = [];
 
     this.positionSubscription = this.geolocation
-      .watchPosition({ timeout: 100000 })
+      .watchPosition()
       .pipe(
         filter(p => p.coords !== undefined) //Filter Out Errors
       )
@@ -111,7 +112,6 @@ export class PedometerPage {
           this.trackedRoute.push({
             lat: data.coords.latitude,
             lng: data.coords.longitude,
-            points: data.coords,
           });
 
           this.redrawPath(this.trackedRoute);
@@ -121,9 +121,10 @@ export class PedometerPage {
 
   stopTracking() {
     let newRoute = { finished: new Date().getTime(), path: this.trackedRoute };
+    let distance = getPathLength(newRoute.path);
+    console.log('Distance: ', distance / 1000, 'KM');
     this.previousTracks.push(newRoute);
     this.storage.set('routes', this.previousTracks);
-
     this.isTracking = false;
     this.positionSubscription.unsubscribe();
     this.map.clear();
@@ -143,8 +144,9 @@ export class PedometerPage {
   }
 
   showHistoryRoute(route) {
+    this.map.clear();
     this.redrawPath(route);
-    console.log(this.previousTracks);
+    //console.log(this.previousTracks);
   }
 
   clearTracks() {
