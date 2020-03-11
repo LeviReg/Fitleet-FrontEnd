@@ -50,6 +50,11 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
+    path: 'add-food/:mealType',
+    loadChildren: './pages/add-food/add-food.module#AddFoodPageModule',
+    canActivate: [AuthGuardService],
+  },
+  {
     path: 'work-select',
     loadChildren: './pages/work-select/work-select.module#WorkSelectPageModule',
     canActivate: [AuthGuardService],

@@ -30,8 +30,15 @@ const routes: Routes = [
       radius: 100,
       outerStrokeWidth: 16,
       innerStrokeWidth: 8,
+      /* Original colors 
       outerStrokeColor: '#78C000',
-      innerStrokeColor: '#C7E596',
+      innerStrokeColor: '#C7E596', */
+      //[outerStrokeGradientStopColor]="'#000005a'"
+      // [backgroundStroke]="'#000005a'"
+      //   [outerStrokeGradient]="true"
+      //[outerStrokeGradient]="true"
+      // outerStrokeColor: '#005a00',
+      // innerStrokeColor: '#005a00',
       //animationDuration: 300,
       animation: false,
       responsive: true,

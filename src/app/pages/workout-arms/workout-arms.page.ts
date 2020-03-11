@@ -18,8 +18,8 @@ export class WorkoutArmsPage implements OnInit {
   ) {}
   type: string;
   workout: IExercise;
-  Search: [];
-
+  Search: any[] = [];
+  
   getExercise(exercise: IExercise) {
     this._dataStorage.addExercise(exercise);
   }
@@ -27,9 +27,13 @@ export class WorkoutArmsPage implements OnInit {
   getInfo() {
     this._service
       .fetchData(this.type)
-      .subscribe(data => (this.Search = data['suggestions']));
+      .subscribe(data => (this.Search.push(...data['suggestions'])));   
+          
+      this._service
+      .fetchData('triceps')
+      .subscribe(data => (this.Search.push(...data['suggestions'])));  
   }
-
+  
   ngOnInit() {
     this.type = this.active.snapshot.paramMap.get('type');
     this.getInfo();

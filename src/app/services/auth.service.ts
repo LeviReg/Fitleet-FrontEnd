@@ -10,6 +10,7 @@ import { IFoodDiaries } from '../interfaces/IFoodDiaries';
 import { from } from 'rxjs';
 import { WorkoutService } from './workouts.service';
 import { IWorkout } from '../interfaces/IExercise';
+import { HTTP } from '@ionic-native/http/ngx';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -19,6 +20,7 @@ export class AuthService {
   url = environment.url;
   user = null;
   TOKEN_KEY = 'access_token';
+  private _QuoteApi = 'https://quotes.rest/';
 
   constructor(
     private http: HttpClient,
@@ -27,6 +29,7 @@ export class AuthService {
     private plt: Platform,
     private alertController: AlertController,
     private _exercise: WorkoutService,
+    private _http: HTTP,
     private router: Router
   ) {
     this.plt.ready().then(() => {
@@ -133,6 +136,10 @@ export class AuthService {
     alert.then(alert => alert.present());
   }
   //connect open food facts to API
+
+  quoteOfTheDay() {
+    return this._http.get(this._QuoteApi + 'qod', {}, {});
+  }
 
   getWorkouts() {
     return this.http.get<IWorkout[]>(`${this.url}/api/workouts/`);
