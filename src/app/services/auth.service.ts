@@ -10,15 +10,17 @@ import { IFoodDiaries } from '../interfaces/IFoodDiaries';
 import { from } from 'rxjs';
 import { WorkoutService } from './workouts.service';
 import { IWorkout } from '../interfaces/IExercise';
+import { HTTP } from '@ionic-native/http/ngx';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  url = environment.devurl;
+  url = environment.url;
   user = null;
   authenticationState = new BehaviorSubject(false);
   TOKEN_KEY = 'access_token';
+  private _QuoteApi = 'https://quotes.rest/';
 
   constructor(
     private http: HttpClient,
@@ -26,7 +28,8 @@ export class AuthService {
     private storage: Storage,
     private plt: Platform,
     private alertController: AlertController,
-    private _exercise: WorkoutService
+    private _exercise: WorkoutService,
+    private _http: HTTP
   ) {
     this.plt.ready().then(() => {
       this.checkToken();
@@ -135,7 +138,11 @@ export class AuthService {
   }
   //connect open food facts to API
 
-  getWorkouts(){
+  quoteOfTheDay() {
+    return this._http.get(this._QuoteApi + 'qod', {}, {});
+  }
+
+  getWorkouts() {
     return this.http.get<IWorkout[]>(`${this.url}/api/workouts/`);
   }
 
@@ -149,7 +156,7 @@ export class AuthService {
         name: workout,
         exercises: WorkoutName.map(el => {
           return {
-            name: el, 
+            name: el,
           };
         }),
       })
@@ -160,7 +167,7 @@ export class AuthService {
       );
   }
 
-  deleteWorkouts(id: string){
+  deleteWorkouts(id: string) {
     return this.http.delete(`${this.url}/api/deleteExercise/${id}`);
   }
 }

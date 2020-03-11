@@ -11,21 +11,26 @@ import { IWorkout } from 'src/app/interfaces/IExercise';
   styleUrls: ['./workout-tracker.page.scss'],
 })
 export class WorkoutTrackerPage implements OnInit {
+  isLoaded: boolean = false;
   constructor(
     private _service: WorkoutService,
     private _authService: AuthService
   ) {}
+  
+  ngOnInit(): void {
+  }
 
   Workouts: IWorkout[];
 
   getWorkouts() {
     this._authService.getWorkouts().subscribe(data => {
-
       this.Workouts = data;
-
+      this.isLoaded = true;
     });
   }
-  ngOnInit() {
+  
+  ionViewDidEnter() {
     this.getWorkouts();
   }
+
 }
