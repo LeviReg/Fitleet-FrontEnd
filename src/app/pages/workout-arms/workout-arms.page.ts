@@ -20,21 +20,27 @@ export class WorkoutArmsPage implements OnInit {
   workout: IExercise;
   Search: any[] = [];
   
+  ngOnInit(): void {
+  }
+  
   getExercise(exercise: IExercise) {
     this._dataStorage.addExercise(exercise);
   }
 
   getInfo() {
+    this.Search = [];
     this._service
       .fetchData(this.type)
       .subscribe(data => (this.Search.push(...data['suggestions'])));   
           
+      if(this.type == 'biceps'){
       this._service
       .fetchData('triceps')
       .subscribe(data => (this.Search.push(...data['suggestions'])));  
+    }
   }
   
-  ngOnInit() {
+  ionViewDidEnter() {
     this.type = this.active.snapshot.paramMap.get('type');
     this.getInfo();
   }

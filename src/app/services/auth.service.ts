@@ -11,6 +11,7 @@ import { from } from 'rxjs';
 import { WorkoutService } from './workouts.service';
 import { IWorkout } from '../interfaces/IExercise';
 import { HTTP } from '@ionic-native/http/ngx';
+import { IProfile } from '../interfaces/IProfile';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -66,7 +67,7 @@ export class AuthService {
   }
 
   GetFoodDiaries(): Observable<IFoodDiaries[]> {
-    return this.http.get<IFoodDiaries[]>(`${this.url}/api/Food-diary`);
+    return this.http.get<IFoodDiaries[]>(`${this.url}/api/food-diary`);
   }
 
   register(user) {
@@ -172,6 +173,12 @@ export class AuthService {
   deleteWorkouts(id: string) {
     return this.http.delete(`${this.url}/api/deleteExercise/${id}`);
   }
+  
+  
+  getPedometerNumber(): Observable<IProfile>{
+    return this.http.get<IProfile>(`${this.url}/api/pedometer`);
+  }
+  
   deleteFood(id: string) {
     return this.http.delete(`${this.url}/api/deleteFood/${id}`);
   }

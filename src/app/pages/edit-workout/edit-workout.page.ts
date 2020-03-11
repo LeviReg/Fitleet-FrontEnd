@@ -21,6 +21,9 @@ export class EditWorkoutPage implements OnInit {
   name: string;
   exercises: IExercise[];
 
+  ngOnInit(): void {
+  }
+  
   async getWorkout() {
     await this._authService.getWorkoutID(this.type).subscribe(data => {
       this.Workout = data;
@@ -38,7 +41,7 @@ export class EditWorkoutPage implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ionViewDidEnter() {
     this.type = this.active.snapshot.paramMap.get('type');
     console.log(this.type);
     this.getWorkout();

@@ -4,7 +4,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { scan } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
-import { IFoodDiaries, foods } from 'src/app/interfaces/IFoodDiaries';
+
+import { IFoodDiaries, IFoods } from 'src/app/interfaces/IFoodDiaries';
 
 @Component({
   selector: 'app-food-diary',
