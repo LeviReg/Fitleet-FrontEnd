@@ -10,7 +10,7 @@ import { Quote } from './quoteInterface';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  chart: any; // Pedometor Data
+  chart: any; // Calorie Data
   doughnut: any; // Food Data
   authUser: IUser;
 
@@ -18,9 +18,7 @@ export class ProfilePage implements OnInit {
 
   //needs renaming
   private result: any;
-
   private UsersName: any;
-  private pedometer: any;
 
   GetQuote() {
     return this._service.quoteOfTheDay().then(data => {
@@ -31,15 +29,13 @@ export class ProfilePage implements OnInit {
 
   async ngOnInit() {
     this.GetQuote();
-    // this.GetUsername();
 
     this.authUser = await this._service.fetchSingleUser().toPromise();
 
     console.log(this.authUser);
 
-    //PedoMetor Chart
     // A Chart Object has to be canvas
-    this.chart = new Chart('pedometorCanvas', {
+    this.chart = new Chart('CalorieCanvas', {
       type: 'line', //type of chart
 
       data: {
