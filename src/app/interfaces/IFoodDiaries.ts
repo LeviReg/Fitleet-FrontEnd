@@ -1,9 +1,15 @@
 export interface IFoodDiaries {
-  foodName: String,
-  servingSize: String,
-  weightType: String,
-  calories:  String,
-  carbs:  String,
-  fats:  String,
-  protein: String,
+  foodName: String;
+  servingSize: String;
+  weightType: String;
+  calories: String;
+  carbs: String;
+  fats: String;
+  protein: String;
+  _id: string;
+  foods: foods[];
+}
+
+export interface foods {
+  _id: string;
 }

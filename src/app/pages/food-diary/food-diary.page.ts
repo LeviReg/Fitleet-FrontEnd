@@ -4,7 +4,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { scan } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
-import { IFoodDiaries } from 'src/app/interfaces/IFoodDiaries';
+import { IFoodDiaries, foods } from 'src/app/interfaces/IFoodDiaries';
 
 @Component({
   selector: 'app-food-diary',
@@ -12,7 +12,9 @@ import { IFoodDiaries } from 'src/app/interfaces/IFoodDiaries';
   styleUrls: ['./food-diary.page.scss'],
 })
 export class FoodDiaryPage {
-  foodDiaries: IFoodDiaries[];
+  foodDiaries: foods[];
+  buttonPressed = false;
+  pulledDown = true;
 
   constructor(
     public navCtrl: NavController,
@@ -27,10 +29,20 @@ export class FoodDiaryPage {
     });
   }
 
-  getFoodDiaries() {
-    this.authService.GetFoodDiaries().subscribe(data => {
+  async getFoodDiaries() {
+    return this.authService.GetFoodDiaries().subscribe(data => {
       this.foodDiaries = data;
     });
+  }
+
+  doRefresh(event) {
+    this.getFoodDiaries();
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+    this.pulledDown = true;
   }
 
   async presentLoadingCustom() {
@@ -44,17 +56,28 @@ export class FoodDiaryPage {
       <ion-item lines="none">
         <img src="../../assets/loader.gif">
         </ion-item>`,
-      duration: 3000,
+      duration: 500,
     });
     return (await loading).present();
   }
 
-  async createDiary() {
-    await this.authService.CreateDiary().subscribe(res => {
+  logFoods(id: string) {
+    console.log(id);
+  }
+
+  deleteFoods(name: string) {
+    this.foodDiaries = this.foodDiaries.filter(e => e._id !== name);
+    this.authService.deleteFood(name).subscribe(data => {
+      console.log(data);
+    });
+  }
+
+  createDiary() {
+    this.authService.CreateDiary().subscribe(res => {
       console.log(res);
     });
     console.log('Create Diary Called');
-
-    await this.getFoodDiaries();
+    this.foodDiaries.length += 1;
+    this.pulledDown = false;
   }
 }
