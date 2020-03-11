@@ -1,5 +1,6 @@
 interface BarcodeInterface {
   product: product;
+  status: number;
 }
 
 interface product {

@@ -3,6 +3,7 @@ import { Chart } from 'chart.js';
 import { AuthService } from 'src/app/services/auth.service';
 import { IUser } from 'src/app/interfaces/IUser';
 import { Quote } from './quoteInterface';
+import { IProfile, IPedometer } from 'src/app/interfaces/IProfile';
 
 @Component({
   selector: 'app-profile',
@@ -14,11 +15,18 @@ export class ProfilePage implements OnInit {
   doughnut: any; // Food Data
   authUser: IUser;
 
+  pedometer: IProfile;
+  steps: IPedometer[];
+  private result: any;
+  
   constructor(private _service: AuthService) {}
-
   //needs renaming
   private result: any;
   private UsersName: any;
+  
+  ngOnInit():void{
+    
+  }
 
   GetQuote() {
     return this._service.quoteOfTheDay().then(data => {
@@ -88,6 +96,18 @@ export class ProfilePage implements OnInit {
         ],
         labels: ['Protein', 'Carbohydrates', 'Fat'], // names
       },
-    });
+    });    
+    
+    
+  }
+  
+   getWalk(){
+      this._service.getPedometerNumber().subscribe(data =>{
+      this.pedometer = data;
+      this.steps = data.pedometer;
+      console.log(data);
+      console.log(data.pedometer)
+    })
+
   }
 }

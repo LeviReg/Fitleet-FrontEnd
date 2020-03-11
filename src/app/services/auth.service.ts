@@ -12,6 +12,8 @@ import { WorkoutService } from './workouts.service';
 import { IWorkout } from '../interfaces/IExercise';
 import { HTTP } from '@ionic-native/http/ngx';
 import { IUser } from '../interfaces/IUser';
+import { IProfile } from '../interfaces/IProfile';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +22,6 @@ export class AuthService {
   // url = environment.url;
   url = environment.devurl;
   user = null;
-  authenticationState = new BehaviorSubject(false);
   TOKEN_KEY = 'access_token';
   private _QuoteApi = 'https://quotes.rest/';
 
@@ -31,7 +32,8 @@ export class AuthService {
     private plt: Platform,
     private alertController: AlertController,
     private _exercise: WorkoutService,
-    private _http: HTTP
+    private _http: HTTP,
+    private router: Router
   ) {
     this.plt.ready().then(() => {
       this.checkToken();
@@ -46,7 +48,6 @@ export class AuthService {
 
         if (!isExpired) {
           this.user = decoded;
-          this.authenticationState.next(true);
         } else {
           this.storage.remove(this.TOKEN_KEY);
         }
@@ -68,7 +69,7 @@ export class AuthService {
   }
 
   GetFoodDiaries(): Observable<IFoodDiaries[]> {
-    return this.http.get<IFoodDiaries[]>(`${this.url}/api/Food-diary`);
+    return this.http.get<IFoodDiaries[]>(`${this.url}/api/food-diary`);
   }
 
   register(user) {
@@ -97,12 +98,14 @@ export class AuthService {
   }
 
   login(credentials) {
+    console.log(credentials);
     return this.http.post(`${this.url}/api/login`, credentials).pipe(
       tap(res => {
+        console.log(res);
         this.storage.set(this.TOKEN_KEY, res['token']);
         localStorage.setItem('access_token', res['token']);
         this.user = this.helper.decodeToken(res['token']);
-        this.authenticationState.next(true);
+        this.router.navigate(['/home']);
       }),
       catchError(e => {
         this.showAlert(e.error.msg);
@@ -111,9 +114,8 @@ export class AuthService {
     );
   }
   logout() {
-    this.storage.remove(this.TOKEN_KEY).then(() => {
-      this.authenticationState.next(false);
-    });
+    localStorage.removeItem(this.TOKEN_KEY);
+    this.router.navigate(['/login']);
   }
   getSpecialData() {
     return this.http.get(`${this.url}/api/home`).pipe(
@@ -127,9 +129,7 @@ export class AuthService {
       })
     );
   }
-  isAuthenticated() {
-    return this.authenticationState.value;
-  }
+
   showAlert(msg) {
     let alert = this.alertController.create({
       message: msg,
@@ -178,5 +178,14 @@ export class AuthService {
 
   deleteWorkouts(id: string) {
     return this.http.delete(`${this.url}/api/deleteExercise/${id}`);
+  }
+  
+  
+  getPedometerNumber(): Observable<IProfile>{
+    return this.http.get<IProfile>(`${this.url}/api/pedometer`);
+  }
+  
+  deleteFood(id: string) {
+    return this.http.delete(`${this.url}/api/deleteFood/${id}`);
   }
 }

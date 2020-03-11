@@ -65,6 +65,20 @@
             shape="round"
             class="btn"
             size="Large"
+            routerDirection="forward"
+            [routerLink]="['/workout-arms','back']"
+          >
+            <ion-icon src="../../../assets/body-spa.svg"></ion-icon>
+            <ion-text>Back</ion-text>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button
+            shape="round"
+            class="btn"
+            size="Large"
             color="success"
             id="addWorkout"
             (click)="postWorkout(Name.value)"
