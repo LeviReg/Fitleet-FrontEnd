@@ -12,37 +12,38 @@ import { async } from '@angular/core/testing';
   styleUrls: ['./edit-workout.page.scss'],
 })
 export class EditWorkoutPage implements OnInit {
-
-  constructor(private _authService: AuthService, private active: ActivatedRoute, private _dataStorage: WorkoutService) { }
+  constructor(
+    private _authService: AuthService,
+    private active: ActivatedRoute
+  ) {}
   Workout: IWorkout;
   type: string;
   name: string;
-  exercises:IExercise[];
+  exercises: IExercise[];
 
+  ngOnInit(): void {
+  }
+  
   async getWorkout() {
-    await this._authService.getWorkoutID(this.type)
-    .subscribe(data => {
-      this.Workout = data
-      this.exercises = data.exercises
+    await this._authService.getWorkoutID(this.type).subscribe(data => {
+      this.Workout = data;
+      this.exercises = data.exercises;
       console.log(this.Workout);
     });
     //this._dataStorage.setExercises(this.exercise);
   }
 
-  deleteExercise(name:string){
+  deleteExercise(name: string) {
     console.log(name);
-   this.exercises = this.exercises.filter(e => e._id !== name)
-   this._authService.deleteWorkouts(name).subscribe(data=>{
-     console.log(data);
-   })
-
+    this.exercises = this.exercises.filter(e => e._id !== name);
+    this._authService.deleteWorkouts(name).subscribe(data => {
+      console.log(data);
+    });
   }
 
-
-  ngOnInit() {
+  ionViewDidEnter() {
     this.type = this.active.snapshot.paramMap.get('type');
     console.log(this.type);
     this.getWorkout();
   }
-
 }

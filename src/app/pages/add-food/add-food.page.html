@@ -39,7 +39,11 @@
       </ion-item>
 
       <ion-item>
-        <ion-button (click)="onSubmit()" size="large" class="center"
+        <ion-button
+          [disabled]="!foodForm.valid"
+          (click)="onSubmit()"
+          size="large"
+          class="center"
           >Add</ion-button
         >
       </ion-item>

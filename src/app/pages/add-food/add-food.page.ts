@@ -44,6 +44,10 @@ export class AddFoodPage implements OnInit {
       this.foodForm
         .get('calories')
         .setValue(this.returnedFood.product.nutriments['energy-kcal_100g']);
+    } else if (this.returnedFood.status == 404) {
+      this.authService.showAlert(
+        'Food is not in database, please enter into fields manually'
+      );
     }
   }
 

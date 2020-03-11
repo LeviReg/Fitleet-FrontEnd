@@ -14,7 +14,7 @@
 }
 
 .buttonSize {
-  padding: 6px;
+  padding: 5px;
 }
 
 ion-list {
@@ -22,7 +22,6 @@ ion-list {
 }
 
 ion-label {
-  margin-right: 0;
   white-space: pre-wrap !important;
 }
 
@@ -33,4 +32,9 @@ ion-label {
 
 .text-center {
   text-align: center;
+}
+
+.icon-x-large {
+  font-size: 64px;
+  margin-top: 48px;
 }
