@@ -10,6 +10,7 @@ const routes: Routes = [
     path: 'home',
     pathMatch: 'full',
     loadChildren: './pages/home/home.module#HomePageModule',
+    canActivate: [AuthGuardService],
   },
   {
     path: 'register',
@@ -18,53 +19,56 @@ const routes: Routes = [
   {
     path: 'pedometer',
     loadChildren: './pages/pedometer/pedometer.module#PedometerPageModule',
+    canActivate: [AuthGuardService],
   },
   {
     path: 'food-diary',
     loadChildren: './pages/food-diary/food-diary.module#FoodDiaryPageModule',
+    canActivate: [AuthGuardService],
   },
   {
     path: 'workout-tracker',
     loadChildren:
       './pages/workout-tracker/workout-tracker.module#WorkoutTrackerPageModule',
+    canActivate: [AuthGuardService],
   },
   {
     path: 'profile',
 
     loadChildren: './pages/profile/profile.module#ProfilePageModule',
+    canActivate: [AuthGuardService],
   },
   {
     path: 'rest',
     loadChildren: './pages/rest-timer/rest-timer.module#RestTimerPageModule',
-  },
-  {
-    path: 'barcode-scanner',
-    loadChildren:
-      './pages/barcode-scanner/barcode-scanner.module#BarcodeScannerPageModule',
+    canActivate: [AuthGuardService],
   },
   {
     path: 'workout-arms/:type',
     loadChildren:
       './pages/workout-arms/workout-arms.module#WorkoutArmsPageModule',
-  },
-
-  // {
-  //   path: 'workout-back',
-  //   loadChildren:
-  //     './pages/workout-back/workout-back.module#WorkoutBackPageModule'
-  // },
-  {
-    path: 'work-select',
-    loadChildren: './pages/work-select/work-select.module#WorkSelectPageModule',
+    canActivate: [AuthGuardService],
   },
   {
     path: 'add-food/:mealType',
     loadChildren: './pages/add-food/add-food.module#AddFoodPageModule',
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'work-select',
+    loadChildren: './pages/work-select/work-select.module#WorkSelectPageModule',
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'add-food/:mealType',
+    loadChildren: './pages/add-food/add-food.module#AddFoodPageModule',
+    canActivate: [AuthGuardService],
   },
   {
     path: 'edit-workout/:type',
     loadChildren:
       './pages/edit-workout/edit-workout.module#EditWorkoutPageModule',
+    canActivate: [AuthGuardService],
   },
 ];
 

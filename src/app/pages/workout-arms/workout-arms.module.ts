@@ -10,8 +10,8 @@ import { WorkoutArmsPage } from './workout-arms.page';
 const routes: Routes = [
   {
     path: '',
-    component: WorkoutArmsPage
-  }
+    component: WorkoutArmsPage,
+  },
 ];
 
 @NgModule({
@@ -19,8 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
-  declarations: [WorkoutArmsPage]
+  declarations: [WorkoutArmsPage],
 })
 export class WorkoutArmsPageModule {}
