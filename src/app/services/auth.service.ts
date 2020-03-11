@@ -175,4 +175,7 @@ export class AuthService {
   getPedometerNumber(): Observable<IProfile[]>{
     return this.http.get<IProfile[]>(`${this.url}/api/pedometer`);
   }
+  deleteFood(id: string) {
+    return this.http.delete(`${this.url}/api/deleteFood/${id}`);
+  }
 }
