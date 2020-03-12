@@ -1,9 +1,9 @@
 <app-navbar [headerTitle]="'Running'"></app-navbar>
-<ion-content class="ion-padding" color="primary">
+<ion-content class="ion-padding">
   <ion-button
-    size="large"
+    size="medium"
     shape="round"
-    color="success"
+    color="primary"
     expand="block"
     icon-left
     (click)="startWorkout()"
@@ -24,7 +24,7 @@
     <ion-icon name="hand"></ion-icon>
     Finish Run
   </ion-button>
-  <ion-card color="green">
+  <ion-card>
     <div #map id="map"></div>
   </ion-card>
 
