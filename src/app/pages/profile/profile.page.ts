@@ -1,10 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
-import { WorkoutServiceService } from 'src/app/services/workout-service.service';
-//import { contents, quotes } from './quoteInterface';
-import { Contents, Quote } from './quoteInterface';
-import { checkAvailability } from '@ionic-native/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { IUser } from 'src/app/interfaces/IUser';
+import { Quote } from './quoteInterface';
 import { IProfile, IPedometer } from 'src/app/interfaces/IProfile';
 
 @Component({
@@ -12,36 +10,31 @@ import { IProfile, IPedometer } from 'src/app/interfaces/IProfile';
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage implements OnInit {
-  chart: any; // Pedometor Data
+export class ProfilePage {
+  chart: any; // Calorie Data
   doughnut: any; // Food Data
+  authUser: IUser;
 
   pedometer: IProfile;
   steps: IPedometer[];
-  private result: any;
-  
+  result: any;
+
   constructor(private _service: AuthService) {}
+  //needs renaming
 
-  ngOnInit():void{
-    
-  }
-
-  LogQuote() {
+  GetQuote() {
     return this._service.quoteOfTheDay().then(data => {
       this.result = JSON.parse(data.data);
       console.log(this.result.contents.quotes[0].quote);
     });
   }
-  check() {
-    console.log(this.result);
-  }
 
-  ionViewDidEnter() {
-    this.LogQuote();
-    this.getWalk();
-    //PedoMetor Chart
+  async ionViewDidEnter() {
+    this.GetQuote();
+
+    this.authUser = await this._service.fetchSingleUser().toPromise();
     // A Chart Object has to be canvas
-    this.chart = new Chart('pedometorCanvas', {
+    this.chart = new Chart('CalorieCanvas', {
       type: 'line', //type of chart
 
       data: {
@@ -58,7 +51,7 @@ export class ProfilePage implements OnInit {
         datasets: [
           {
             label: 'Progress through week',
-            data: [1000, 3000, 3000, 3500, 3000, 2500, 4500], // data for the line chart
+            data: [0, 0, 0, 100, 0, 0, 0], // data for the line chart
             backgroundColor: 'red', // the dots
             borderColor: 'black', // the line
             fill: false, // fill bascailly fills all the space underneath the line     Must be false
@@ -87,25 +80,22 @@ export class ProfilePage implements OnInit {
       data: {
         datasets: [
           {
-            data: [45, 30, 25], //data
-            backgroundColor: ['green', 'orange', 'red'], // Colours
+            data: [120, 300, 45], //data
+            backgroundColor: ['green', 'red', 'blue'], // Colours
             label: 'Dataset 1',
           },
         ],
-        labels: ['Protein', 'Carbohydrate', 'Fat'], // names
+        labels: ['Protein', 'Carbohydrates', 'Fat'], // names
       },
-    });    
-    
-    
+    });
   }
-  
-   getWalk(){
-      this._service.getPedometerNumber().subscribe(data =>{
+
+  getWalk() {
+    this._service.getPedometerNumber().subscribe(data => {
       this.pedometer = data;
       this.steps = data.pedometer;
       console.log(data);
-      console.log(data.pedometer)
-    })
-
+      console.log(data.pedometer);
+    });
   }
 }

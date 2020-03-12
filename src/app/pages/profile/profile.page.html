@@ -4,17 +4,10 @@
     <ion-row>
       <ion-card color="light" class="card">
         <ion-item>
-          <ion-title class="pad" size="large">
-            Welcome back UserName
+          <ion-title class="pad" size="large" *ngIf="result">
+            Welcome back {{authUser.username}}
           </ion-title>
         </ion-item>
-        <ion-row style="height: 100;">
-          <ion-col>
-            <ion-item>
-              <ion-img src=""> </ion-img>
-            </ion-item>
-          </ion-col>
-        </ion-row>
         <ion-row>
           <ion-col>
             <ion-item>

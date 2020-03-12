@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Previous Diary</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary">
+  <ion-grid>
+    <ion-card>
+      <ion-item class="header">
+        <ion-title class="title">Breakfast</ion-title>
+      </ion-item>
+      <ion-list *ngFor="let f of foodDiaries;">
+        <ion-item *ngIf="f.mealType == 'breakfast'">
+          <ion-label>{{f.foodName}}</ion-label>
+          <ion-label class="ion-text-end">{{f.calories}} cals</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+    <ion-card>
+      <ion-item class="header">
+        <ion-title class="title">Lunch</ion-title>
+      </ion-item>
+      <ion-list *ngFor="let f of foodDiaries;">
+        <ion-item *ngIf="f.mealType == 'lunch'">
+          <ion-label>{{f.foodName}}</ion-label>
+          <ion-label class="ion-text-end">{{f.calories}} cals</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+    <ion-card>
+      <ion-item class="header">
+        <ion-title class="title">Dinner</ion-title>
+      </ion-item>
+      <ion-list *ngFor="let f of foodDiaries;">
+        <ion-item *ngIf="f.mealType == 'dinner'">
+          <ion-label>{{f.foodName}}</ion-label>
+          <ion-label class="ion-text-end">{{f.calories}} cals</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+    <ion-card>
+      <ion-item class="header">
+        <ion-title class="title">Snacks</ion-title>
+      </ion-item>
+      <ion-list *ngFor="let f of foodDiaries;">
+        <ion-item *ngIf="f.mealType == 'snack'">
+          <ion-label>{{f.foodName}}</ion-label>
+          <ion-label class="ion-text-end">{{f.calories}} cals</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </ion-grid>
+</ion-content>

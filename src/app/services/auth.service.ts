@@ -11,6 +11,7 @@ import { from } from 'rxjs';
 import { WorkoutService } from './workouts.service';
 import { IWorkout } from '../interfaces/IExercise';
 import { HTTP } from '@ionic-native/http/ngx';
+import { IUser } from '../interfaces/IUser';
 import { IProfile } from '../interfaces/IProfile';
 import { Router } from '@angular/router';
 
@@ -18,6 +19,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
+  // url = environment.url;
   url = environment.url;
   user = null;
   TOKEN_KEY = 'access_token';
@@ -99,7 +101,6 @@ export class AuthService {
     console.log(credentials);
     return this.http.post(`${this.url}/api/login`, credentials).pipe(
       tap(res => {
-        console.log(res);
         this.storage.set(this.TOKEN_KEY, res['token']);
         localStorage.setItem('access_token', res['token']);
         this.user = this.helper.decodeToken(res['token']);
@@ -136,11 +137,18 @@ export class AuthService {
     });
     alert.then(alert => alert.present());
   }
-  //connect open food facts to API
 
+  //Calls quote to get the quote of the day.
   quoteOfTheDay() {
     return this._http.get(this._QuoteApi + 'qod', {}, {});
   }
+  //gets username for profile page
+  ReturnUsername(id: string) {
+    return this._http.get(`${this.url}/api/getUser/`, {}, {});
+  }
+
+  fetchSingleUser = (): Observable<IUser> =>
+    this.http.get<IUser>(`${this.url}/api/getUser`);
 
   getWorkouts() {
     return this.http.get<IWorkout[]>(`${this.url}/api/workouts/`);
@@ -148,6 +156,10 @@ export class AuthService {
 
   getWorkoutID(id: string) {
     return this.http.get<IWorkout>(`${this.url}/api/workoutID/${id}`);
+  }
+
+  getFoodDiaryByID(id: string): Observable<IFoodDiaries[]> {
+    return this.http.get<IFoodDiaries[]>(`${this.url}/api/foodDiaryByID/${id}`);
   }
 
   postWorkout(workout, WorkoutName) {
@@ -170,12 +182,11 @@ export class AuthService {
   deleteWorkouts(id: string) {
     return this.http.delete(`${this.url}/api/deleteExercise/${id}`);
   }
-  
-  
-  getPedometerNumber(): Observable<IProfile>{
+
+  getPedometerNumber(): Observable<IProfile> {
     return this.http.get<IProfile>(`${this.url}/api/pedometer`);
   }
-  
+
   deleteFood(id: string) {
     return this.http.delete(`${this.url}/api/deleteFood/${id}`);
   }
