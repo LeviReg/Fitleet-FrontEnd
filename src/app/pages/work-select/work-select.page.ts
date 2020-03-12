@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkoutService } from 'src/app/services/workouts.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-work-select',
@@ -10,7 +11,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class WorkSelectPage implements OnInit {
   constructor(
     private _service: WorkoutService,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private router: Router
   ) {}
 
   postWorkout(WorkoutName: string) {
