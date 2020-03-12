@@ -40,7 +40,6 @@ export class PedometerPage {
   ) {}
   // ion view did enter is used, to render map each time the page is navigated into
   async ionViewDidEnter() {
-
     await this.plt.ready().then(() => {
       this.loadPreviousRuns();
     });

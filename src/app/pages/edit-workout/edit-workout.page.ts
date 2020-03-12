@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IWorkout, IExercise } from 'src/app/interfaces/IExercise';
 import { AuthService } from 'src/app/services/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { WorkoutService } from 'src/app/services/workouts.service';
 import { async } from '@angular/core/testing';
@@ -14,16 +14,16 @@ import { async } from '@angular/core/testing';
 export class EditWorkoutPage implements OnInit {
   constructor(
     private _authService: AuthService,
-    private active: ActivatedRoute
+    private active: ActivatedRoute,
+    private router: Router
   ) {}
   Workout: IWorkout;
   type: string;
   name: string;
   exercises: IExercise[];
 
-  ngOnInit(): void {
-  }
-  
+  ngOnInit(): void {}
+
   async getWorkout() {
     await this._authService.getWorkoutID(this.type).subscribe(data => {
       this.Workout = data;

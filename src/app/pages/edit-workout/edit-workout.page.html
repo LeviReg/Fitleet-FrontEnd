@@ -14,21 +14,27 @@
         <ion-title>{{Workout.name}}</ion-title>
       </ion-item>
       <ion-list>
-        <ion-label >Exercises</ion-label>
-        <ion-item *ngFor="let exercise of exercises" >
-         <ion-label>{{exercise.name}}</ion-label>
-          <ion-fab-button class="ion-text-end" size="small" (click)="deleteExercise(exercise._id)">
-            <ion-icon name="trash"></ion-icon>  
+        <ion-label>Exercises</ion-label>
+        <ion-item *ngFor="let exercise of exercises">
+          <ion-label>{{exercise.name}}</ion-label>
+          <ion-fab-button
+            class="ion-text-end"
+            size="small"
+            (click)="deleteExercise(exercise._id)"
+          >
+            <ion-icon name="trash"></ion-icon>
           </ion-fab-button>
         </ion-item>
       </ion-list>
       <ion-item>
-        <ion-button 
-        shape="round"
-        class="btn"
-        size="Large"
-        >Update Workout</ion-button>
+        <ion-button
+          shape="round"
+          class="btn"
+          size="Large"
+          [routerLink]="['/workout-tracker']"
+          >Update Workout</ion-button
+        >
       </ion-item>
-      </ion-card>
+    </ion-card>
   </ion-grid>
 </ion-content>

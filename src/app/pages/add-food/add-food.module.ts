@@ -3,15 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { NavbarComponentModule } from 'src/app/comp/navbar/navbar.module';
-import { ScannerComponent } from '../../comp/scanner/scanner.component';
+import { SharedModule } from '../../comp/shared.module';
 import { IonicModule } from '@ionic/angular';
 import { AddFoodPage } from './add-food.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: AddFoodPage
-  }
+    component: AddFoodPage,
+  },
 ];
 
 @NgModule({
@@ -20,9 +20,10 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     NavbarComponentModule,
+    SharedModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
-  declarations: [AddFoodPage, ScannerComponent]
+  declarations: [AddFoodPage],
 })
 export class AddFoodPageModule {}

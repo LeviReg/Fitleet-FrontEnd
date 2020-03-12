@@ -15,6 +15,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { HTTP } from '@ionic-native/http/ngx';
+import { SharedModule } from './comp/shared.module';
 
 export function jwtOptionsFactory(storage) {
   return {
@@ -30,6 +31,7 @@ export function jwtOptionsFactory(storage) {
   entryComponents: [],
   imports: [
     BrowserModule,
+    SharedModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,

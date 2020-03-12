@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar [headerTitle]="'Rest-Timer'"></app-navbar>
 <ion-content color="primary">
   <!--Adding the datetime picker-->
   <ion-item color="primary">
@@ -19,17 +19,14 @@
       [maxPercent]="100"
       [radius]="160"
       [showSubtitle]="true"
-      [subtitle]="remainingTime"
       [subtitleFontSize]="50"
       [space]="8"
       [showUnits]="true"
       [outerStrokeWidth]="16"
-      [outerStrokeColor]="red"
       [showZeroOuterStroke]="false"
       [backgroundStrokeWidth]="3"
       [outerStrokeGradient]="false"
       [showInnerStroke]="true"
-      [subtitleColor]="subtitleColor"
     ></circle-progress>
   </div>
 
